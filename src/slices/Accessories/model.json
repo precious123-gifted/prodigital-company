@@ -1,0 +1,86 @@
+{
+  "id": "accessories",
+  "type": "SharedSlice",
+  "name": "Accessories",
+  "description": "Accessories",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "accessorybrandname": {
+          "type": "Text",
+          "config": {
+            "label": "AccessoryBrandName",
+            "placeholder": ""
+          }
+        },
+        "accessorytitle": {
+          "type": "Text",
+          "config": {
+            "label": "AccessoryTitle",
+            "placeholder": ""
+          }
+        },
+        "shortdescription": {
+          "type": "Text",
+          "config": {
+            "label": "ShortDescription",
+            "placeholder": ""
+          }
+        },
+        "fulldescription": {
+          "type": "Text",
+          "config": {
+            "label": "FullDescription",
+            "placeholder": ""
+          }
+        },
+        "accessoryprice": {
+          "type": "Number",
+          "config": {
+            "label": "AccessoryPrice",
+            "placeholder": ""
+          }
+        },
+        "mainaccessoryimage": {
+          "type": "Image",
+          "config": {
+            "label": "MainAccessoryImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "complimentaryaccessoryimage1": {
+          "type": "Image",
+          "config": {
+            "label": "ComplimentaryAccessoryImage1",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "complimentaryaccessoryimage2": {
+          "type": "Image",
+          "config": {
+            "label": "ComplimentaryAccessoryImage2",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "complimentaryaccessoryimage3": {
+          "type": "Image",
+          "config": {
+            "label": "ComplimentaryAccessoryImage3",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

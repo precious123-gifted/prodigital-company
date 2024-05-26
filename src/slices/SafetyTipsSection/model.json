@@ -1,0 +1,35 @@
+{
+  "id": "safety_tips_section",
+  "type": "SharedSlice",
+  "name": "SafetyTipsSection",
+  "description": "SafetyTipsSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "safetytip": {
+          "type": "Group",
+          "config": {
+            "label": "SafetyTip",
+            "repeat": true,
+            "fields": {
+              "tip": {
+                "type": "Text",
+                "config": {
+                  "label": "Tip",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

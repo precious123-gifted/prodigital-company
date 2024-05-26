@@ -1,0 +1,102 @@
+{
+  "id": "products_of_the_week",
+  "type": "SharedSlice",
+  "name": "ProductsOfTheWeek",
+  "description": "ProductsOfTheWeek",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "headertitle": {
+          "type": "Text",
+          "config": {
+            "label": "HeaderTitle",
+            "placeholder": ""
+          }
+        },
+        "products": {
+          "type": "Group",
+          "config": {
+            "label": "Products",
+            "repeat": true,
+            "fields": {
+              "productbrandname": {
+                "type": "Text",
+                "config": {
+                  "label": "ProductBrandName",
+                  "placeholder": ""
+                }
+              },
+              "producttitle": {
+                "type": "Text",
+                "config": {
+                  "label": "ProductTitle",
+                  "placeholder": ""
+                }
+              },
+              "shortdescription": {
+                "type": "Text",
+                "config": {
+                  "label": "ShortDescription",
+                  "placeholder": ""
+                }
+              },
+              "fulldescription": {
+                "type": "Text",
+                "config": {
+                  "label": "FullDescription",
+                  "placeholder": ""
+                }
+              },
+              "productprize": {
+                "type": "Number",
+                "config": {
+                  "label": "ProductPrize",
+                  "placeholder": ""
+                }
+              },
+              "mainproductimage": {
+                "type": "Image",
+                "config": {
+                  "label": "MainProductImage",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "complimentoryproductimage1": {
+                "type": "Image",
+                "config": {
+                  "label": "ComplimentoryProductImage1",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "complimentoryproductimage2": {
+                "type": "Image",
+                "config": {
+                  "label": "ComplimentoryProductImage2",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "complimentoryproductimage3": {
+                "type": "Image",
+                "config": {
+                  "label": "ComplimentoryProductImage3",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

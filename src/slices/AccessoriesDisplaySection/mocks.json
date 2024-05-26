@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"question": {
+				"__TYPE__": "FieldContent",
+				"value": "blood",
+				"type": "Text"
+			},
+			"writeup": {
+				"__TYPE__": "FieldContent",
+				"value": "your",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

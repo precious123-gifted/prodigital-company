@@ -1,0 +1,86 @@
+{
+  "id": "used_laptops",
+  "type": "SharedSlice",
+  "name": "UsedLaptops",
+  "description": "UsedLaptops",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "laptopbrandname": {
+          "type": "Text",
+          "config": {
+            "label": "LaptopBrandName",
+            "placeholder": ""
+          }
+        },
+        "laptoptitle": {
+          "type": "Text",
+          "config": {
+            "label": "LaptopTitle",
+            "placeholder": ""
+          }
+        },
+        "shortdescription": {
+          "type": "Text",
+          "config": {
+            "label": "ShortDescription",
+            "placeholder": ""
+          }
+        },
+        "fulldescription": {
+          "type": "Text",
+          "config": {
+            "label": "FullDescription",
+            "placeholder": ""
+          }
+        },
+        "laptopprice": {
+          "type": "Text",
+          "config": {
+            "label": "LaptopPrice",
+            "placeholder": ""
+          }
+        },
+        "mainlaptopimage": {
+          "type": "Image",
+          "config": {
+            "label": "MainLaptopImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "complimentaryimage1": {
+          "type": "Image",
+          "config": {
+            "label": "ComplimentaryImage1",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "complimentaryimage2": {
+          "type": "Image",
+          "config": {
+            "label": "ComplimentaryImage2",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "complimentaryimage3": {
+          "type": "Image",
+          "config": {
+            "label": "ComplimentaryImage3",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

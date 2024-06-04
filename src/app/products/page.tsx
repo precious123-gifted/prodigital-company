@@ -1,19 +1,19 @@
 
-import { createClient } from "@/prismicio";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { Pontano_Sans } from "next/font/google";
-import ProductsData from "./ProcessedData";
+// import { createClient } from "@/prismicio";
+// import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+// import { Pontano_Sans } from "next/font/google";
+// import ProductsData from "./ProcessedData";
 
 
 
 
-const pontanoSans = Pontano_Sans({subsets: ["latin"],weight: "400"})
-export default async function Products() {
+// const pontanoSans = Pontano_Sans({subsets: ["latin"],weight: "400"})
+// export default async function Products() {
 
 
-    const client = createClient()
+//     const client = createClient()
 
-    const settings = await client.getSingle('nav')
+//     const settings = await client.getSingle('nav')
 
 
 
@@ -23,11 +23,11 @@ export default async function Products() {
   
 
 
-  return (
-    <section className="flex justify-center bg-[#EBFEFF] text-[#333D3E]"  style={pontanoSans.style}>
+//   return (
+//     <section className="flex justify-center bg-[#EBFEFF] text-[#333D3E]"  style={pontanoSans.style}>
 
-<ProductsData settings={settings}/>
+// <ProductsData settings={settings}/>
 
-    </section>
-  )
-}
+//     </section>
+//   )
+// }

@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import backgroundImage from "../../../public/hero-background.png"
 import backgroundImage2 from "../../../public/hero-background2.png"
+import Link from "next/link";
 
 
 /**
@@ -55,7 +56,7 @@ const HeroSection = ({ slice }: HeroSectionProps): JSX.Element => {
 <div className="headersection absolute  h-full  flex flex-col items-center landscape:justify-between portrait:justify-center w-full">
 
   <div className="btn-div  h-[40vw] w-full flex justify-center items-center"> 
-  <div ref={button} className="button opacity-0 bg-[#EBFEFF] text-[#333D3E] cursor-pointer px-8 py-3 rounded-[0.280rem] text-[2vw] portrait:text-[8vw] hover:bg-[#d1f1f3] duration-[0.2s]  ease-in-out ">Check Our Laptops</div>
+ <Link href={"/products"}> <div ref={button} className="button opacity-0 bg-[#EBFEFF] text-[#333D3E] cursor-pointer px-8 py-3 rounded-[0.280rem] text-[2vw] portrait:text-[8vw] hover:bg-[#d1f1f3] duration-[0.2s]  ease-in-out ">Check Our Laptops</div> </Link> 
   
    </div>
 

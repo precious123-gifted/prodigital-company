@@ -15,11 +15,18 @@ export default function SingleProductContainer({productData}:any) {
 
   interface Product {
     _id: string;
+    quantity: number ;// Assuming price is a number
+    totalPrice: number ;
     product: {
-      hairimage: PrismicNextImage; // Assuming PrismicNextImage matches your image data structure
-      hairtitle: string;
-      hairdescription: string;
-      hairprize: number; // Assuming price is a number
+            mainimage:PrismicNextImage;
+            complimentaryimage1:PrismicNextImage;
+            complimentaryimage2:PrismicNextImage;
+            complimentaryimage3:PrismicNextImage;
+            brandname: string;
+            title: string;
+            shortdescription: string;
+            fulldescription: string;
+            price:number;
     };
   }
   
@@ -29,7 +36,7 @@ export default function SingleProductContainer({productData}:any) {
       height: number;
     };
     alt: string;
-    copyright: null | string; // nullable copyright property
+    copyright: null | string; 
     url: string;
     id: string;
     edit: {
@@ -46,47 +53,7 @@ const {cartedProductsFromState,setCartedProductsFromState} = useStateContext()
 const {cartLength,setCartLength} = useStateContext() 
 
 
-// localStorage.removeItem('cartedProducts');
-//   const handleAddToCartedProducts = () => {
-//     // Get the product to add from props
-//     const productToAdd = productData; // Assuming "product" is the key within productData
 
-
-//     console.log(productToAdd)
-
-//     // Check for duplicate products (optional)
-//     const existingProductIndex = cartedProducts.findIndex(
-//       (item) => item._id === productToAdd._id
-//     );
-
-//     if (existingProductIndex !== -1) {
-//       // Product already in cartedProducts, handle quantity adjustments (optional)
-//       alert('Product is already in cartedProducts, handle quantity from the cartedProducts page');
-//       // Update cartedProducts quantity using setCartedProducts
-//       console.log(`this is the cart length ${cartLength}`)
-
-//     } else {
-//       const updatedProduct = {
-//         ...productToAdd, // Spread existing product properties
-//         quantity: 1, // Initial quantity (adjust as needed)
-//         totalPrice: productToAdd.hairprize, // Assuming "hairprize" holds the price
-//       };
-
-//       // Add new product to cartedProducts
-//       setCartedProducts((prevCartedProducts) => [...prevCartedProducts, updatedProduct]); // Update cartedProducts state
-// setCartLength(cartedProducts.length)
-      
-
-//       console.log(`this is the cart length ${cartLength}`)
-//         localStorage.setItem(
-//       'cartedProducts',
-//       JSON.stringify([...cartedProducts, productToAdd])
-//     );
-  
-//     }
-
-  
-//   };
 
 
 
@@ -109,7 +76,7 @@ const {cartLength,setCartLength} = useStateContext()
              const updatedProduct = {
                ...productToAdd, // Spread existing product properties
                quantity: 1, // Initial quantity (adjust as needed)
-               totalPrice: productToAdd.product.hairprize, // Assuming "hairprize" holds the price
+               totalPrice: productToAdd.product.price, // Assuming "hairprize" holds the price
              };
       
 
@@ -174,21 +141,21 @@ const {cartLength,setCartLength} = useStateContext()
    <div className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
         <div  className="hairImage landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
     
-          <PrismicNextImage  field={productData.product.hairimage}  className="rounded-lg"/>
+          <PrismicNextImage  field={productData?.product.mainimage}  className="rounded-lg"/>
         </div>
 
 <div className="hairdetails ">
 
 <div className="space-y-[1vw]"> 
 <div className="hairTitle text-[2vw]   portrait:text-[5vw]">
-          {productData.product.hairtitle}
+          {productData?.product.title}
           
           </div>
         <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
-        {productData.product.hairdescription}
+        {productData?.product.shortdescription}
           </div>
         <div className="hairPrize   font-medium text-green-900 text-[2vw]  portrait:text-[4vw]">
-        {productData.product.hairprize}
+        {productData?.product.price}
         </div>
 </div>
    

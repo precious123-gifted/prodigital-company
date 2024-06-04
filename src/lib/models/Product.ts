@@ -8,29 +8,57 @@ import {Schema,model,models} from "mongoose"
       type: Object,
       required: true,
       properties: {
-        hairimage: {
-          type:Object , 
+      brandname: {
+          type: String , 
+          required: true,
+
         },
-        hairtitle: {
+        title: {
           type: String,
           required: true,
         },
-        hairdescription: {
+        shortdescription: {
           type: String,
           required: true,
         },
-        hairprize: {
-          type: String, 
+        fulldescription: {
+          type: String,
           required: true,
         },
-      },
-    },
+        price: {
+          type: Number, 
+          required: true,
+        },
+
+        mainimage: {
+         type: Object,
+         required: true
+        },
+        complimentaryimage1: {
+          type: Object,
+          required: true
+         },
+         complimentaryimage2: {
+          type: Object,
+          required: true
+         },
+         complimentaryimage3: {
+          type: Object,
+          required: true
+         },
+         },
+         },
+      
+    
   });
 
+ 
 
 
-const Product = models['Product'] || model('Product', productSchema, 'Product');
+export const usedLaptops = models['usedlaptops'] || model('usedlaptops', productSchema, 'usedlaptops');
+export const newLaptops = models['newlaptops'] || model('newlaptops', productSchema, 'newlaptops');
+export const accessories = models['accessories'] || model('accessories', productSchema, 'accessories');
 
 
 
-export default Product
+

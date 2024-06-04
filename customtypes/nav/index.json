@@ -107,21 +107,239 @@
           }
         }
       },
+      "accessories": {
+        "type": "Group",
+        "config": {
+          "label": "accessories",
+          "repeat": true,
+          "fields": {
+            "mainimage": {
+              "type": "Image",
+              "config": {
+                "label": "mainimage",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage1": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage1",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage2": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage2",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage3": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage3",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "brandname": {
+              "type": "Text",
+              "config": {
+                "label": "brandname",
+                "placeholder": ""
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
+            },
+            "shortdescription": {
+              "type": "Text",
+              "config": {
+                "label": "shortdescription",
+                "placeholder": ""
+              }
+            },
+            "fulldescription": {
+              "type": "Text",
+              "config": {
+                "label": "fulldescription",
+                "placeholder": ""
+              }
+            },
+            "price": {
+              "type": "Text",
+              "config": {
+                "label": "price",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "newlaptops": {
+        "type": "Group",
+        "config": {
+          "label": "newlaptops",
+          "repeat": true,
+          "fields": {
+            "mainimage": {
+              "type": "Image",
+              "config": {
+                "label": "mainimage",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage1": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage1",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage2": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage2",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage3": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage3",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "brandname": {
+              "type": "Text",
+              "config": {
+                "label": "brandname",
+                "placeholder": ""
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
+            },
+            "shortdescription": {
+              "type": "Text",
+              "config": {
+                "label": "shortdescription",
+                "placeholder": ""
+              }
+            },
+            "fulldescription": {
+              "type": "Text",
+              "config": {
+                "label": "fulldescription",
+                "placeholder": ""
+              }
+            },
+            "price": {
+              "type": "Text",
+              "config": {
+                "label": "price",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "usedlaptops": {
+        "type": "Group",
+        "config": {
+          "label": "usedlaptops",
+          "repeat": true,
+          "fields": {
+            "mainimage": {
+              "type": "Image",
+              "config": {
+                "label": "mainimage",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage1": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage1",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage2": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage2",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage3": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage3",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "brandname": {
+              "type": "Text",
+              "config": {
+                "label": "brandname",
+                "placeholder": ""
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
+            },
+            "shortdescription": {
+              "type": "Text",
+              "config": {
+                "label": "shortdescription",
+                "placeholder": ""
+              }
+            },
+            "fulldescription": {
+              "type": "Text",
+              "config": {
+                "label": "fulldescription",
+                "placeholder": ""
+              }
+            },
+            "price": {
+              "type": "Text",
+              "config": {
+                "label": "price",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "accessories": {
-              "type": "SharedSlice"
-            },
-            "used_laptops": {
-              "type": "SharedSlice"
-            },
-            "products": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     }

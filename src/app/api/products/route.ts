@@ -1,6 +1,8 @@
 
 import dbConnect from "@/lib/dbConnect";
-import Product from "@/lib/models/Product";
+import { accessories } from "@/lib/models/Product";
+import { usedLaptops } from "@/lib/models/Product";
+import { newLaptops } from "@/lib/models/Product";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
@@ -11,7 +13,7 @@ export async function GET(request: NextRequest) {
   let storedData: any = [];
 
   try {
-    const products = await Product.find({});
+    const products = await newLaptops.find({});
 
     storedData = products;
 

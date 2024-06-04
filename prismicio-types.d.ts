@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type ExtrapagesDocumentDataSlicesSlice = never;
+type ExtrapagesDocumentDataSlicesSlice = AboutSlice;
 
 /**
  * Content for extrapages documents
@@ -161,10 +161,292 @@ export interface NavDocumentDataNavigationsItem {
   label: prismic.KeyTextField;
 }
 
-type NavDocumentDataSlicesSlice =
-  | AccessoriesSlice
-  | UsedLaptopsSlice
-  | ProductsSlice;
+/**
+ * Item in *custom-settings → accessories*
+ */
+export interface NavDocumentDataAccessoriesItem {
+  /**
+   * mainimage field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].mainimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  mainimage: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage1 field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].complimentaryimage1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage1: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage2 field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].complimentaryimage2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage2: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage3 field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].complimentaryimage3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage3: prismic.ImageField<never>;
+
+  /**
+   * brandname field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].brandname
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  brandname: prismic.KeyTextField;
+
+  /**
+   * title field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * shortdescription field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].shortdescription
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  shortdescription: prismic.KeyTextField;
+
+  /**
+   * fulldescription field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].fulldescription
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  fulldescription: prismic.KeyTextField;
+
+  /**
+   * price field in *custom-settings → accessories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[].price
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  price: prismic.KeyTextField;
+}
+
+/**
+ * Item in *custom-settings → newlaptops*
+ */
+export interface NavDocumentDataNewlaptopsItem {
+  /**
+   * mainimage field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].mainimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  mainimage: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage1 field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].complimentaryimage1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage1: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage2 field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].complimentaryimage2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage2: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage3 field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].complimentaryimage3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage3: prismic.ImageField<never>;
+
+  /**
+   * brandname field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].brandname
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  brandname: prismic.KeyTextField;
+
+  /**
+   * title field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * shortdescription field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].shortdescription
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  shortdescription: prismic.KeyTextField;
+
+  /**
+   * fulldescription field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].fulldescription
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  fulldescription: prismic.KeyTextField;
+
+  /**
+   * price field in *custom-settings → newlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[].price
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  price: prismic.KeyTextField;
+}
+
+/**
+ * Item in *custom-settings → usedlaptops*
+ */
+export interface NavDocumentDataUsedlaptopsItem {
+  /**
+   * mainimage field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].mainimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  mainimage: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage1 field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].complimentaryimage1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage1: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage2 field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].complimentaryimage2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage2: prismic.ImageField<never>;
+
+  /**
+   * complimentaryimage3 field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].complimentaryimage3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  complimentaryimage3: prismic.ImageField<never>;
+
+  /**
+   * brandname field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].brandname
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  brandname: prismic.KeyTextField;
+
+  /**
+   * title field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * shortdescription field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].shortdescription
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  shortdescription: prismic.KeyTextField;
+
+  /**
+   * fulldescription field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].fulldescription
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  fulldescription: prismic.KeyTextField;
+
+  /**
+   * price field in *custom-settings → usedlaptops*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[].price
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  price: prismic.KeyTextField;
+}
+
+type NavDocumentDataSlicesSlice = never;
 
 /**
  * Content for custom-settings documents
@@ -292,6 +574,39 @@ interface NavDocumentData {
   navigations: prismic.GroupField<Simplify<NavDocumentDataNavigationsItem>>;
 
   /**
+   * accessories field in *custom-settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.accessories[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  accessories: prismic.GroupField<Simplify<NavDocumentDataAccessoriesItem>>;
+
+  /**
+   * newlaptops field in *custom-settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.newlaptops[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  newlaptops: prismic.GroupField<Simplify<NavDocumentDataNewlaptopsItem>>;
+
+  /**
+   * usedlaptops field in *custom-settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.usedlaptops[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  usedlaptops: prismic.GroupField<Simplify<NavDocumentDataUsedlaptopsItem>>;
+
+  /**
    * Slice Zone field in *custom-settings*
    *
    * - **Field Type**: Slice Zone
@@ -315,201 +630,59 @@ interface NavDocumentData {
 export type NavDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NavDocumentData>, "nav", Lang>;
 
-type ProductsDocumentDataSlicesSlice = never;
+export type AllDocumentTypes = ExtrapagesDocument | HomeDocument | NavDocument;
 
 /**
- * Content for products documents
+ * Primary content in *About → Default → Primary*
  */
-interface ProductsDocumentData {
+export interface AboutSliceDefaultPrimary {
   /**
-   * Slice Zone field in *products*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<ProductsDocumentDataSlicesSlice> /**
-   * Meta Description field in *products*
+   * header field in *About → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: products.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *products*
-   *
-   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: products.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: about.default.primary.header
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  meta_image: prismic.ImageField<never>;
+  header: prismic.KeyTextField;
 
   /**
-   * Meta Title field in *products*
+   * writeup field in *About → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: products.meta_title
-   * - **Tab**: SEO & Metadata
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.writeup
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  meta_title: prismic.KeyTextField;
+  writeup: prismic.KeyTextField;
 }
 
 /**
- * products document from Prismic
- *
- * - **API ID**: `products`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ProductsDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<ProductsDocumentData>,
-    "products",
-    Lang
-  >;
-
-export type AllDocumentTypes =
-  | ExtrapagesDocument
-  | HomeDocument
-  | NavDocument
-  | ProductsDocument;
-
-/**
- * Primary content in *Accessories → Default → Primary*
- */
-export interface AccessoriesSliceDefaultPrimary {
-  /**
-   * AccessoryBrandName field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.accessorybrandname
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  accessorybrandname: prismic.KeyTextField;
-
-  /**
-   * AccessoryTitle field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.accessorytitle
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  accessorytitle: prismic.KeyTextField;
-
-  /**
-   * ShortDescription field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.shortdescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  shortdescription: prismic.KeyTextField;
-
-  /**
-   * FullDescription field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.fulldescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  fulldescription: prismic.KeyTextField;
-
-  /**
-   * AccessoryPrice field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.accessoryprice
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  accessoryprice: prismic.NumberField;
-
-  /**
-   * MainAccessoryImage field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.mainaccessoryimage
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  mainaccessoryimage: prismic.ImageField<never>;
-
-  /**
-   * ComplimentaryAccessoryImage1 field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.complimentaryaccessoryimage1
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryaccessoryimage1: prismic.ImageField<never>;
-
-  /**
-   * ComplimentaryAccessoryImage2 field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.complimentaryaccessoryimage2
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryaccessoryimage2: prismic.ImageField<never>;
-
-  /**
-   * ComplimentaryAccessoryImage3 field in *Accessories → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: accessories.default.primary.complimentaryaccessoryimage3
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryaccessoryimage3: prismic.ImageField<never>;
-}
-
-/**
- * Default variation for Accessories Slice
+ * Default variation for About Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type AccessoriesSliceDefault = prismic.SharedSliceVariation<
+export type AboutSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<AccessoriesSliceDefaultPrimary>,
+  Simplify<AboutSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *Accessories*
+ * Slice variation for *About*
  */
-type AccessoriesSliceVariation = AccessoriesSliceDefault;
+type AboutSliceVariation = AboutSliceDefault;
 
 /**
- * Accessories Shared Slice
+ * About Shared Slice
  *
- * - **API ID**: `accessories`
- * - **Description**: Accessories
+ * - **API ID**: `about`
+ * - **Description**: About
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type AccessoriesSlice = prismic.SharedSlice<
-  "accessories",
-  AccessoriesSliceVariation
->;
+export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
  * Primary content in *AccessoriesDisplaySection → Default → Primary*
@@ -713,131 +886,6 @@ type HeroSectionSliceVariation = HeroSectionSliceDefault;
 export type HeroSectionSlice = prismic.SharedSlice<
   "hero_section",
   HeroSectionSliceVariation
->;
-
-/**
- * Primary content in *NewLaptops → Default → Primary*
- */
-export interface ProductsSliceDefaultPrimary {
-  /**
-   * LaptopBrandName field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.laptopbrandname
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  laptopbrandname: prismic.KeyTextField;
-
-  /**
-   * LaptopTitle field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.laptoptitle
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  laptoptitle: prismic.KeyTextField;
-
-  /**
-   * ShortDescription field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.shortdescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  shortdescription: prismic.KeyTextField;
-
-  /**
-   * FullDescription field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.fulldescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  fulldescription: prismic.KeyTextField;
-
-  /**
-   * LaptopPrice field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.laptopprice
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  laptopprice: prismic.NumberField;
-
-  /**
-   * MainLaptopImage field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.mainlaptopimage
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  mainlaptopimage: prismic.ImageField<never>;
-
-  /**
-   * ComplementaryImage1 field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.complementaryimage1
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complementaryimage1: prismic.ImageField<never>;
-
-  /**
-   * ComplementaryImage2 field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.complementaryimage2
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complementaryimage2: prismic.ImageField<never>;
-
-  /**
-   * ComplementaryImage3 field in *NewLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: products.default.primary.complementaryimage3
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complementaryimage3: prismic.ImageField<never>;
-}
-
-/**
- * Default variation for NewLaptops Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ProductsSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ProductsSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *NewLaptops*
- */
-type ProductsSliceVariation = ProductsSliceDefault;
-
-/**
- * NewLaptops Shared Slice
- *
- * - **API ID**: `products`
- * - **Description**: Products
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ProductsSlice = prismic.SharedSlice<
-  "products",
-  ProductsSliceVariation
 >;
 
 /**
@@ -1054,131 +1102,6 @@ export type SafetyTipsSectionSlice = prismic.SharedSlice<
   SafetyTipsSectionSliceVariation
 >;
 
-/**
- * Primary content in *UsedLaptops → Default → Primary*
- */
-export interface UsedLaptopsSliceDefaultPrimary {
-  /**
-   * LaptopBrandName field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.laptopbrandname
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  laptopbrandname: prismic.KeyTextField;
-
-  /**
-   * LaptopTitle field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.laptoptitle
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  laptoptitle: prismic.KeyTextField;
-
-  /**
-   * ShortDescription field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.shortdescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  shortdescription: prismic.KeyTextField;
-
-  /**
-   * FullDescription field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.fulldescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  fulldescription: prismic.KeyTextField;
-
-  /**
-   * LaptopPrice field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.laptopprice
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  laptopprice: prismic.KeyTextField;
-
-  /**
-   * MainLaptopImage field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.mainlaptopimage
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  mainlaptopimage: prismic.ImageField<never>;
-
-  /**
-   * ComplimentaryImage1 field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.complimentaryimage1
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage1: prismic.ImageField<never>;
-
-  /**
-   * ComplimentaryImage2 field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.complimentaryimage2
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage2: prismic.ImageField<never>;
-
-  /**
-   * ComplimentaryImage3 field in *UsedLaptops → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: used_laptops.default.primary.complimentaryimage3
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage3: prismic.ImageField<never>;
-}
-
-/**
- * Default variation for UsedLaptops Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type UsedLaptopsSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<UsedLaptopsSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *UsedLaptops*
- */
-type UsedLaptopsSliceVariation = UsedLaptopsSliceDefault;
-
-/**
- * UsedLaptops Shared Slice
- *
- * - **API ID**: `used_laptops`
- * - **Description**: UsedLaptops
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type UsedLaptopsSlice = prismic.SharedSlice<
-  "used_laptops",
-  UsedLaptopsSliceVariation
->;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1198,15 +1121,15 @@ declare module "@prismicio/client" {
       NavDocument,
       NavDocumentData,
       NavDocumentDataNavigationsItem,
+      NavDocumentDataAccessoriesItem,
+      NavDocumentDataNewlaptopsItem,
+      NavDocumentDataUsedlaptopsItem,
       NavDocumentDataSlicesSlice,
-      ProductsDocument,
-      ProductsDocumentData,
-      ProductsDocumentDataSlicesSlice,
       AllDocumentTypes,
-      AccessoriesSlice,
-      AccessoriesSliceDefaultPrimary,
-      AccessoriesSliceVariation,
-      AccessoriesSliceDefault,
+      AboutSlice,
+      AboutSliceDefaultPrimary,
+      AboutSliceVariation,
+      AboutSliceDefault,
       AccessoriesDisplaySectionSlice,
       AccessoriesDisplaySectionSliceDefaultPrimary,
       AccessoriesDisplaySectionSliceVariation,
@@ -1223,10 +1146,6 @@ declare module "@prismicio/client" {
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceVariation,
       HeroSectionSliceDefault,
-      ProductsSlice,
-      ProductsSliceDefaultPrimary,
-      ProductsSliceVariation,
-      ProductsSliceDefault,
       ProductsOfTheWeekSlice,
       ProductsOfTheWeekSliceDefaultPrimaryProductsItem,
       ProductsOfTheWeekSliceDefaultPrimary,
@@ -1237,10 +1156,6 @@ declare module "@prismicio/client" {
       SafetyTipsSectionSliceDefaultPrimary,
       SafetyTipsSectionSliceVariation,
       SafetyTipsSectionSliceDefault,
-      UsedLaptopsSlice,
-      UsedLaptopsSliceDefaultPrimary,
-      UsedLaptopsSliceVariation,
-      UsedLaptopsSliceDefault,
     };
   }
 }

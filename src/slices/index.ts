@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  accessories: dynamic(() => import("./Accessories")),
+  about: dynamic(() => import("./About")),
   accessories_display_section: dynamic(
     () => import("./AccessoriesDisplaySection"),
   ),
@@ -12,8 +12,6 @@ export const components = {
   ),
   enquires_section: dynamic(() => import("./EnquiresSection")),
   hero_section: dynamic(() => import("./HeroSection")),
-  products: dynamic(() => import("./NewLaptops")),
   products_of_the_week: dynamic(() => import("./ProductsOfTheWeek")),
   safety_tips_section: dynamic(() => import("./SafetyTipsSection")),
-  used_laptops: dynamic(() => import("./UsedLaptops")),
 };

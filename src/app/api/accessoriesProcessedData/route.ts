@@ -1,8 +1,7 @@
 
 import { NextRequest } from "next/server";
 import dbConnect  from "@/lib/dbConnect";
-import Product from "@/lib/models/Product";
-
+import { accessories } from "@/lib/models/Product";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -11,10 +10,10 @@ export async function GET(request: NextRequest) {
 
   try { 
     await dbConnect();
-    const products = await Product.find({});
+    const Accessories = await accessories.find({});
 
 
-    storedData = products;
+    storedData = Accessories;
 
     
 
@@ -49,22 +48,19 @@ export async function POST(request: NextRequest) {
 
     for (const item of processedData) {
 
-      if (item.product.hairprize) {
-        item.product.hairprize = Number(item.product.hairprize.slice(1));
-      }
 
-      const imageId = item.product.hairimage.id;
+      const imageId = item.product.mainimage.id;
 
-      const query = { "product.hairimage.id": imageId };
+      const query = { "product.mainimage.id": imageId };
 
       try {
-        const existingItem = await Product.findOne(query);
+        const existingItem = await accessories.findOne(query);
 
         if (existingItem) {
           return new Response(`Duplicate item detected for image ID: ${imageId}`, { status: 409 });
         }
 
-        const newItem = new Product(item);
+        const newItem = new accessories(item);
         await newItem.save();
         console.log('Product saved successfully:', item.id);
       } catch (error) {
@@ -79,6 +75,8 @@ export async function POST(request: NextRequest) {
     return new Response('Error receiving or saving data.', { status: 500 });
   }
 }
+
+
 
 
 

@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import Product from "@/lib/models/Product";
+import { newLaptops} from "@/lib/models/Product";
 import { NextRequest, NextResponse } from "next/server";
 
 interface ID{
@@ -16,13 +16,16 @@ export async function GET(request: NextRequest,{params}:{params:ID}) {
     try {
       await dbConnect();
   
-      const product = await Product.findById(params.id);
+      const NewLaptops = await newLaptops.findById(params.id);
      
-      if (!product) {
+
+
+     
+      if (!NewLaptops) {
         return new Response('Product not found.', { status: 404 });
       }
   
-      return NextResponse.json(product);
+      return NextResponse.json(NewLaptops);
       
     } catch (error) {
       console.error('Error retrieving product:', error);

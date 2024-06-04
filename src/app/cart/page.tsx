@@ -13,10 +13,15 @@ export default function CartContainer() {
     quantity: number ;// Assuming price is a number
     totalPrice: number ;
     product: {
-      hairimage: PrismicNextImage; // Assuming PrismicNextImage matches your image data structure
-      hairtitle: string;
-      hairdescription: string;
-      hairprize: number;
+            mainimage:PrismicNextImage;
+            complimentaryimage1:PrismicNextImage;
+            complimentaryimage2:PrismicNextImage;
+            complimentaryimage3:PrismicNextImage;
+            brandname: string;
+            title: string;
+            shortdescription: string;
+            fulldescription: string;
+            price:number;
     };
   }
   
@@ -26,7 +31,7 @@ export default function CartContainer() {
       height: number;
     };
     alt: string;
-    copyright: null | string; // nullable copyright property
+    copyright: null | string; 
     url: string;
     id: string;
     edit: {
@@ -58,7 +63,7 @@ const calculateTotalAmount = () => {
     const parsedCartData = JSON.parse(cartedProductsFromLS);
 
     // Calculate total amount using parsed data
-    totalAmountRef.current = parsedCartData.reduce((sum:any, product:any) => sum + (product.product.hairprize * product.quantity), 0);
+    totalAmountRef.current = parsedCartData.reduce((sum:any, product:any) => sum + (product.product.price * product.quantity), 0);
   } else {
     // Set total amount to 0 if no data in local storage
     totalAmountRef.current = 0;
@@ -100,7 +105,7 @@ const handleQuantityChange = (productId:any, change:any) => {
     // Update local storage here (see explanation below)
   } else {
     // Update product quantity and total price
-    updatedProduct.totalPrice = updatedProduct.product.hairprize * updatedProduct.quantity;
+    updatedProduct.totalPrice = updatedProduct.product.price * updatedProduct.quantity;
 
     // Update cart data in state
     const updatedCart = [...cartData];
@@ -173,16 +178,16 @@ useEffect(() => {
       {cartData.map((product) => (
         <tr key={product._id}  >
           <td className="flex portrait:flex-col items-start space-x-6 portrait:space-x-0 portrait:space-y-2">  
-            <PrismicNextImage field={product.product.hairimage} className="rounded-lg w-[6vw] portrait:w-[22vw] portrait:sm:w-[18vw] object-contain"/>
+            <PrismicNextImage field={product.product.mainimage} className="rounded-lg w-[6vw] portrait:w-[22vw] portrait:sm:w-[18vw] object-contain"/>
               <div className="title flex flex-col  space-y-1">
-              <div className="title text-[1.3vw] portrait:text-[4vw] font-medium">{product.product.hairtitle}</div>
-               <div className="description"> {product.product.hairdescription}</div>
+              <div className="title text-[1.3vw] portrait:text-[4vw] font-medium">{product.product.title}</div>
+               <div className="description"> {product.product.shortdescription}</div>
               </div>
                </td>
-          <td className="mb-6 text-center portrait:text-[5vw] portrait:sm:text-[4vw]">{product.product.hairprize}</td>
+          <td className="mb-6 text-center portrait:text-[5vw] portrait:sm:text-[4vw]">{product.product.price}</td>
           <td className="mb-6 text-center portrait:text-[5vw] portrait:sm:text-[4vw]"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a]  cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></td>
           <td className="mb-6 text-center portrait:text-[5vw] portrait:sm:text-[4vw]">
-            {product.product.hairprize * product.quantity}
+            {product.product.price * product.quantity}
           </td>
         </tr>
       ))}

@@ -1,15 +1,16 @@
 import SingleProductContainer from "./SingleProductContainer";
+import dbConnect from "@/lib/dbConnect";
 
 const isDevelopment = process.env.NODE_ENV === 'development' ;
-  const baseUrl = isDevelopment
-    ? `http://localhost:${process.env.PORT}`
-    : "https://cheo-hair-precious123gifteds-projects.vercel.app/";
-  const url = `${baseUrl}/api/processedData`;
+const baseUrl = isDevelopment
+  ? `http://localhost:${process.env.PORT}`
+  : "https://prodigital-company-precious123gifteds-projects.vercel.app/";
+const url = `${baseUrl}/api/allProductsProcessedData`;
   
   
 
 export async function generateStaticParams() {
- 
+ await dbConnect()
 
   try {
     const response = await fetch(url);
@@ -33,8 +34,7 @@ export async function generateStaticParams() {
 
 
 async function getProduct(id) { 
-  const url = `${baseUrl}/api/processedData`; 
-
+  await dbConnect()
   try {
     const response = await fetch(url);
 

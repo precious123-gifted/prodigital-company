@@ -2,7 +2,7 @@
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { Pontano_Sans } from "next/font/google";
-// import ProductsData from "./ProcessedData";
+import ProductsData from "./ProcessedData";
 
 
 
@@ -26,7 +26,7 @@ export default async function Products() {
   return (
     <section className="flex justify-center bg-[#EBFEFF] text-[#333D3E]"  style={pontanoSans.style}>
 
-{/* <ProductsData settings={settings}/> */}
+<ProductsData settings={settings}/>
 
     </section>
   )

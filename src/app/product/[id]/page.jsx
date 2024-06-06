@@ -10,9 +10,10 @@ const url = `${baseUrl}/api/allProductsProcessedData`;
   
 
 export async function generateStaticParams() {
- await dbConnect()
+ 
 
   try {
+    await dbConnect()
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -34,8 +35,9 @@ export async function generateStaticParams() {
 
 
 async function getProduct(id) { 
-  await dbConnect()
+  
   try {
+    await dbConnect()
     const response = await fetch(url);
 
     if (!response.ok) {

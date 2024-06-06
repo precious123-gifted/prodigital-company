@@ -1,5 +1,6 @@
 
 import ProductsPageContent from "./ProductsPageContent";
+import dbConnect from "@/lib/dbConnect";
 
 
 
@@ -140,7 +141,7 @@ console.log(`this is the processed data ${newLaptopsProcessedData}`)
 
     
   const getAllProductsData = async () =>{
-
+    await dbConnect()
     const response = await fetch(allProductsUrl);
   
     if (!response.ok) {

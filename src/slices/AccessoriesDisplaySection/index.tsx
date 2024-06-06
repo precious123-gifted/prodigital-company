@@ -1,5 +1,7 @@
-import { Content } from "@prismicio/client";
+import { Content} from "@prismicio/client";
+import { createClient } from "@/prismicio";
 import { SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `AccessoriesDisplaySection`.
@@ -7,12 +9,20 @@ import { SliceComponentProps } from "@prismicio/react";
 export type AccessoriesDisplaySectionProps =
   SliceComponentProps<Content.AccessoriesDisplaySectionSlice>;
 
+
+
+
 /**
  * Component for "AccessoriesDisplaySection" Slices.
  */
 const AccessoriesDisplaySection = ({
   slice,
 }: AccessoriesDisplaySectionProps): JSX.Element => {
+
+
+
+
+
   return (
     <section
       data-slice-type={slice.slice_type}

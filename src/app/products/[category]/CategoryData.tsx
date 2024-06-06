@@ -4,15 +4,16 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import Link from "next/link";
 import React, { MutableRefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
-import Bounded from "../components/Bounded";
+import Bounded from "@/app/components/Bounded";
 
 
 
 
 
-export default function ProductsPageContent({allProducts}: any) {
 
-  
+export default function CategoryDataPage({products}: any) {
+
+
   
 
   interface forString{
@@ -44,29 +45,23 @@ const microActionOnProductClick = (productRef: ProductRef) =>{
  
 useEffect(()=>{
 
-console.log(allProducts)
+console.log(products)
 
 })
 
 
-allProducts.sort(() => Math.random() - 0.5);
+
 
   return (
-    <Bounded>
-      
-    <div className="w-full">      
-           <div>
-<Link href={"products"}>All Products</Link>
-<Link href={"products/newLaptops"}>New Laptops</Link>
-<Link href={"products/usedLaptops"}>Used Laptops</Link>
-<Link href={"products/accessories"}>Accessories</Link>
+      <Bounded>  <div className="w-full bg-[#EBFEFF] text-[#333D3E]">
+        <div>
+   <Link href={"/products"}>All Products</Link>
+   <Link href={"newLaptops"}>New Laptops</Link>
+   <Link href={"usedLaptops"}>Used Laptops</Link>
+   <Link href={"accessories"}>Accessories</Link>
 </div>
-
-
-
-
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
-    {allProducts.map((product:any,index:number) => (
+    {products.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}
@@ -90,5 +85,6 @@ allProducts.sort(() => Math.random() - 0.5);
       </div>
       </div>
       </Bounded>
+  
   )
 }

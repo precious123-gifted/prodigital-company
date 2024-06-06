@@ -1,16 +1,7 @@
-"use client"
 
-import Bounded from "@/app/components/Bounded";
 import { Content } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
-import Link from "next/link";
-import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
-import { ProductsOfTheWeekSlice } from '../../../prismicio-types';
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import Productsoftheweek from "./Productoftheweek";
 
 
 
@@ -23,92 +14,63 @@ export type ProductsOfTheWeekProps =
 /**
  * Component for "ProductsOfTheWeek" Slices.
  */
-const ProductsOfTheWeek = ({ slice }: ProductsOfTheWeekProps): JSX.Element => {
+const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 
 
-//refs
-const headerref = useRef(null)
-type ProductRef = MutableRefObject<HTMLDivElement | null>;
-
-const productrefs = useRef<ProductRef[]>([]);
-
-
-
+  
+  const isDevelopment = process.env.NODE_ENV === 'development' ;
+  const baseUrl = isDevelopment
+    ? `http://localhost:${process.env.PORT}`
+    : "https://prodigital-company-precious123gifteds-projects.vercel.app/";
+  const allProductsUrl = `${baseUrl}/api/allProductsProcessedData`;
 
      
-   
-const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
-  let opacityAnimation =   ScrollTrigger.create({
-    trigger: ref.current,
-    start: "top bottom",
-    end: "bottom top",
-    
-    
-      onEnter: () => {
-      gsap.to(ref.current,time, {
-        opacity:'100%',
-        scrub:1,
-        ease: "Power1.easeIn" ,
-        
-      });
+
+  // const getAllProductOfTheWeekData = async () =>{
+
+  //   const response = await fetch(allProductsUrl);
   
-    },
-    onLeave: () => {
-      gsap.to(ref.current,time, {
-        opacity:'0%',
-        scrub:1,
-        ease: "Power1.easeIn" 
-        
-      });
-  
-  
-     
+  //   if (!response.ok) {
+  //       console.error('Error fetching data:', response.statusText);
       
-    },
-    onLeaveBack: () => {
-      gsap.to(ref.current,time, {
-        opacity:'0%',
-        scrub:1,
-        ease: "Power1.easeIn" 
-        
-      });
+  //     } else {
+  //       console.log('Data successfully recieved in frontend!');
+  //     }
   
-    
+  //     return response.json()
   
-    },
-    
-    onEnterBack: () => {
-      gsap.to(ref.current, time,{
-        opacity:'100%',
-        scrub:1,
-        ease: "Power1.easeIn" 
-       
-      });
+  // }
+ 
+const getAllProductOfTheWeekData = async () => {
+  const response = await fetch(allProductsUrl);
+
+  if (!response.ok) {
+    console.error('Error fetching data:', response.statusText);
+    return []; // Return empty array on error
+  }
+
+  const allProducts = await response.json();
+
+  // Filter products based on matching main image IDs
+  const filteredProducts = allProducts.filter((product:any) => {
+    // Check if product has main image and loop through slice products
+    return product.product.mainimage && slice.primary.products.some((sliceProduct) => {
+      return product.product.mainimage.id === sliceProduct.mainproductimage.id;
+    });
+  });
+
+  console.log('Data successfully recieved in frontend!');
+  return filteredProducts;
+};
   
-     
+
+  if(!baseUrl)return null
   
-    },
-  })
-}
-
-const microActionOnProductClick = (productRef: ProductRef) =>{
-
-if(productRef.current)
-gsap.to(productRef.current,{width: "10vw"})
+  const productsOftheWeek = await getAllProductOfTheWeekData()
 
 
 
 
-}
-
-useEffect(()=>{
-  opacityAnimation(headerref,0.4)
-
-  productrefs.current.forEach((ref)=>{
-
-    opacityAnimation(ref,0.8)
-
-  })
 
 
 
@@ -117,62 +79,14 @@ useEffect(()=>{
   
 
 
-})   
 
 
 
 
   return (
-    <Bounded
-    data-slice-type={slice.slice_type}
-    data-slice-variation={slice.variation}
-   className="  text-[#333D3E] " 
-    >
-<div className="content w-full flex flex-col items-center pt-6  pb-[6vw] space-y-[8vw] portrait:space-y-[12vw]"> 
-
-        <div ref={headerref} className="heading opacity-0 text-[3vw] portrait:sm:text-[4vw] portrait:text-[7vw] portrait:mb-10">{slice.primary.headertitle}</div>
-
-
-<div className="hairsection w-full ">
-
-
-  
-          
-         
-
-      
-
-      <div className="space-y-16 flex flex-col items-center  ">
-        <div   className="hairProductsContainer w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20"> 
-        {slice.primary.products.map((product:any,index:number) => (
-          <div
-            key={product._id}
-            id={product._id}
-            ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
-            onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
-            className="hairProduct  hover:border-x-2
-            landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
-          >
-            <Link  href={`/product/${product._id}`}> 
-              <div className="hairImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
-                <PrismicNextImage field={product.mainproductimage} className="rounded-lg " />
-              </div>
-            </Link>
-            <Link href={`/product/${product._id}`}> 
-              <div className="hairTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw]">{product.producttitle}</div>
-            </Link>
-            <div className="hairDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.shortdescription}</div>
-            <div className="hairPrize w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.productprize}</div>
-          </div>
-        ))}
-
-
-      </div>
-      
-      </div>
-      </div>
-      </div>
-      </Bounded>
+    <>
+<Productsoftheweek ProductsoftheweekData={productsOftheWeek} slice= { slice }/>
+</>
   );
 };
 

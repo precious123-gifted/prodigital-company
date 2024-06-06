@@ -8,6 +8,7 @@ import { RefsProvider } from "@/StateManager";
 import { StateProvider } from "@/StateManager";
 
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,6 +39,8 @@ export default function RootLayout({
 <RefsProvider>
 
         <Header/>
+   
+        
         
         {children}
            

@@ -5,38 +5,22 @@ const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
   : "https://prodigital-company.vercel.app/";
-// const url = `${baseUrl}/api/usedLaptopsProcessedData`;
+const url = `${baseUrl}/api/allProductsProcessedData`;
   
-const apiUrls = [
-  `${baseUrl}/api/usedLaptopsProcessedData`,
-  `${baseUrl}/api/newLaptopsProcessedData`,
-  `${baseUrl}/api/accessoriesProcessedData`, // Add your other API URLs
-];
+  
 
 export async function generateStaticParams() {
  
 
   try {
     await dbConnect()
-    const apiPromises = apiUrls.map(async (url) => {
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error(`Error fetching data from ${url}: ${response.statusText}`);
-      }
-
-      return await response.json();
-    });
-
-    // const response = await fetch(url);
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);
     }
 
-    const productData = await Promise.all(apiPromises);
-    const productsData = productData.flat();
-    // const productsData = await response.json();
+    const productsData = await response.json();
     
 
     return productsData.map((data) => ({
@@ -51,9 +35,10 @@ export async function generateStaticParams() {
 
 
 async function getProduct(id) { 
-  
+  await dbConnect()
   try {
-    await dbConnect()
+  await dbConnect()
+
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -80,6 +65,7 @@ async function getProduct(id) {
 
 
 export default async function ProductInfoPage({params}) {
+  await dbConnect()
 
 const product = await getProduct(params.id)
 

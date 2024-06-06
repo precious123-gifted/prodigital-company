@@ -44,6 +44,7 @@ export default async function ProductsData({settings}: any) {
 console.log(`this is the processed data ${newLaptopsProcessedData}`)
 
     try {
+      await dbConnect()
       const response = await fetch(newLaptopUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -75,6 +76,8 @@ console.log(`this is the processed data ${newLaptopsProcessedData}`)
     console.log(`this is the processed data ${usedLaptopsProcessedData}`)
     
         try {
+      await dbConnect()
+
           const response = await fetch(usedLaptopUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -106,6 +109,8 @@ console.log(`this is the processed data ${newLaptopsProcessedData}`)
         console.log(`this is the processed data ${accessoriesProcessedData}`)
         
             try {
+      await dbConnect()
+
               const response = await fetch(accessoriesUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

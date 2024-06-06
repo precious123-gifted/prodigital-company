@@ -4,7 +4,6 @@ import dbConnect  from "@/lib/dbConnect";
 import { newLaptops } from "@/lib/models/Product";
 
 export async function GET(request: NextRequest) {
-  await dbConnect();
 
   let storedData: any ;
 

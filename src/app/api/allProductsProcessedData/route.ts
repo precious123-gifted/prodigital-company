@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
 
 
 
-    allData = [...NewLaptops,...UsedLaptops,...Accessories];
+    allData = [...Accessories,...NewLaptops,...UsedLaptops,];
 
     
 

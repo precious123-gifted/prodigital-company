@@ -105,7 +105,7 @@ console.log(`this is the processed data ${newLaptopsProcessedData}`)
         }
       };
 
-      const sendAccessoriesData = async () => {
+  const sendAccessoriesData = async () => {
         console.log(`this is the processed data ${accessoriesProcessedData}`)
         
             try {
@@ -137,9 +137,44 @@ console.log(`this is the processed data ${newLaptopsProcessedData}`)
               // (e.g., closing connections, releasing resources)
             }
           };
+   async function sendAllProductData() {
+  try {
+    await dbConnect(); // Ensure database connection
+
+    // Combine product data from various sources (adjust variable names based on your data)
+    const allProducts = [
+      ...newLaptopsProcessedData,
+      ...usedLaptopsProcessedData,
+      ...accessoriesProcessedData,
+    ];
+
+    const response = await fetch(allProductsUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(allProducts),
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('All product data sent successfully:', responseData);
+      // Perform actions based on successful response (optional)
+    } else {
+      console.error('Server responded with error:', response.status, response.statusText);
+      // Handle non-2xx HTTP status codes (e.g., 400, 500)
+    }
+  } catch (error) {
+    console.error('Error sending data:', error);
+    // Handle network errors, parsing errors, or other exceptions (consider logging)
+  } finally {
+    // Optional cleanup logic (e.g., closing connections)
+  }
+}
+
+
   sendNewlaptopsData();
   sendUsedlaptopsData();
   sendAccessoriesData();
+  sendAllProductData()
 
 
 

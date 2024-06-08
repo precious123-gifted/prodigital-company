@@ -55,7 +55,7 @@ console.log(products)
   return (
       <Bounded>  <div className="w-full bg-[#EBFEFF] text-[#333D3E]">
         <div>
-   <Link href={"/products"}>All Products</Link>
+   <Link href={"products"}>All Products</Link>
    <Link href={"newLaptops"}>New Laptops</Link>
    <Link href={"usedLaptops"}>Used Laptops</Link>
    <Link href={"accessories"}>Accessories</Link>

@@ -56,7 +56,7 @@ allProducts.sort(() => Math.random() - 0.5);
       
     <div className="w-full">      
            <div>
-<Link href={"products"}>All Products</Link>
+<Link href={"/products"}>All Products</Link>
 <Link href={"products/newLaptops"}>New Laptops</Link>
 <Link href={"products/usedLaptops"}>Used Laptops</Link>
 <Link href={"products/accessories"}>Accessories</Link>

@@ -4,7 +4,7 @@ import dbConnect from "@/lib/dbConnect";
 const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
-  : "https://prodigital-company-precious123gifteds-projects.vercel.app/";
+  :  process.env.NEXT_PUBLIC_VERCEL_URL;
 const url = `${baseUrl}/api/productsProcessedData`;
   
   

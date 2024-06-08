@@ -26,11 +26,11 @@ const CustomerSatisfactionSection = ({
   <div className=" content w-full  flex   portrait:flex-col rounded-xl relative">
   <div className="backgroundImage">
  
-  <Image src={backgroundImage} alt="Background" className="h-[40vw] aspect-[4/3] object-cover  rounded-lg"/> 
+  <Image src={backgroundImage} alt="Background" className="h-[40vw] portrait:h-[60vw] aspect-[4/3] object-cover  rounded-lg"/> 
   {/* <Image src={backgroundImage2} alt="Background" className="landscape:hidden"/>  */}
 
     </div>
-<div className="headersection landscape:pt-14  portrait:pt-6 absolute text-center h-full  flex flex-col items-center w-full">
+<div className="headersection space-y-6 landscape:pt-14  portrait:pt-6 absolute text-center h-full  flex flex-col items-center w-full">
 <div className="header text-[4vw] portrait:text-[6vw]">{slice.primary.header}</div>
 <div className="writeup text-[2vw] portrait:text-[4vw]">{slice.primary.writeup}</div>
 

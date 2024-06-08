@@ -5,7 +5,7 @@ const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
   : "https://prodigital-company.vercel.app/";
-const url = `${baseUrl}/api/allProductsProcessedData`;
+const url = `${baseUrl}/api/productsProcessedData`;
   
   
 

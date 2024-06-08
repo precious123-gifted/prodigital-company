@@ -5,6 +5,7 @@ import backgroundImage from "../../../public/enquirebackground.png"
 import callIcon from "../../../public/callicon.png"
 
 import Image from "next/image";
+import Link from "next/link";
 /**
  * Props for `EnquiresSection`.
  */
@@ -15,6 +16,8 @@ export type EnquiresSectionProps =
  * Component for "EnquiresSection" Slices.
  */
 const EnquiresSection = ({ slice }: EnquiresSectionProps): JSX.Element => {
+let phonenumber = slice.primary.phonenumber
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -34,7 +37,7 @@ const EnquiresSection = ({ slice }: EnquiresSectionProps): JSX.Element => {
     </div>
 <div className="headersection bg-[#BF634C] pb-[4vw] pl-[4vw] space-y-6 landscape:pt-14  portrait:pt-6  h-full  flex flex-col items-start w-full">
 <div className="header text-[4vw] portrait:text-[6vw]">For Enquires and any Computer Related Information Contact Us</div>
-<div className="writeup cursor-pointer text-[2.4vw] portrait:text-[5vw] flex items-center"><Image src={callIcon} alt="call-icon"/>{slice.primary.phonenumber}</div>
+<Link href={`tel:${phonenumber}`} ><div className="writeup cursor-pointer text-[2.4vw] portrait:text-[5vw] flex items-center"><Image src={callIcon} alt="call-icon"/>{slice.primary.phonenumber}</div></Link>
 
  
 </div>

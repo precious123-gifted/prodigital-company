@@ -75,7 +75,7 @@ console.log(products)
             key={product._id}
             id={product._id}
             ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
-            onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
+            // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
             className="laptopProduct  hover:border-x-2
             landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
           >

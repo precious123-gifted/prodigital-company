@@ -7,7 +7,6 @@ const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
   : "https://prodigital-company.vercel.app/";
 
-const url = `${baseUrl}/api/productsProcessedData`;
 
 
 
@@ -15,6 +14,7 @@ export async function generateStaticParams(category) {
   await dbConnect()
 
   const categoryString = `${category}`;
+  const url = `${baseUrl}/api/productsProcessedData`;
   console.log(`this is the category: ${categoryString}`)
   console.log(`this is the url: ${url}`)
 

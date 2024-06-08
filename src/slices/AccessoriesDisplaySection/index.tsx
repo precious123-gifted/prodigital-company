@@ -48,11 +48,11 @@ const AccessoriesDisplaySection = ({
 </div>
 
 <div className="displaysection  bg-[#4C6E72] flex flex-col items-center pb-[6vw]  portrait:pb-[10vw]">
-<div className="header text-[2vw]  portrait:text-[4vw] pt-[2vw] mb-[4vw] portrait:mb-[10vw]">We Sell</div>
+<div className="header text-[2vw]  portrait:text-[4.8vw] pt-[2vw] mb-[4vw] portrait:mb-[10vw]">We Sell</div>
 <div className="iconsdisplaysection pb-[4vw] w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20 ">
 <div className="chargerdiv  flex flex-col items-center">
   <Image src={chargerIcon} alt="laptop charger" className="cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-fit"/>
-  <div className="title text-[2vw] portrait:text-[4vw] pt-[2vw]">Charger</div>
+  <div className="title text-[2vw] portrait:text-[4vw] pt-[2vw]">Chargers</div>
 </div>
 
 <div className="mousediv  flex flex-col items-center">

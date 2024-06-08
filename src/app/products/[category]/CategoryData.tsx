@@ -58,9 +58,7 @@ console.log(products)
   <Link href={"/products"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
     All Products
   </Link>
-  <Link href={"newLaptops"}   className={`px-3 py-2 rounded hover:bg-gray-100 ${
-      window.location.pathname === "/products/newLaptops" ? "border-b-2 border-blue-500" : "border-none"
-    }`}>
+  <Link href={"newLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
     New Laptops
   </Link>
   <Link href={"usedLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">

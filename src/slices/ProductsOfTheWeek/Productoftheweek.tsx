@@ -155,6 +155,7 @@ useEffect(()=>{
             className="hairProduct  landscape:hover:border-x-2
             landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
           >
+            <div className="flex flex-col items-start">
             <Link  href={`/product/${product._id}`}> 
               <div className="hairImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
                 <PrismicNextImage field={product.product.mainimage} className="rounded-lg " />
@@ -165,6 +166,7 @@ useEffect(()=>{
             </Link>
             <div className="hairDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.product.shortdescription}</div>
             <div className="hairPrize w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.product.price}</div>
+            </div>
           </div>
         ))}
 

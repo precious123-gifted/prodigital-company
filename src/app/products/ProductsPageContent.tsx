@@ -59,9 +59,7 @@ allProducts.sort(() => Math.random() - 0.5);
   <Link href={"/products"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
     All Products
   </Link>
-  <Link href={"products/newLaptops"}   className={`px-3 py-2 rounded hover:bg-gray-100 ${
-      window.location.pathname === "/products/newLaptops" ? "border-b-2 border-blue-500" : "border-none"
-    }`}>
+  <Link href={"products/newLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
     New Laptops
   </Link>
   <Link href={"products/usedLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
@@ -85,6 +83,7 @@ allProducts.sort(() => Math.random() - 0.5);
             className="laptopProduct  hover:border-x-2
             landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
           >
+             <div className="flex flex-col items-start">
             <Link  href={`/product/${product._id}`}> 
               <div className="laptopImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
                 <PrismicNextImage field={product.product.mainimage} className="rounded-lg " />
@@ -95,6 +94,7 @@ allProducts.sort(() => Math.random() - 0.5);
             </Link>
             <div className="laptopDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.product.shortdescription}</div>
             <div className="laptopPrice w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.product.price}</div>
+          </div>
           </div>
         ))}
       </div>

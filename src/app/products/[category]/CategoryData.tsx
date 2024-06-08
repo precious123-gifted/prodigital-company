@@ -53,13 +53,24 @@ console.log(products)
 
 
   return (
-      <Bounded>  <div className="w-full bg-[#EBFEFF] text-[#333D3E]">
-        <div>
-   <Link href={"/products"}>All Products</Link>
-   <Link href={"newLaptops"}>New Laptops</Link>
-   <Link href={"usedLaptops"}>Used Laptops</Link>
-   <Link href={"accessories"}>Accessories</Link>
+      <Bounded>  <div className="w-full pb-[4vw] bg-[#EBFEFF] text-[#333D3E]">
+<div className="w-full flex justify-between  pb-[4vw]  portrait:pb-[6vw]  portrait:pt-[3vw] text-[1.4vw]  portrait:text-[3vw] portrait:sm:text-[3.4vw]">
+  <Link href={"/products"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
+    All Products
+  </Link>
+  <Link href={"newLaptops"}   className={`px-3 py-2 rounded hover:bg-gray-100 ${
+      window.location.pathname === "/products/newLaptops" ? "border-b-2 border-blue-500" : "border-none"
+    }`}>
+    New Laptops
+  </Link>
+  <Link href={"usedLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
+    Used Laptops
+  </Link>
+  <Link href={"accessories"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
+    Accessories
+  </Link>
 </div>
+
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
     {products.map((product:any,index:number) => (
           <div

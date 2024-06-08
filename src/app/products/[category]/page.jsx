@@ -10,32 +10,6 @@ const baseUrl = isDevelopment
 
 
 
-// export async function generateStaticParams(category) {
-//   await dbConnect()
-
-//   const categoryString = `${category}`;
-//   const url = `${baseUrl}/api/productsProcessedData`;
-//   console.log(`this is the category from function generatestaticpaarams: ${categoryString}`)
-//   console.log(`this is the url: ${url}`)
-
- 
-//    try {
-//      const response = await fetch(url);
- 
-//      if (!response.ok) {
-//        throw new Error(`Error fetching processed data: ${response.statusText}`);
-//      }
- 
-//      const productsData = await response.json();
-     
- 
-//      return productsData
-//    } catch (error) {
-//      console.error('Error generating static params:', error);
-   
-//      return []; 
-//    }
-//  }
 
 
 

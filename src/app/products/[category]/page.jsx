@@ -1,10 +1,11 @@
 import dbConnect from "@/lib/dbConnect";
 import CategoryDataPage from "./CategoryData";
+import Link from "next/link";
 
 const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
-  :  "https://prodigital-company.vercel.app/";
+  : "https://prodigital-company.vercel.app/";
 
 
 
@@ -13,9 +14,9 @@ export async function generateStaticParams(category) {
   await dbConnect()
 
   const categoryString = `${category}`;
-  const url = `${baseUrl}/api/productsProcessedData`;
+  const url = `${baseUrl}/api/allProductsProcessedData`;
   console.log(`this is the category: ${categoryString}`)
-  console.log(`this is the url:  ${url}`)
+  console.log(`this is the url: ${url}`)
 
  
    try {

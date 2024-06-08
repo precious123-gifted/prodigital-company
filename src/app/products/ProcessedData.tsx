@@ -9,112 +9,34 @@ export default async function ProductsData({settings}: any) {
 
 
 
-
-  const newLaptopsProcessedData = settings.data.newlaptops.map((item :any ) => {
+  const allProductsProccessedData = settings.data.products.map((item :any ) => {
     return {
       product: item,  
     };
   });
 
-  const usedLaptopsProcessedData = settings.data.usedlaptops.map((item :any ) => {
-    return {
-      product: item,  
-    };
-  });
-
-  const accessoriesProcessedData = settings.data.accessories.map((item :any ) => {
-    return {
-      product: item,  
-    };
-  });
 
   const isDevelopment = process.env.NODE_ENV === 'development' ;
   const baseUrl = isDevelopment
     ? `http://localhost:${process.env.PORT}`
     : "https://prodigital-company-precious123gifteds-projects.vercel.app/";
-  const newLaptopUrl = `${baseUrl}/api/newLaptopsProcessedData`;
-  const usedLaptopUrl = `${baseUrl}/api/usedLaptopsProcessedData`;
-  const accessoriesUrl = `${baseUrl}/api/accessoriesProcessedData`;
-  const allProductsUrl = `${baseUrl}/api/allProductsProcessedData`;
+   const allProductsUrl = `${baseUrl}/api/allProductsProcessedData`;
 
 
 
 
-  const sendNewlaptopsData = async () => {
-console.log(`this is the processed data ${newLaptopsProcessedData}`)
 
-    try {
-      await dbConnect()
-      const response = await fetch(newLaptopUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newLaptopsProcessedData),
-      });
-  
 
-      // Handle successful response (optional):
-      if (response.ok) {
-        // Process successful response data here
-        const data = await response.json();
-        console.log('Data sent successfully:', data);
-        // Perform actions based on successful response
-      } else {
-        // Handle non-2xx HTTP status codes (e.g., 400, 500)
-        console.error('Server responded with error:', response.status, response.statusText);
-      }
-    } catch (error) {
-      // Handle network errors, parsing errors, or other exceptions
-      console.error('Error sending data:', error);
-      // Optionally, log more detailed error information (e.g., using a logging library)
-    } finally {
-      // Optional cleanup logic that executes regardless of success or failure
-      // (e.g., closing connections, releasing resources)
-    }
-  };
-  
-  const sendUsedlaptopsData = async () => {
-    console.log(`this is the processed data ${usedLaptopsProcessedData}`)
-    
-        try {
-      await dbConnect()
-
-          const response = await fetch(usedLaptopUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(usedLaptopsProcessedData),
-          });
-      
-    
-          // Handle successful response (optional):
-          if (response.ok) {
-            // Process successful response data here
-            const data = await response.json();
-            console.log('Data sent successfully:', data);
-            // Perform actions based on successful response
-          } else {
-            // Handle non-2xx HTTP status codes (e.g., 400, 500)
-            console.error('Server responded with error:', response.status, response.statusText);
-          }
-        } catch (error) {
-          // Handle network errors, parsing errors, or other exceptions
-          console.error('Error sending data:', error);
-          // Optionally, log more detailed error information (e.g., using a logging library)
-        } finally {
-          // Optional cleanup logic that executes regardless of success or failure
-          // (e.g., closing connections, releasing resources)
-        }
-      };
-
-  const sendAccessoriesData = async () => {
-        console.log(`this is the processed data ${accessoriesProcessedData}`)
+  const sendAllProductData = async () => {
+        console.log(`this is the processed data ${allProductsProccessedData}`)
         
             try {
       await dbConnect()
 
-              const response = await fetch(accessoriesUrl, {
+              const response = await fetch(allProductsUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(accessoriesProcessedData),
+                body: JSON.stringify(allProductsProccessedData),
               });
           
         
@@ -137,43 +59,8 @@ console.log(`this is the processed data ${newLaptopsProcessedData}`)
               // (e.g., closing connections, releasing resources)
             }
           };
-   async function sendAllProductData() {
-  try {
-    await dbConnect(); // Ensure database connection
-
-    // Combine product data from various sources (adjust variable names based on your data)
-    const allProducts = [
-      ...newLaptopsProcessedData,
-      ...usedLaptopsProcessedData,
-      ...accessoriesProcessedData,
-    ];
-
-    const response = await fetch(allProductsUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(allProducts),
-    });
-
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log('All product data sent successfully:', responseData);
-      // Perform actions based on successful response (optional)
-    } else {
-      console.error('Server responded with error:', response.status, response.statusText);
-      // Handle non-2xx HTTP status codes (e.g., 400, 500)
-    }
-  } catch (error) {
-    console.error('Error sending data:', error);
-    // Handle network errors, parsing errors, or other exceptions (consider logging)
-  } finally {
-    // Optional cleanup logic (e.g., closing connections)
-  }
-}
 
 
-  sendNewlaptopsData();
-  sendUsedlaptopsData();
-  sendAccessoriesData();
   sendAllProductData()
 
 
@@ -183,6 +70,8 @@ console.log(`this is the processed data ${newLaptopsProcessedData}`)
   const getAllProductsData = async () =>{
     await dbConnect()
     const response = await fetch(allProductsUrl);
+    
+   
   
     if (!response.ok) {
         console.error('Error fetching data:', response.statusText);

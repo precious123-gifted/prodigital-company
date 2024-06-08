@@ -1,9 +1,6 @@
 
 import { NextRequest } from "next/server";
 import dbConnect  from "@/lib/dbConnect";
-import { accessories } from "@/lib/models/Product";
-import { usedLaptops } from "@/lib/models/Product";
-import { newLaptops } from "@/lib/models/Product";
 import { allProducts } from "@/lib/models/Product";
 
 
@@ -92,7 +89,7 @@ export async function POST(request: NextRequest) {
 
         const newItem = new allProducts(item);
         await newItem.save();
-        console.log('Product saved successfully:', item.id);
+        console.log(' all Product saved successfully:', item.id);
       } catch (error) {
         console.error('Error saving product:', item.id, error);
         return new Response('Error saving product.', { status: 500 });

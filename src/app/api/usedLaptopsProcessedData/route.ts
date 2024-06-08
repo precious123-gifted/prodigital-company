@@ -1,29 +1,32 @@
 
 import { NextRequest } from "next/server";
 import dbConnect  from "@/lib/dbConnect";
-import { usedLaptops } from "@/lib/models/Product";
+import { allProducts } from "@/lib/models/Product";
+
+
+
+
 
 export async function GET(request: NextRequest) {
+  let filteredData: any[]; // Declare variable for filtered data
 
-  let storedData: any ;
-
-  try { 
+  try {
     await dbConnect();
-    const UsedLaptops = await usedLaptops.find({});
 
+    // Fixed filter for newLaptops category
+    const filter = { 'product.categories': 'usedLaptops' };
 
-    storedData = UsedLaptops;
+    const AllProducts = await allProducts.find(filter);
 
-    
+    filteredData = AllProducts; // Assign filtered data to the response variable
 
   } catch (error) {
     console.error('Error retrieving data from MongoDB:', error);
     return new Response('Error fetching data.', { status: 500 });
   }
 
-  return new Response(JSON.stringify(storedData), { status: 200 });
+  return new Response(JSON.stringify(filteredData), { status: 200 });
 }
-
 
 
 
@@ -47,19 +50,20 @@ export async function POST(request: NextRequest) {
 
     for (const item of processedData) {
 
+      
 
       const imageId = item.product.mainimage.id;
 
       const query = { "product.mainimage.id": imageId };
 
       try {
-        const existingItem = await usedLaptops.findOne(query);
+        const existingItem = await allProducts.findOne(query);
 
         if (existingItem) {
           return new Response(`Duplicate item detected for image ID: ${imageId}`, { status: 409 });
         }
 
-        const newItem = new usedLaptops(item);
+        const newItem = new allProducts(item);
         await newItem.save();
         console.log('Product saved successfully:', item.id);
       } catch (error) {
@@ -74,10 +78,3 @@ export async function POST(request: NextRequest) {
     return new Response('Error receiving or saving data.', { status: 500 });
   }
 }
-
-
-
-
-
-
-

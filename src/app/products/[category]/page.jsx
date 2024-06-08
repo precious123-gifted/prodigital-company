@@ -13,7 +13,11 @@ const baseUrl = isDevelopment
 export async function generateStaticParams(category) {
   await dbConnect()
 
-  const url = `${baseUrl}/api/${category}ProcessedData`;
+  const categoryString = `${category}`;
+  const url = `${baseUrl}/api/${categoryString}ProcessedData`;
+  console.log(`this is the category: ${categoryString}`)
+  console.log(`this is the url: ${url}`)
+
  
    try {
      const response = await fetch(url);
@@ -37,7 +41,11 @@ export async function generateStaticParams(category) {
 
  async function getProducts(category) { 
     await dbConnect()
-  const url = `${baseUrl}/api/${category}ProcessedData`;
+    const categoryString = `${category}`;
+  const url = `${baseUrl}/api/${categoryString}ProcessedData`;
+  console.log(`this is the category: ${categoryString}`)
+  console.log(`this is the url ${url}`)
+  
 
     try {
       const response = await fetch(url);

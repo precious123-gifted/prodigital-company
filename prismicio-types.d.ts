@@ -162,288 +162,108 @@ export interface NavDocumentDataNavigationsItem {
 }
 
 /**
- * Item in *custom-settings → accessories*
+ * Item in *custom-settings → products*
  */
-export interface NavDocumentDataAccessoriesItem {
+export interface NavDocumentDataProductsItem {
   /**
-   * mainimage field in *custom-settings → accessories*
+   * mainimage field in *custom-settings → products*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].mainimage
+   * - **API ID Path**: nav.products[].mainimage
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   mainimage: prismic.ImageField<never>;
 
   /**
-   * complimentaryimage1 field in *custom-settings → accessories*
+   * complimentaryimage1 field in *custom-settings → products*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].complimentaryimage1
+   * - **API ID Path**: nav.products[].complimentaryimage1
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   complimentaryimage1: prismic.ImageField<never>;
 
   /**
-   * complimentaryimage2 field in *custom-settings → accessories*
+   * complimentaryimage2 field in *custom-settings → products*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].complimentaryimage2
+   * - **API ID Path**: nav.products[].complimentaryimage2
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   complimentaryimage2: prismic.ImageField<never>;
 
   /**
-   * complimentaryimage3 field in *custom-settings → accessories*
+   * complimentaryimage3 field in *custom-settings → products*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].complimentaryimage3
+   * - **API ID Path**: nav.products[].complimentaryimage3
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   complimentaryimage3: prismic.ImageField<never>;
 
   /**
-   * brandname field in *custom-settings → accessories*
+   * brandname field in *custom-settings → products*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].brandname
+   * - **API ID Path**: nav.products[].brandname
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   brandname: prismic.KeyTextField;
 
   /**
-   * title field in *custom-settings → accessories*
+   * title field in *custom-settings → products*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].title
+   * - **API ID Path**: nav.products[].title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * shortdescription field in *custom-settings → accessories*
+   * shortdescription field in *custom-settings → products*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].shortdescription
+   * - **API ID Path**: nav.products[].shortdescription
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   shortdescription: prismic.KeyTextField;
 
   /**
-   * fulldescription field in *custom-settings → accessories*
+   * fulldescription field in *custom-settings → products*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].fulldescription
+   * - **API ID Path**: nav.products[].fulldescription
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   fulldescription: prismic.KeyTextField;
 
   /**
-   * price field in *custom-settings → accessories*
+   * price field in *custom-settings → products*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[].price
+   * - **API ID Path**: nav.products[].price
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   price: prismic.KeyTextField;
-}
-
-/**
- * Item in *custom-settings → newlaptops*
- */
-export interface NavDocumentDataNewlaptopsItem {
-  /**
-   * mainimage field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].mainimage
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  mainimage: prismic.ImageField<never>;
 
   /**
-   * complimentaryimage1 field in *custom-settings → newlaptops*
+   * categories field in *custom-settings → products*
    *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].complimentaryimage1
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **Field Type**: Select
+   * - **Placeholder**: choose the product category
+   * - **API ID Path**: nav.products[].categories
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
-  complimentaryimage1: prismic.ImageField<never>;
-
-  /**
-   * complimentaryimage2 field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].complimentaryimage2
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage2: prismic.ImageField<never>;
-
-  /**
-   * complimentaryimage3 field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].complimentaryimage3
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage3: prismic.ImageField<never>;
-
-  /**
-   * brandname field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].brandname
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  brandname: prismic.KeyTextField;
-
-  /**
-   * title field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * shortdescription field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].shortdescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  shortdescription: prismic.KeyTextField;
-
-  /**
-   * fulldescription field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].fulldescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  fulldescription: prismic.KeyTextField;
-
-  /**
-   * price field in *custom-settings → newlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[].price
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  price: prismic.KeyTextField;
-}
-
-/**
- * Item in *custom-settings → usedlaptops*
- */
-export interface NavDocumentDataUsedlaptopsItem {
-  /**
-   * mainimage field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].mainimage
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  mainimage: prismic.ImageField<never>;
-
-  /**
-   * complimentaryimage1 field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].complimentaryimage1
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage1: prismic.ImageField<never>;
-
-  /**
-   * complimentaryimage2 field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].complimentaryimage2
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage2: prismic.ImageField<never>;
-
-  /**
-   * complimentaryimage3 field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].complimentaryimage3
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  complimentaryimage3: prismic.ImageField<never>;
-
-  /**
-   * brandname field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].brandname
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  brandname: prismic.KeyTextField;
-
-  /**
-   * title field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * shortdescription field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].shortdescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  shortdescription: prismic.KeyTextField;
-
-  /**
-   * fulldescription field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].fulldescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  fulldescription: prismic.KeyTextField;
-
-  /**
-   * price field in *custom-settings → usedlaptops*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[].price
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  price: prismic.KeyTextField;
+  categories: prismic.SelectField<"newLaptops" | "usedLaptops" | "accessories">;
 }
 
 type NavDocumentDataSlicesSlice = never;
@@ -574,37 +394,15 @@ interface NavDocumentData {
   navigations: prismic.GroupField<Simplify<NavDocumentDataNavigationsItem>>;
 
   /**
-   * accessories field in *custom-settings*
+   * products field in *custom-settings*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: nav.accessories[]
+   * - **API ID Path**: nav.products[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  accessories: prismic.GroupField<Simplify<NavDocumentDataAccessoriesItem>>;
-
-  /**
-   * newlaptops field in *custom-settings*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.newlaptops[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  newlaptops: prismic.GroupField<Simplify<NavDocumentDataNewlaptopsItem>>;
-
-  /**
-   * usedlaptops field in *custom-settings*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav.usedlaptops[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  usedlaptops: prismic.GroupField<Simplify<NavDocumentDataUsedlaptopsItem>>;
+  products: prismic.GroupField<Simplify<NavDocumentDataProductsItem>>;
 
   /**
    * Slice Zone field in *custom-settings*
@@ -1121,9 +919,7 @@ declare module "@prismicio/client" {
       NavDocument,
       NavDocumentData,
       NavDocumentDataNavigationsItem,
-      NavDocumentDataAccessoriesItem,
-      NavDocumentDataNewlaptopsItem,
-      NavDocumentDataUsedlaptopsItem,
+      NavDocumentDataProductsItem,
       NavDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSlice,

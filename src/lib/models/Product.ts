@@ -8,6 +8,13 @@ import {Schema,model,models} from "mongoose"
       type: Object,
       required: true,
       properties: {
+
+        category: {
+          type: String , 
+          required: true,
+
+        },
+
       brandname: {
           type: String , 
           required: true,
@@ -55,9 +62,7 @@ import {Schema,model,models} from "mongoose"
  
 
 
-export const usedLaptops = models['usedlaptops'] || model('usedlaptops', productSchema, 'usedlaptops');
-export const newLaptops = models['newlaptops'] || model('newlaptops', productSchema, 'newlaptops');
-export const accessories = models['accessories'] || model('accessories', productSchema, 'accessories');
+
 export const allProducts = models['allProducts'] || model('allProducts', productSchema, 'allProducts');
 
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
-  : "https://prodigital-company.vercel.app/";
+  : "https://prodigital-company.vercel.app";
 
 
 

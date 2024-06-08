@@ -35,8 +35,11 @@ export default async function ProductsData({settings}: any) {
 
               const response = await fetch(allProductsUrl, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json',
+
+                 },
                 body: JSON.stringify(allProductsProccessedData),
+                
               });
           
         

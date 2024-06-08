@@ -4,7 +4,7 @@ import CategoryDataPage from "./CategoryData";
 const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
-  :  process.env.NEXT_PUBLIC_VERCEL_URL;
+  :  "https://prodigital-company-precious123gifteds-projects.vercel.app/";
 
 
 

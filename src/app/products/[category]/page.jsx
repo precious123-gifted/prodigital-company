@@ -14,7 +14,7 @@ export async function generateStaticParams(category) {
   await dbConnect()
 
   const categoryString = `${category}`;
-  const url = `${baseUrl}/api/${categoryString}ProcessedData`;
+  const url = `${baseUrl}/api/allProductsProcessedData`;
   console.log(`this is the category: ${categoryString}`)
   console.log(`this is the url: ${url}`)
 

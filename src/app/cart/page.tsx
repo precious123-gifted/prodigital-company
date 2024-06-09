@@ -164,31 +164,29 @@ useEffect(() => {
     <Bounded>
     <div className="w-full text-[#384d4d]   flex portrait:flex-col ">
       
-    <div className="cart-container  w-[80%] portrait:w-[97%]">
-    <table className=" table-auto border-separate border-spacing-8 portrait:border-spacing-x-6">
-    <thead >
-      <tr className="text-left text-[1.3vw] portrait:text-[4.5vw] ">
-        <th className="py-8">Products</th>
-        <th className="py-8">Price</th>
-        <th className="py-8">Quantity</th>
-        <th className="py-8">Total</th>
-      </tr>
-    </thead>
+    <div className="cart-container  w-[80%] portrait:w-[97%] pt-10 ">
+    <table className=" table-auto w-full ">
+
     <tbody className="text-[1.2vw] portrait:text-[3.6vw] portrait:sm:text-[3.2vw] ">
       {cartData.map((product) => (
         <tr key={product._id}  >
-          <td className="flex portrait:flex-col items-start space-x-6 portrait:space-x-0 portrait:space-y-2">  
-            <PrismicNextImage field={product.product.mainimage} className="rounded-lg w-[6vw] portrait:w-[22vw] portrait:sm:w-[18vw] object-contain"/>
-              <div className="title flex flex-col  space-y-1">
-              <div className="title text-[1.3vw] portrait:text-[4vw] font-medium">{product.product.title}</div>
+          <td className="flex w-full  items-start space-x-6 mb-8   ">  
+            <PrismicNextImage field={product.product.mainimage} className="rounded-lg w-[10vw] portrait:w-[30vw] portrait:sm:w-[22vw] object-contain"/>
+             
+             <div>
+              <div className="title flex flex-col  ">
+              <div className="title text-[1.3vw] portrait:text-[4vw] flex items-start font-medium">{product.product.title}</div>
                <div className="description"> {product.product.shortdescription}</div>
               </div>
-               </td>
-          <td className="mb-6 text-center portrait:text-[5vw] portrait:sm:text-[4vw]">{product.product.price}</td>
-          <td className="mb-6 text-center portrait:text-[5vw] portrait:sm:text-[4vw]"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a]  cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></td>
-          <td className="mb-6 text-center portrait:text-[5vw] portrait:sm:text-[4vw]">
+
+              <div className="  portrait:text-[5vw] portrait:sm:text-[4vw]">{product.product.price}</div>
+          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] flex items-center justify-between w-full"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a]  cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></div>
+          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw]">
             {product.product.price * product.quantity}
-          </td>
+          </div> 
+          </div>
+               </td>
+         
         </tr>
       ))}
     </tbody>
@@ -198,16 +196,16 @@ useEffect(() => {
 
 <div className="orderSummary w-[37%] portrait:w-full mb-10 space-y-8 p-8 bg-[#EEDDE7] rounded-md h-fit mt-14 flex flex-col items-center">
 
-  <div className="heading w-full text-center  text-[1.6vw] portrait:text-[6vw] portrait:sm:text-[4.8vw]">Order Summary</div>
+  <div className="heading w-full   text-[1.6vw] portrait:text-[6vw] portrait:sm:text-[4.8vw]">Order Summary</div>
 
   <div className="subNship w-full text-[1.3vw] portrait:text-[4.2vw] portrait:sm:text-[3.4vw]">
 <div className="sub flex  justify-between"><div className="text">Subtotal</div><div className="amount">${totalAmountRef.current}</div></div>
-<div className="ship flex justify-between"><div className="text">Shipping</div><div className="free">free</div></div>
+<div className="ship flex justify-between"><div className="text">Shipping</div><div className="free">Charged Based on Location</div></div>
   </div>
 
   <div className="total w-full text-[1.3vw] portrait:text-[4.2vw] portrait:sm:text-[3.4vw] flex justify-between"><div className="text">Total</div><div className="amount">${totalAmountRef.current}</div></div>
 
-  <div className="checkoutBTN w-full text-center text-[1.6vw] portrait:text-[5.8vw] portrait:sm:text-[4.6vw] py-2 px-4 cursor-pointer text-[#e7d1c6] bg-[#31503d] hover:text-[#d1c0b7] hover:bg-[#15271c] duration-[1s] ease-in-out  rounded-md">Checkout</div>
+  <div className="checkoutBTN w-full  text-[1.6vw] portrait:text-[5.8vw] portrait:sm:text-[4.6vw] py-2 px-4 cursor-pointer text-[#e7d1c6] bg-[#31503d] hover:text-[#d1c0b7] hover:bg-[#15271c] duration-[1s] ease-in-out text-center  rounded-md">Checkout</div>
 
 
 

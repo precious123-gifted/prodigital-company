@@ -21,16 +21,13 @@ export default async function Footer() {
     <div className="content  bg-[#141C1C] text-[#c9bfc4]  w-full px-5 py-8 pt-8 flex flex-row justify-between  portrait:sm:flex-row  portrait:sm:justify-between portrait:flex-col portrait:space-y-6 portrait:sm:space-y-0  ">
 
 
-<div className="addressNpolicySection space-y-3 portrait:sm:w-[50%]">
+<div className="addressNpolicySection space-y-3 landscape:w-[40%] portrait:sm:w-[50%]">
 
 <div className="addressDiv space-y-1">
   <div className="title text-[1.7vw] portrait:sm:text-[4vw] portrait:text-[7vw]">Address</div>
   <div className="address text-[1.2vw]  portrait:sm:text-[3vw] portrait:text-[5vw]">{settings.data.address}</div>
 </div>
 
-<div className="refundPolicyLink text-[1.2vw]  portrait:sm:text-[3vw] portrait:text-[5vw] hover:text-[#E2CABE]"><PrismicNextLink field={settings.data.refundpolicy}>Refund Policy</PrismicNextLink></div>
-<div className="shippingPolicyLink text-[1.2vw]  portrait:sm:text-[3vw] portrait:text-[5vw] hover:text-[#E2CABE]"><PrismicNextLink field={settings.data.deliverypolicy}>Shipping Policy</PrismicNextLink></div>
-<div className="termsNconditionLink text-[1.2vw]  portrait:sm:text-[3vw] portrait:text-[5vw] hover:text-[#E2CABE]"><PrismicNextLink field={settings.data.termsandconditions}>Terms and Conditions</PrismicNextLink></div>
 
 
 </div>
@@ -40,6 +37,8 @@ export default async function Footer() {
 
 <div className="customerSupportSection space-y-3">
   <div className="header text-[1.7vw] portrait:sm:text-[4vw] portrait:text-[7vw]">Customer Support</div>
+  <div className="refundPolicyLink text-[1.2vw]  portrait:sm:text-[3vw] portrait:text-[5vw] hover:text-[#E2CABE]"><PrismicNextLink field={settings.data.refundpolicy}>Refund Policy</PrismicNextLink></div>
+  <div className="termsNconditionLink text-[1.2vw]  portrait:sm:text-[3vw] portrait:text-[5vw] hover:text-[#E2CABE]"><PrismicNextLink field={settings.data.termsandconditions}>Terms and Conditions</PrismicNextLink></div>
 
   <div className="deliveryLink text-[1.2vw]  portrait:sm:text-[3vw] portrait:text-[5vw] hover:text-[#E2CABE]"><PrismicNextLink field={settings.data.deliverypolicy}>Delivery Policy</PrismicNextLink></div>
 

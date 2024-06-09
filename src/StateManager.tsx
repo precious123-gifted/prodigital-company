@@ -59,8 +59,8 @@ type CartedProducts = Product[];
 export type StateContextType = {
   items: Item[];
   setItems: (items: Item[]) => void;
-  color: string;
-  setColor: (color: string) => void;
+  menu: boolean;
+  setMenu: (state: boolean) => void;
   cartedProducts: Product[];
   setCartedProducts: (products: Product[], prevCartedProducts: Product[]) => void;
   cartedProductsFromState: CartedProducts;
@@ -109,9 +109,9 @@ export const StateProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [cartedProducts, setCartedProducts] = useState<Product[]>([]);
 
 
-  const [color, setColor] = useState('#DCFFFE');
+const[menu,setMenu] = useState(true)
   
-  return <StateContext.Provider value={{ color, setColor ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength}}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength}}>{children}</StateContext.Provider>;
 };
 
 

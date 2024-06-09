@@ -4,6 +4,8 @@ import * as React from "react"
 import { SVGProps } from "react"
 import gsap from 'gsap'
 import { RefObject, useEffect, useRef,useState } from "react";
+import { useStateContext } from "@/StateManager";
+
 
 
 const MenuSvg = (props: SVGProps<SVGSVGElement>) => {
@@ -13,7 +15,7 @@ let rightArrow = useRef(null)
 let straightline1 = useRef(null)
 let straightline2 = useRef(null)
 
-const[menu,setMenu] = useState(true)
+const{menu,setMenu} = useStateContext()
 
 
 const menuAnimation = () =>{

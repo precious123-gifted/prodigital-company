@@ -31,6 +31,8 @@ export default function HeaderContent({settings}: any) {
   const menuslide = useRef(null)
   const menuslidebackground = useRef<HTMLDivElement | null>(null)
   const links = useRef(null)
+  const menudiv = useRef(null)
+
   const desktoplinks = useRef(null)
   const exiticon = useRef(null)
   const menuicon = useRef(null)
@@ -86,11 +88,24 @@ const loadingAnimation = useEffect(()=>{
   }
 
 
+  const{menu,setMenu} = useStateContext()
 
+
+const menuAnimation = () =>{
+
+gsap.to(menudiv.current,{top:menu?"-30vw":"13vw",opacity:menu?0:1})
+
+
+}
+
+
+useEffect(()=>{
+  menuAnimation()
+})
 
   return (
-    <>
-       <div className="content w-[95%]  flex flex-row justify-between items-center relative pt-2">
+    <div className="w-[95%] portrait:flex-col portrait:flex">
+       <div className="content w-full  flex flex-row justify-between items-center relative  pt-2">
 <div ref={logo} className="logo opacity-0 cursor-pointer object-contain  w-[15vw] portrait:w-[32vw]  pb-1 ">
   <Link href={"/"}> <PrismicNextImage  field={settings.data.logo} /></Link>
       </div>
@@ -149,17 +164,13 @@ const loadingAnimation = useEffect(()=>{
 
 
 
-  <div ref={menuslidebackground} className="menuslidebackground  absolute  z-10 touch-none bg-[#47443F] hidden  h-full w-full"></div>
+<div ref={menudiv} className="menu opacity-0 landscape:hidden w-full left-0 h-[24vw] bg-[#31503d] text-[#dfd3ce]   absolute z-50 top-[-30vw] flex justify-center items-center ">
 
-  <div ref={menuslide} className="menuslide opacity-0 landscape:hidden hidden w-[50%] h-auto  text-[6vw] portrait:sm:text-[5vw] text-[#3a5050]  pt-[9vw] portrait:sm:pt-[6vw] pb-[5vw] absolute z-20 ">
-<div className="content w-full ">
-
-<div ref={links} className="links  w-full  ml-[100vw] flex flex-col justify-between items-start space-y-6 portrait:sm:space-y-8">
-<ul className=" space-y-4 portrait:sm:space-y-6">
+<ul  className=" flex justify-between w-[80%] text-[6vw] space-x-[6vw]">
 
 {settings.data.navigations.map(({link,label,index}:forString)=>(
-<li  key={index} className="bg-[#E2CABE] p-2 rounded-sm">
-<PrismicNextLink field={link}>{label}</PrismicNextLink>
+<li  key={index}>
+<PrismicNextLink  className="  hover:border-y-2 active:border-y-2 active:border-[#3b5252] border-[#3b5252] duration-[0.1s] ease-in-out" field={link}>{label}</PrismicNextLink>
 
 </li>
 
@@ -167,14 +178,9 @@ const loadingAnimation = useEffect(()=>{
 
 </ul>
 
-
-</div>
-
-</div>
-
 </div>
 
 
-    </>
+    </div>
   )
 }

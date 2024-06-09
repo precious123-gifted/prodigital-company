@@ -175,12 +175,12 @@ useEffect(() => {
              
              <div>
               <div className="title flex flex-col  ">
-              <div className="title text-[1.3vw] portrait:text-[4vw] flex items-start font-medium">{product.product.title}</div>
+              <div className="title text-[1.3vw] portrait:text-[4vw] flex items-start font-medium text-balance">{product.product.title}</div>
                <div className="description"> {product.product.shortdescription}</div>
               </div>
 
               <div className="  portrait:text-[5vw] portrait:sm:text-[4vw]">{product.product.price}</div>
-          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] flex items-center justify-between w-full"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a]  cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></div>
+          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] flex items-center justify-between w-full"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] bg-[#d1ebdb]  p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a] bg-[#eccee0] p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></div>
           <div className="  portrait:text-[5vw] portrait:sm:text-[4vw]">
             {product.product.price * product.quantity}
           </div> 

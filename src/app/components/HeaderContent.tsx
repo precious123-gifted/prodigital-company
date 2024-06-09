@@ -74,29 +74,24 @@ const loadingAnimation = useEffect(()=>{
 
 
 
-  const showMenu = () =>{
-  
- setIcon(!Icon)
- Icon?gsap.to(exiticon.current,{opacity:1,duration:1,position:"fixed"}):gsap.to(exiticon.current,{})
-
- Icon?gsap.to(links.current,{marginLeft:0,duration:1}):gsap.to(links.current,{marginLeft:"100vw"})
- Icon?gsap.to(menuslide.current,{opacity:1,duration:1,position:"fixed",display:"unset",}):gsap.to(menuslide.current,{opacity:0,display:"none",})
- Icon?gsap.to(menuslidebackground.current,{opacity:"98%",duration:0.7,position:"fixed",display:"unset",}):gsap.to(menuslidebackground.current,{opacity:"0%",display:"none",})
-
-
-
-  }
-
 
   const{menu,setMenu} = useStateContext()
 
 
 const menuAnimation = () =>{
+  
 
 gsap.to(menudiv.current,{top:menu?"-30vw":"13vw",opacity:menu?0:1})
 
 
 }
+
+const menuBackAnimation = () =>{
+  
+setMenu(!menu)
+  console.log(menu)
+  
+  }
 
 
 useEffect(()=>{
@@ -164,12 +159,15 @@ useEffect(()=>{
 
 
 
-<div ref={menudiv} className="menu opacity-0 landscape:hidden w-full left-0 h-[24vw] bg-[#31503d] text-[#dfd3ce]   absolute z-50 top-[-30vw] flex justify-center items-center ">
+<div ref={menudiv} className="menu opacity-0 landscape:hidden w-full left-0 h-[24vw] bg-[#31503d] text-[#ebe2de]   absolute z-50 top-[-30vw] flex justify-center items-center ">
 
 <ul  className=" flex justify-between w-[80%] text-[6vw] space-x-[6vw]">
 
 {settings.data.navigations.map(({link,label,index}:forString)=>(
-<li  key={index}>
+<li
+ 
+onClick={menuBackAnimation}
+  key={index}>
 <PrismicNextLink  className="  hover:border-y-2 active:border-y-2 active:border-[#3b5252] border-[#3b5252] duration-[0.1s] ease-in-out" field={link}>{label}</PrismicNextLink>
 
 </li>

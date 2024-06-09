@@ -19,24 +19,24 @@ const{menu,setMenu} = useStateContext()
 
 
 const menuAnimation = () =>{
-setMenu(!menu)
- gsap.to(straightline1.current,{opacity:menu?0:1})
- gsap.to(straightline2.current,{rotate:menu?"-30":0,})
- gsap.to(leftArrow.current,{rotate:menu?"190":6,opacity:menu?1:0})
- gsap.to(rightArrow.current,{rotate:menu?"150":45,opacity:menu?1:0})
+ gsap.to(straightline1.current,{opacity:!menu?0:1})
+ gsap.to(straightline2.current,{rotate:!menu?"-30":0,})
+ gsap.to(leftArrow.current,{rotate:!menu?"190":6,opacity:!menu?1:0})
+ gsap.to(rightArrow.current,{rotate:!menu?"150":45,opacity:!menu?1:0})
 
 
 }
 
 useEffect(()=>{
    
-
+menuAnimation()
 })
     
     
     return(
   <svg 
-  onClick={menuAnimation}
+
+onClick={()=>{setMenu(!menu)}}
     xmlns="http://www.w3.org/2000/svg"
     width={"7vw"}
     height={"9vw"}

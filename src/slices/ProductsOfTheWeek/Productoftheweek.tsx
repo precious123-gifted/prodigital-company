@@ -38,7 +38,6 @@ const productrefs = useRef<ProductRef[]>([]);
 
 
      
-   
 const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
   let opacityAnimation =   ScrollTrigger.create({
     trigger: ref.current,
@@ -92,6 +91,7 @@ const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
     },
   })
 }
+   
 
 const microActionOnProductClick = (productRef: ProductRef) =>{
 
@@ -102,24 +102,17 @@ gsap.to(productRef.current,{width: "10vw"})
 
 
 }
-
 useEffect(()=>{
   opacityAnimation(headerref,0.4)
 
   productrefs.current.forEach((ref)=>{
 
-    opacityAnimation(ref,0.8)
+    opacityAnimation(ref,0.6)
 
   })
 
-
-
-
- 
-  
-
-
 })   
+
 
 
 
@@ -152,7 +145,7 @@ useEffect(()=>{
             id={product._id}
             ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
             // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
-            className="hairProduct  landscape:hover:border-x-2
+            className="hairProduct  landscape:hover:border-x-2 opacity-0
             landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
           >
             <div className="flex flex-col items-start">

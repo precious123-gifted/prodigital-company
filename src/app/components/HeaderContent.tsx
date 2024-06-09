@@ -11,6 +11,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useStateContext } from "@/StateManager";
 import displayElementWhenPageLoads from "@/animation-provider/animation";
+import MenuSvg from "@/app/components/menuSvg"
 
 
 export default function HeaderContent({settings}: any) {
@@ -103,16 +104,13 @@ const loadingAnimation = useEffect(()=>{
     </Link>
 </div>
 
-<div  className="icon  relative">
+<div  className="icon ">
 
-<div ref={menuicon} className=" menuicon opacity-0  landscape:hidden cursor-pointer object-contain  absolute z-50 ">
-{Icon? <Image ref={menuicon} src={menuIcon} alt="cart icon" className="w-[6vw]  " />:
-<Image ref={exiticon} src={exitIcon} alt="cart icon" className="w-[6vw]  " />}
+<div ref={menuicon} className=" menuicon opacity-0  landscape:hidden cursor-pointer object-contain  ">
+<MenuSvg className=""/>
 
 </div>
-<div className=" menuicon   landscape:hidden cursor-pointer object-contain   ">
-<Image  src={exitIcon} alt="cart icon" className="w-[6vw]  opacity-0 " />
-</div>
+
 </div> 
 
 </div>

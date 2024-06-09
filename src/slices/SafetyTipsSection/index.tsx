@@ -17,6 +17,7 @@ const SafetyTipsSection = ({ slice }: SafetyTipsSectionProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       Placeholder component for safety_tips_section (variation:{" "}
+      gghhhh
       {slice.variation}) Slices
     </section>
   );

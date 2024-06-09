@@ -3,8 +3,8 @@ import { SVGProps } from "react"
 const MenuSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={"8vw"}
-    height={"10vw"}
+    width={"7vw"}
+    height={"9vw"}
     fill="none"
     viewBox="0 0 382 403"
     // viewBox="0 0 1315 1773"

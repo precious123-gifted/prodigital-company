@@ -155,7 +155,7 @@ useEffect(()=>{
               </div>
             </Link>
             <Link href={`/product/${product._id}`}> 
-              <div className="hairTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw]">{product.product.title}</div>
+              <div className="hairTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.product.brandname}<span className="ml-1 text-[#4b6363] text-wrap">{product.product.title}</span></div></div>
             </Link>
             <div className="hairDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.product.shortdescription}</div>
             <div className="hairPrize w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.product.price}</div>

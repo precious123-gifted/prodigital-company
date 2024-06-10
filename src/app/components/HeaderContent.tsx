@@ -1,7 +1,7 @@
 "use client"
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
-import { MouseEvent, TouchEvent, useEffect } from 'react';
+import React, { MouseEvent, MutableRefObject, TouchEvent, useEffect } from 'react';
 import Image from "next/image"
 import Link from "next/link"
 import cartIcon from "../../../public/carticon.png";
@@ -12,6 +12,9 @@ import gsap from "gsap";
 import { useStateContext } from "@/StateManager";
 import displayElementWhenPageLoads from "@/animation-provider/animation";
 import MenuSvg from "@/app/components/menuSvg"
+import { usePathname } from 'next/navigation'
+import { cn } from "@/lib/utils";
+import activeHomeLinkStyle from "./activeLinkStyle.module.scss"
 
 
 export default function HeaderContent({settings}: any) {
@@ -20,7 +23,7 @@ export default function HeaderContent({settings}: any) {
 
     label: any,
     link: any
-    index:number
+    key:any
   }
 
   const {cartLength,setCartLength} = useStateContext() 
@@ -40,9 +43,11 @@ export default function HeaderContent({settings}: any) {
   const carticon = useRef(null)
   const desktopcarticon = useRef(null)
   const itemquantitydiv = useRef(null)
+  type ProductRef = MutableRefObject<HTMLDivElement | null>;
 
+  const productrefs = useRef<ProductRef[]>([]);
 
-
+  const pathname = usePathname();
 
 const loadingAnimation = useEffect(()=>{
 
@@ -96,7 +101,13 @@ setMenu(!menu)
 
 useEffect(()=>{
   menuAnimation()
+  console.log(pathname)
+  
 })
+
+
+
+
 
   return (
     <div className="w-[95%] portrait:flex-col portrait:flex">
@@ -134,13 +145,24 @@ useEffect(()=>{
 <div ref={desktoplinks} className="links opacity-0  portrait:hidden w-auto space-x-[4vw] flex items-center ">
 <ul  className=" flex justify-between w-[80%] text-[1.5vw] space-x-[6vw]">
 
-{settings.data.navigations.map(({link,label,index}:forString)=>(
-<li  key={index}>
-<PrismicNextLink  className="  hover:border-y-2 active:border-y-2 active:border-[#3b5252] border-[#3b5252] duration-[0.1s] ease-in-out" field={link}>{label}</PrismicNextLink>
+{settings.data.navigations.map(({link,label,key}:forString)=>
+{
+  const isActive = key === pathname;
+  return(
+           
+<div  key={key}
+ >
+<PrismicNextLink 
 
-</li>
+ className={cn(
+  'hover:border-y-2   border-[#3b5252] duration-[0.1s] ease-in-out"',
+  isActive && 'border-y-2  border-[#3b5252]'
+)}
+ field={link}>{label}</PrismicNextLink>
 
-))}
+</div>
+
+)})}
 
 </ul>
 
@@ -163,11 +185,11 @@ useEffect(()=>{
 
 <ul  className=" flex justify-between w-[80%] text-[6vw] space-x-[6vw]">
 
-{settings.data.navigations.map(({link,label,index}:forString)=>(
+{settings.data.navigations.map(({link,label,key}:forString)=>(
 <li
  
 onClick={menuBackAnimation}
-  key={index}>
+  key={key}>
 <PrismicNextLink  className="  hover:border-y-2 active:border-y-2 active:border-[#3b5252] border-[#3b5252] duration-[0.1s] ease-in-out" field={link}>{label}</PrismicNextLink>
 
 </li>

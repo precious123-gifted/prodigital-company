@@ -159,6 +159,16 @@ export interface NavDocumentDataNavigationsItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
+  /**
+   * key field in *custom-settings → navigations*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav.navigations[].key
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  key: prismic.KeyTextField;
 }
 
 /**

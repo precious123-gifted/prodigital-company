@@ -103,6 +103,13 @@
                 "label": "label",
                 "placeholder": ""
               }
+            },
+            "key": {
+              "type": "Text",
+              "config": {
+                "label": "key",
+                "placeholder": ""
+              }
             }
           }
         }

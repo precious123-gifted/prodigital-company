@@ -179,7 +179,7 @@ useEffect(() => {
                <div className="description"> {product.product.shortdescription}</div>
               </div>
 
-              <div className="  portrait:text-[5vw] portrait:sm:text-[4vw]">{product.product.price}</div>
+              <div className="text-[1vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.product.price}</div>
           <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] mt-[1vw] portrait:mt-[2.4vw] mb-[0.8vw] portrait:mb-[2vw] flex items-center justify-between w-full"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] bg-[#d1ebdb]  p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div  className="text-[1.6vw] portrait:text-[5.4vw]"> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a] bg-[#eccee0] p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></div>
           <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] text-[#314440]">
             {product.product.price * product.quantity}

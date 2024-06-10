@@ -165,23 +165,23 @@ useEffect(() => {
     <div className="w-full text-[#384d4d]   flex portrait:flex-col ">
       
     <div className="cart-container  w-[80%] portrait:w-[97%] pt-10 ">
-    <table className=" table-auto w-full ">
+    <table className=" table-auto w-[70%]  portrait:w-full">
 
-    <tbody className="text-[1.2vw] portrait:text-[3.6vw] portrait:sm:text-[3.2vw] ">
+    <tbody className="text-[1.2vw] w-full portrait:text-[3.6vw] portrait:sm:text-[3.2vw] ">
       {cartData.map((product) => (
-        <tr key={product._id}  >
-          <td className="flex w-full  items-start space-x-6 mb-8   ">  
+        <tr key={product._id} className="w-full" >
+          <td className="flex w-full  items-start space-x-6 mb-10   ">  
             <PrismicNextImage field={product.product.mainimage} className="rounded-lg w-[10vw] portrait:w-[30vw] portrait:sm:w-[22vw] object-contain"/>
              
-             <div>
+             <div className="w-full">
               <div className="title flex flex-col  ">
-              <div className="title text-[1.3vw] portrait:text-[4vw] flex items-start font-medium text-balance">{product.product.title}</div>
+              <div className="title text-[1.3vw] portrait:text-[4vw] flex items-start font-medium text-balance "><div >{product.product.brandname}<span className="ml-1 text-[#4b6363]">{product.product.title}</span></div></div>
                <div className="description"> {product.product.shortdescription}</div>
               </div>
 
               <div className="  portrait:text-[5vw] portrait:sm:text-[4vw]">{product.product.price}</div>
-          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] flex items-center justify-between w-full"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] bg-[#d1ebdb]  p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a] bg-[#eccee0] p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></div>
-          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw]">
+          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] mt-[1vw] portrait:mt-[2.4vw] mb-[0.8vw] portrait:mb-[2vw] flex items-center justify-between w-full"><div className="increase text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#31503d] bg-[#d1ebdb]  p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, 1)}>+</div><div  className="text-[1.6vw] portrait:text-[5.4vw]"> {product.quantity} </div><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a] bg-[#eccee0] p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></div>
+          <div className="  portrait:text-[5vw] portrait:sm:text-[4vw] text-[#314440]">
             {product.product.price * product.quantity}
           </div> 
           </div>

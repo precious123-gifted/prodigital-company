@@ -200,7 +200,7 @@ useEffect(() => {
 
   <div className="subNship w-full text-[1.3vw] portrait:text-[4.2vw] portrait:sm:text-[3.4vw]">
 <div className="sub flex  justify-between"><div className="text">Subtotal</div><div className="amount">${totalAmountRef.current}</div></div>
-<div className="ship flex justify-between"><div className="text">Shipping</div><div className="free">Charged Based on Location</div></div>
+<div className="ship flex justify-between"><div className="text">Delivery</div><div className="free">Charged Based on Location</div></div>
   </div>
 
   <div className="total w-full text-[1.3vw] portrait:text-[4.2vw] portrait:sm:text-[3.4vw] flex justify-between"><div className="text">Total</div><div className="amount">${totalAmountRef.current}</div></div>

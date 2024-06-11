@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { MutableRefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Bounded from "@/app/components/Bounded";
+import Layout from "../navlayout";
 
 
 
@@ -53,21 +54,10 @@ console.log(products)
 
 
   return (
-      <Bounded>  <div className="w-full pb-[4vw] bg-[#EBFEFF] text-[#333D3E]">
-<div className="w-full flex justify-between  pb-[4vw]  portrait:pb-[10vw]  portrait:pt-[3vw] text-[1.4vw]  portrait:text-[3.2vw] portrait:sm:text-[3.4vw]">
-  <Link href={"/products"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    All Products
-  </Link>
-  <Link href={"newLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    New Laptops
-  </Link>
-  <Link href={"usedLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    Used Laptops
-  </Link>
-  <Link href={"accessories"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    Accessories
-  </Link>
-</div>
+      <Bounded> 
+        <Layout>
+                   <div className="w-full pb-[4vw] bg-[#EBFEFF] text-[#333D3E]">
+
 
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
     {products.map((product:any,index:number) => (
@@ -93,6 +83,8 @@ console.log(products)
         ))}
       </div>
       </div>
+      </Layout>
+
       </Bounded>
   
   )

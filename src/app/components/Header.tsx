@@ -18,7 +18,7 @@ export default async function Header() {
 
 
   return (
-    <section className="flex justify-center bg-[#EBFEFF] text-[#333D3E]"  style={pontanoSans.style}>
+    <section className="flex justify-center bg-[#EBFEFF] "  style={pontanoSans.style}>
 <HeaderContent settings={settings}/>
  
     </section>

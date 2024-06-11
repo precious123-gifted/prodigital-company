@@ -147,7 +147,10 @@ useEffect(()=>{
 
 {settings.data.navigations.map(({link,label,key}:forString)=>
 {
-  const isActive = key === pathname;
+  const isActive = pathname  === key 
+  const isActiveChild = key !== '/' && pathname.includes(key)
+const logic = !isActiveChild? isActive : isActiveChild
+
   return(
            
 <div  key={key}
@@ -155,8 +158,8 @@ useEffect(()=>{
 <PrismicNextLink 
 
  className={cn(
-  'hover:border-y-2   border-[#3b5252] duration-[0.1s] ease-in-out"',
-  isActive && 'border-y-2  border-[#3b5252]'
+  'px-3 py-2 rounded hover:bg-[#e0f3e6] ease-in-out text-[#2d4634] ',
+   logic && 'bg-[#7fac8c] text-[#e0f3e6]'
 )}
  field={link}>{label}</PrismicNextLink>
 

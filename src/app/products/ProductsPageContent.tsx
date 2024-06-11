@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { MutableRefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Bounded from "../components/Bounded";
+import Layout from "./navlayout";
 
 
 
@@ -53,22 +54,9 @@ allProducts.sort(() => Math.random() - 0.5);
 
   return (
     <Bounded>
-      
+   <Layout>   
     <div className="w-full pb-[4vw]">      
-    <div className="w-full flex justify-between pb-[4vw]  portrait:pb-[10vw]  portrait:pt-[3vw] text-[1.4vw]  portrait:text-[3.2vw] portrait:sm:text-[3.4vw]">
-  <Link href={"/products"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    All Products
-  </Link>
-  <Link href={"products/newLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    New Laptops
-  </Link>
-  <Link href={"products/usedLaptops"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    Used Laptops
-  </Link>
-  <Link href={"products/accessories"} className="px-3 py-2 rounded hover:bg-gray-100 active:border-b-2 active:border-blue-500">
-    Accessories
-  </Link>
-</div>
+   
 
 
 
@@ -99,6 +87,7 @@ allProducts.sort(() => Math.random() - 0.5);
         ))}
       </div>
       </div>
+      </Layout>
       </Bounded>
   )
 }

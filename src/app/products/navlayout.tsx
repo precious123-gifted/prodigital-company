@@ -28,7 +28,7 @@ const isAccessoriesActive = pathname  === '/products/accessories'
       <Link href={"/products"} 
        className={cn(
         'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
-         isProductsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb]'
+         isProductsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'
       )}
       >
     All Products
@@ -36,7 +36,7 @@ const isAccessoriesActive = pathname  === '/products/accessories'
   <Link href={pathname.includes('/products/') ? '/products/newLaptops' : '/products/newLaptops'}
    className={cn(
     'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
-     isNewLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb]'
+     isNewLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'
   )}
   >
     New Laptops
@@ -44,7 +44,7 @@ const isAccessoriesActive = pathname  === '/products/accessories'
   <Link href={pathname.includes('/products/') ? '/products/usedLaptops' : '/products/usedLaptops'} 
   className={cn(
     'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
-     isUsedLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb]'
+     isUsedLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'
   )}
   >
     Used Laptops
@@ -52,7 +52,7 @@ const isAccessoriesActive = pathname  === '/products/accessories'
   <Link href={pathname.includes('/products/') ? '/products/accessories' : '/products/accessories'} 
    className={cn(
     'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
-     isAccessoriesActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb]'
+     isAccessoriesActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'
   )}
   >
     Accessories

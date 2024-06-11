@@ -159,7 +159,7 @@ const logic = !isActiveChild? isActive : isActiveChild
 
  className={cn(
   'px-3 py-2 rounded hover:bg-[#e0f3e6] ease-in-out text-[#385741] ',
-   logic && 'bg-[#7fac8c] text-[#e8f7ed]'
+   logic && 'bg-[#7fac8c] text-[#e8f7ed] hover:text-[#e0f3e6] shadow-lg '
 )}
  field={link}>{label}</PrismicNextLink>
 
@@ -203,7 +203,7 @@ onClick={menuBackAnimation}
 <PrismicNextLink 
  className={cn(
   'px-3 py-2 rounded  ease-in-out text-[#d4e4d9] ',
-   logic && 'bg-[#7fac8c] text-[#ebf8ef]'
+   logic && 'bg-[#7fac8c] text-[#d8e7dd] '
 )}
 
  field={link}>{label}</PrismicNextLink>

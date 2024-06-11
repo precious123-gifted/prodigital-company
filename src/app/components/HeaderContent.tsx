@@ -14,7 +14,6 @@ import displayElementWhenPageLoads from "@/animation-provider/animation";
 import MenuSvg from "@/app/components/menuSvg"
 import { usePathname } from 'next/navigation'
 import { cn } from "@/lib/utils";
-import activeHomeLinkStyle from "./activeLinkStyle.module.scss"
 
 
 export default function HeaderContent({settings}: any) {
@@ -114,7 +113,7 @@ useEffect(()=>{
 
 <div className="cartNmenuDiv landscape:hidden flex items-center  relative space-x-8 portrait:sm:space-x-14">
 <div ref={carticon} className="carticon opacity-0 cursor-pointer object-contain relative  rounded-sm">
-{ cartLength! > 0 && (<Link href={"/cart"}><div className="itemQuantity text-[3.5vw] portrait:sm:text-[2.5vw] p-[0.1vw]  w-5 portrait:sm:w-[4.4vw] bg-[#31503d] text-[#E2CABE] text-center rounded-full absolute top-[-1rem] ">{cartLength}</div></Link>)}
+{ cartLength! > 0 && (<Link href={"/cart"}><div className="itemQuantity text-[3.5vw] portrait:sm:text-[2.5vw] p-[0.1vw]  w-5 portrait:sm:w-[4.4vw] bg-[#31503d] text-[#E2CABE] text-center rounded-full absolute top-[-0.8rem] ">{cartLength}</div></Link>)}
   <Link 
 onClick={menuBackAnimation}
   

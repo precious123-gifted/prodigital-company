@@ -29,11 +29,7 @@ export default function HeaderContent({settings}: any) {
   const {cartLength,setCartLength} = useStateContext() 
 
 
-  const [Icon,setIcon] = useState(true)
 
-  const menuslide = useRef(null)
-  const menuslidebackground = useRef<HTMLDivElement | null>(null)
-  const links = useRef(null)
   const menudiv = useRef(null)
 
   const desktoplinks = useRef(null)
@@ -55,7 +51,7 @@ const loadingAnimation = useEffect(()=>{
   displayElementWhenPageLoads(desktoplinks,0.5,300)
   displayElementWhenPageLoads(carticon,0.5,500)
   displayElementWhenPageLoads(desktopcarticon,0.5,400)
-   displayElementWhenPageLoads(itemquantitydiv,0.5,420)
+  displayElementWhenPageLoads(itemquantitydiv,0.5,420)
   displayElementWhenPageLoads(menuicon,0.5,650)
 })
 
@@ -93,8 +89,7 @@ gsap.to(menudiv.current,{top:menu?"-30vw":"13vw",opacity:menu?0:1})
 
 const menuBackAnimation = () =>{
   
-setMenu(!menu)
-  console.log(menu)
+ if(menu == false) setMenu(!menu)
   
   }
 
@@ -120,7 +115,10 @@ useEffect(()=>{
 <div className="cartNmenuDiv landscape:hidden flex items-center  relative space-x-8 portrait:sm:space-x-14">
 <div ref={carticon} className="carticon opacity-0 cursor-pointer object-contain relative  rounded-sm">
 { cartLength! > 0 && (<Link href={"/cart"}><div className="itemQuantity text-[3.5vw] portrait:sm:text-[2.5vw] p-[0.1vw]  w-5 portrait:sm:w-[4.4vw] bg-[#31503d] text-[#E2CABE] text-center rounded-full absolute top-[-1rem] ">{cartLength}</div></Link>)}
-  <Link href={"/cart"}>
+  <Link 
+onClick={menuBackAnimation}
+  
+  href={"/cart"}>
     <Image  src={cartIcon} alt="cart icon" className="w-[8vw] portrait:sm:w-[7vw]"/>
     </Link>
 </div>
@@ -171,7 +169,8 @@ const logic = !isActiveChild? isActive : isActiveChild
 
 <div   className="carticon  cursor-pointer relative">
 <div ref={itemquantitydiv} className="itemQuantity opacity-0 text-[1vw] p-[0.1vw] w-6 bg-[#31503d] text-[#E2CABE] text-center rounded-full absolute top-[-1.4rem]">{cartLength}</div>
-<Link href={"/cart"} >
+<Link
+href={"/cart"} >
   <Image  src={cartIcon} alt="cart icon"  ref={desktopcarticon} className="object-contain opacity-0 w-[2.5vw]"/>
   </Link>
 </div>

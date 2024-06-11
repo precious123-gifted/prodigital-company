@@ -158,8 +158,8 @@ const logic = !isActiveChild? isActive : isActiveChild
 <PrismicNextLink 
 
  className={cn(
-  'px-3 py-2 rounded hover:bg-[#e0f3e6] ease-in-out text-[#2d4634] ',
-   logic && 'bg-[#7fac8c] text-[#e0f3e6]'
+  'px-3 py-2 rounded hover:bg-[#e0f3e6] ease-in-out text-[#385741] ',
+   logic && 'bg-[#7fac8c] text-[#e8f7ed]'
 )}
  field={link}>{label}</PrismicNextLink>
 
@@ -184,20 +184,33 @@ const logic = !isActiveChild? isActive : isActiveChild
 
 
 
-<div ref={menudiv} className="menu opacity-0 landscape:hidden w-full left-0 h-[24vw] bg-[#31503d] text-[#ebe2de]   absolute z-50 top-[-30vw] flex justify-center items-center ">
+<div ref={menudiv} className="menu opacity-0 landscape:hidden w-full left-0 h-[24vw] bg-[#31503d] text-[#e9e2e0]   absolute z-50 top-[-30vw] flex justify-center items-center ">
 
 <ul  className=" flex justify-between w-[80%] text-[6vw] space-x-[6vw]">
 
-{settings.data.navigations.map(({link,label,key}:forString)=>(
+{settings.data.navigations.map(({link,label,key}:forString)=>
+  
+{
+  const isActive = pathname  === key 
+  const isActiveChild = key !== '/' && pathname.includes(key)
+const logic = !isActiveChild? isActive : isActiveChild
+
+  return(
 <li
  
 onClick={menuBackAnimation}
   key={key}>
-<PrismicNextLink  className="  hover:border-y-2 active:border-y-2 active:border-[#3b5252] border-[#3b5252] duration-[0.1s] ease-in-out" field={link}>{label}</PrismicNextLink>
+<PrismicNextLink 
+ className={cn(
+  'px-3 py-2 rounded  ease-in-out text-[#d4e4d9] ',
+   logic && 'bg-[#7fac8c] text-[#ebf8ef]'
+)}
+
+ field={link}>{label}</PrismicNextLink>
 
 </li>
 
-))}
+)})}
 
 </ul>
 

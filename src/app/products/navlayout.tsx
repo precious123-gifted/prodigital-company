@@ -27,32 +27,32 @@ const isAccessoriesActive = pathname  === '/products/accessories'
 
       <Link href={"/products"} 
        className={cn(
-        'px-3 py-2 rounded hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
-         isProductsActive && ' bg-[#bea192] hover:text-[#ddcbc2] text-[#f3e6e0]'
+        'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
+         isProductsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f3e6e0]'
       )}
       >
     All Products
   </Link>
   <Link href={pathname.includes('/products/') ? '/products/newLaptops' : '/products/newLaptops'}
    className={cn(
-    'px-3 py-2 rounded hover:bg-gray-100 ease-in-out',
-     isNewLaptopsActive && ' bg-[#bea192] text-[#f3e6e0]'
+    'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
+     isNewLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f3e6e0]'
   )}
   >
     New Laptops
   </Link>
   <Link href={pathname.includes('/products/') ? '/products/usedLaptops' : '/products/usedLaptops'} 
   className={cn(
-    'px-3 py-2 rounded hover:bg-gray-100 ease-in-out',
-     isUsedLaptopsActive && ' bg-[#bea192] text-[#f3e6e0]'
+    'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
+     isUsedLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f3e6e0]'
   )}
   >
     Used Laptops
   </Link>
   <Link href={pathname.includes('/products/') ? '/products/accessories' : '/products/accessories'} 
    className={cn(
-    'px-3 py-2 rounded hover:bg-gray-100 ease-in-out',
-     isAccessoriesActive && ' bg-[#bea192] text-[#f3e6e0]'
+    'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
+     isAccessoriesActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f3e6e0]'
   )}
   >
     Accessories

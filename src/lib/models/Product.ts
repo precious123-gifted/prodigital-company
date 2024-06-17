@@ -2,68 +2,74 @@ import {Schema,model,models} from "mongoose"
 
 
 
-  const productSchema:Schema  = new Schema({
-   
-    product: {
-      type: Object,
-      required: true,
-      properties: {
+const userSchema = new Schema({
+  userName: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 
-        category: {
-          type: String , 
-          required: true,
+})
 
-        },
 
-      brandname: {
-          type: String , 
-          required: true,
-
-        },
-        title: {
-          type: String,
-          required: true,
-        },
-        shortdescription: {
-          type: String,
-          required: true,
-        },
-        fulldescription: {
-          type: String,
-          required: true,
-        },
-        price: {
-          type: Number, 
-          required: true,
-        },
-
-        mainimage: {
-         type: Object,
-         required: true
-        },
-        complimentaryimage1: {
-          type: Object,
-          required: true
-         },
-         complimentaryimage2: {
-          type: Object,
-          required: true
-         },
-         complimentaryimage3: {
-          type: Object,
-          required: true
-         },
-         },
-         },
-      
-    
-  });
+const productSchema = new Schema({
+  category: {
+    type: String,
+    required: true,
+  },
+  brandName: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  shortDescription: {
+    type: String,
+    required: true,
+  },
+  fullDescription: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  productMainImage: {
+    type: String,
+    required: true,
+  },
+  productComplementaryImage1: {
+    type: String,
+    required: true,
+  },
+  productComplementaryImage2: {
+    type: String,
+  }, // Optional (adjusted from required)
+  productComplementaryImage3: {
+    type: String,
+  }, // Optional (adjusted from required)
+  altText: {
+    type: String,
+  },
+  postedAt: {
+    type: Date,
+    default: new Date(), // Set default value to current timestamp
+  },
+});
 
  
 
 
 
+
 export const allProducts = models['allProducts'] || model('allProducts', productSchema, 'allProducts');
+export const user = models['user'] || model('user', userSchema, 'user');
 
 
 

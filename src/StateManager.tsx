@@ -67,6 +67,8 @@ export type StateContextType = {
   setCartedProductsFromState: (products: CartedProducts) => void;
   cartLength: number | null ;
   setCartLength: (newLength: number) => void;
+  productOfTheWeek: string[];
+  setProductOfTheWeek: (productIds: string[]) => void;
 };
 
 
@@ -107,11 +109,12 @@ export const StateProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [cartLength, setCartLength] = useState<number | null>(null);
   const [cartedProductsFromState, setCartedProductsFromState] = useState<Product[]>([]);
   const [cartedProducts, setCartedProducts] = useState<Product[]>([]);
-
+  const [productOfTheWeek, setProductOfTheWeek] = useState<string[]>([]);
+  
 
 const[menu,setMenu] = useState(true)
   
-  return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength}}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength,productOfTheWeek, setProductOfTheWeek}}>{children}</StateContext.Provider>;
 };
 
 

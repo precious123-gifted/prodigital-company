@@ -8,17 +8,16 @@ import { allProducts } from "@/lib/models/Product";
 
 
 export async function GET(request: NextRequest) {
-  let filteredData: any[]; // Declare variable for filtered data
+  let filteredData: any[]; 
 
   try {
     await dbConnect();
 
-    // Fixed filter for newLaptops category
-    const filter = { 'product.categories': 'accessories' };
+    const filter = { 'category': 'Accessories' };
 
     const AllProducts = await allProducts.find(filter);
 
-    filteredData = AllProducts; // Assign filtered data to the response variable
+    filteredData = AllProducts; 
 
   } catch (error) {
     console.error('Error retrieving data from MongoDB:', error);

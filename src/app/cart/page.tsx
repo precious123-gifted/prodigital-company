@@ -8,43 +8,28 @@ import Bounded from "../components/Bounded";
 
 export default function CartContainer() {
 
+
+ 
+
   interface Product {
     _id: string;
-    quantity: number ;// Assuming price is a number
+    quantity: number ;
+    altText: string;
     totalPrice: number ;
-    product: {
-            mainimage:PrismicNextImage;
-            complimentaryimage1:PrismicNextImage;
-            complimentaryimage2:PrismicNextImage;
-            complimentaryimage3:PrismicNextImage;
-            brandname: string;
-            title: string;
-            shortdescription: string;
-            fulldescription: string;
-            price:number;
-    };
-  }
+    productMainImage:string;
+    productComplementaryImage1:string;
+    productComplementaryImage2: string;
+    productComplementaryImage3:string ;
+    brandName: string;
+    title: string;
+    shortDescription: string;
+    fullDescription: string;
+    price:number;}
   
-  interface PrismicNextImage {
-    dimensions: {
-      width: number;
-      height: number;
-    };
-    alt: string;
-    copyright: null | string; 
-    url: string;
-    id: string;
-    edit: {
-      x: number;
-      y: number;
-      zoom: number;
-      background: string;
-    };
-  }
 
 
   const [cartData, setCartData] = useState<Product[]>([]);
-const {cartLength,setCartLength} = useStateContext() 
+  const {cartLength,setCartLength} = useStateContext() 
 
 
 

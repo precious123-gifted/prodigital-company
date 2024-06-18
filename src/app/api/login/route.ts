@@ -34,37 +34,50 @@ export async function POST(request: NextRequest) {
       return new Response('Missing username or password.', { status: 400 });
     }
 
-  
-    const saltRounds = 10; 
+    const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-  
-    const existingUser = await user.findOne({ userName }); 
+    // Find existing user by username
+    const existingUser = await user.findOne({ userName });
 
     if (!existingUser) {
-    
+      // Create new user if not found
       const newUser = new user({ userName, password: hashedPassword });
       await newUser.save();
 
       console.log('New user created:', newUser.username);
-       return new Response(JSON.stringify({
-        message: 'user created successfully (existing user)',
+      return new Response(JSON.stringify({
+        message: 'User created successfully (new user)',
         status: 201
-       }), { status: 201 });
+      }), { status: 201 });
+
     } else {
-       return new Response(JSON.stringify({
-         message: 'please input the correct username and password',
-         status: 409
-         }), { status: 409 });
+      // Existing user found, compare username and password hash
+      if (existingUser.userName === userName && await bcrypt.compare(password, existingUser.password)) {
+        // Login successful - username and password match
+        console.log('Login successful for user:', existingUser.username);
+        // You might want to generate a session or token here for authentication
+        return new Response(JSON.stringify({
+          message: 'Login successful',
+          status: 200
+        }), { status: 200 });
+      } else {
+        // Invalid username or password
+        return new Response(JSON.stringify({
+          message: 'Invalid username or password',
+          status: 401 // Unauthorized
+        }), { status: 401 });
+      }
     }
   } catch (error) {
     console.error('Error processing POST request:', error);
     return new Response(JSON.stringify({
-    message: 'error logging in',
-    status: 500
-     }), { status: 500 });
+      message: 'Error logging in',
+      status: 500
+    }), { status: 500 });
   }
 }
+
 
 
 

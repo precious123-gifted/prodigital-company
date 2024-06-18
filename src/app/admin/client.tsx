@@ -295,7 +295,7 @@ onSubmit={handleSubmit}
                 <div className="flex flex-col items-start">
                <Link  href={`admin/product/${product._id}`}> 
                  <div className="laptopImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
-                   <Image alt='' src={`${product.productMainImage}`} className="rounded-lg " width={960} height={1280} />
+                   <Image alt='' src={`${product?.productMainImage}`} className="rounded-lg " width={960} height={1280} />
                  </div>
                </Link>
                <Link href={`/product/${product._id}`}> 

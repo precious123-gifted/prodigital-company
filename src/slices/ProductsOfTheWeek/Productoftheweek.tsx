@@ -21,8 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 /**
  * Props for `ProductsOfTheWeek`.
  */
-export type ProductsOfTheWeekProps =
-  SliceComponentProps<Content.ProductsOfTheWeekSlice>;
+export type ProductsOfTheWeekProps =  SliceComponentProps<Content.ProductsOfTheWeekSlice>;
 
 /**
  * Component for "ProductsOfTheWeek" Slices.
@@ -156,7 +155,7 @@ useEffect(()=>{
             <div className="flex flex-col items-start">
             <Link  href={`/product/${product._id}`}> 
               <div className="hairImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
-                <Image src={product.productMainImage} alt={product.altText}  className="rounded-lg "   width={960} height={1280} />
+                <Image src={product?.productMainImage} alt={product.altText}  className="rounded-lg "   width={960} height={1280} />
               </div>
             </Link>
             <Link href={`/product/${product._id}`}> 

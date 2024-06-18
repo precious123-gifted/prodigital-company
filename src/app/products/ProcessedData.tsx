@@ -31,45 +31,7 @@ let sentProductArray: any[] = []
 
 
 
-   const sendAllProductData = async () => {
-  
-    try {
-      await dbConnect();
-  
-      // Filter new products before sending (assuming allProductsProccessedData includes product information)
-      const newProductArray = allProductsProccessedData.filter((item:any) => {
-  return !sentProductArray.some((existingProduct:any) => existingProduct.product.mainimage.id === item.product.mainimage.id);
-});
-  
-      if (newProductArray.length > 0) {
-        const response = await fetch(allProductsUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newProductArray), // Send only new products
-        });
-  
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Data sent successfully:', data);
-          sentProductArray = sentProductArray.concat(newProductArray);
-          // Perform actions based on successful response
-        } else {
-          console.error('Server responded with error:', response.status, response.statusText);
-        }
-      } else {
-        console.log('No new products to send to database.');
-      }
-    } catch (error) {
-      console.error('Error sending data:', error);
-      // Optionally, log more detailed error information (e.g., using a logging library)
-    } finally {
-      // Optional cleanup logic (e.g., closing connections, releasing resources)
-    }
-  };
-  
 
-
-  sendAllProductData()
 
 
 

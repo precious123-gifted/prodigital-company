@@ -1,7 +1,6 @@
 
 "use client"
 
-import { PrismicNextImage } from "@prismicio/next";
 import Bounded from "@/app/components/Bounded";
 import exitIcon from "../../../../../public/exiticon.png"
 import Image from "next/image";

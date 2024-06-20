@@ -2,7 +2,6 @@
 
 
 import React, { useEffect, useRef, useState } from 'react'
-import dbConnect from "@/lib/dbConnect";
 import Link from 'next/link';
 import Image from 'next/image';
 import { useStateContext } from "@/StateManager";
@@ -23,10 +22,20 @@ export default function AdminClientPage(
        ? `http://localhost:3000`
        : "https://prodigital-company.vercel.app";
       const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
+
+
+
+
+
+
+
+
+
       const loginUrl = `${baseUrl}/api/login`;
-      const [isAuthenticated, setIsAuthenticated] = useState(false);
+      const [isAuthenticated, setIsAuthenticated] = useState(true);
       const [username, setUsername] = useState('');
       const [password, setPassword] = useState('');
+
      const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
        event.preventDefault();
        const form = event.target as HTMLFormElement;
@@ -56,12 +65,17 @@ export default function AdminClientPage(
          console.error('Error sending data:', error);
        }
      };
+
+
+
+
+
        const [imageData, setImageData] = useState<string | null>(null);
        const [imageData1, setImageData1] = useState<string | null>(null);
        const [imageData2, setImageData2] = useState<string | null>(null);
        const [imageData3, setImageData3] = useState<string | null>(null);
        const [products, setProducts] = useState();
-       const {productOfTheWeek, setProductOfTheWeek} = useStateContext();
+       
        const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
          // event.preventDefault();
          const form = event.target as HTMLFormElement;

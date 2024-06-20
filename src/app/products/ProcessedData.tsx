@@ -33,7 +33,7 @@ export default async function ProductsData({settings}: any) {
     
   const getAllProductsData = async () =>{
     await dbConnect()
-    const response = await fetch(allProductsUrl,{cache: 'no-store'});
+    const response = await fetch(allProductsUrl);
     
    
   

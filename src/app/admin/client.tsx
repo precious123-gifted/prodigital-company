@@ -25,7 +25,6 @@ export default function AdminClientPage({allProducts}:any) {
       : "https://prodigital-company.vercel.app";
      const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
      const loginUrl = `${baseUrl}/api/login`;
-     const imageUrl = `${baseUrl}/api/imageupload`;
 
 
      const [isAuthenticated, setIsAuthenticated] = useState(true);

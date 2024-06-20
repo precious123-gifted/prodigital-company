@@ -207,7 +207,7 @@ const baseUrl = isDevelopment
     console.table(updatedProduct)
 
     try {
-      const response = await fetch(allProductsUrl, { // Use API route for update
+      const response = await fetch(allProductsUrl, { 
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedProduct),
@@ -238,14 +238,11 @@ const baseUrl = isDevelopment
           const data = await response.json();
           console.log('Product deleted successfully:', data);
           window.history.back();
-          // Handle successful deletion (e.g., redirect, show confirmation message, remove product from UI)
         } else {
           console.error('Server responded with error:', response.status, response.statusText);
-          // Handle errors
         }
       } catch (error) {
         console.error('Error deleting product:', error);
-        // Handle errors
       }
     }
   };
@@ -301,8 +298,7 @@ return typeof value === 'object' && 'public_id' in value; // Check for object wi
         console.error('Invalid number passed to handleImage');
     }
   
-  
-  
+
   }
   
   }

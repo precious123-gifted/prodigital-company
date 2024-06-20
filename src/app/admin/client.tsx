@@ -32,7 +32,7 @@ export default function AdminClientPage(
 
 
       const loginUrl = `${baseUrl}/api/login`;
-      const [isAuthenticated, setIsAuthenticated] = useState(true);
+      const [isAuthenticated, setIsAuthenticated] = useState(false);
       const [username, setUsername] = useState('');
       const [password, setPassword] = useState('');
 
@@ -77,7 +77,7 @@ export default function AdminClientPage(
        const [products, setProducts] = useState();
        
        const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-         // event.preventDefault();
+         event.preventDefault();
          const form = event.target as HTMLFormElement;
          const formData = new FormData(form);
          const altText = formData.get('product_image_alt');

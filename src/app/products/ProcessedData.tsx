@@ -11,13 +11,7 @@ export default async function ProductsData({settings}: any) {
 
 
 
-  const allProductsProccessedData = settings.data.products.map((item :any ) => {
-    return {
-      product: item,  
-    };
-  });
 
-let sentProductArray: any[] = []
 
 
   const isDevelopment = process.env.NODE_ENV === 'development' ;

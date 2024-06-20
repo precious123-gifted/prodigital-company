@@ -16,7 +16,7 @@ import addSubImagePic from "../../../public/add_sub_image.jpg"
 
 
 
-export default function AdminClientPage({allProducts,image}:any) {
+export default function AdminClientPage({allProducts}:any) {
 
 
     const isDevelopment = process.env.NODE_ENV === 'development' ;

@@ -260,7 +260,7 @@ const baseUrl = isDevelopment
   const [resource2, setResource2] = useState<CloudinaryImageInfo | null | string>(null);
   const [resource3, setResource3] = useState<CloudinaryImageInfo | null | string>(null);
 function isCloudinaryInfo(value: string | CloudinaryImageInfo): value is CloudinaryImageInfo {
-return typeof value === 'object' && 'public_id' in value; // Check for object with public_id
+return typeof value === 'object' && 'public_id' in value; 
 }
 
   const handleImageDelete = async(public_id:any,number:number ) =>{

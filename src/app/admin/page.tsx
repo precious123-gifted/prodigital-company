@@ -1,51 +1,51 @@
 
 
-// import React, { useEffect, useState } from 'react';
-// import Bounded from '../components/Bounded';
-// import dbConnect from "@/lib/dbConnect";
-// import AdminClientPage from './client';
-// import { allProducts } from '../../lib/models/Product';
+import React, { useEffect, useState } from 'react';
+import Bounded from '../components/Bounded';
+import dbConnect from "@/lib/dbConnect";
+import AdminClientPage from './client';
+import { allProducts } from '../../lib/models/Product';
 
 
-// export default async function AdminPage() {
+export default async function AdminPage() {
 
 
-//     const isDevelopment = process.env.NODE_ENV === 'development' ;
-//     const baseUrl = isDevelopment
-//       ? `http://localhost:3000`
-//       : "https://prodigital-company.vercel.app";
-//      const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
-//      const imageUrl = `${baseUrl}/api/imageupload`;
+    // const isDevelopment = process.env.NODE_ENV === 'development' ;
+    // const baseUrl = isDevelopment
+    //   ? `http://localhost:3000`
+    //   : "https://prodigital-company.vercel.app";
+    //  const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
+    //  const imageUrl = `${baseUrl}/api/imageupload`;
   
 
 
 
 
-//       const getAllProductsData = async () =>{
-//         await dbConnect()
+    //   const getAllProductsData = async () =>{
+    //     await dbConnect()
         
         
-//         const response = await fetch(allProductsUrl);
+    //     const response = await fetch(allProductsUrl);
         
         
        
       
-//         if (!response.ok) {
-//             console.error('Error fetching data:', response.statusText);
+    //     if (!response.ok) {
+    //         console.error('Error fetching data:', response.statusText);
           
-//           } else {
-//             console.log('Data successfully recieved in frontend!');
-//           }
+    //       } else {
+    //         console.log('Data successfully recieved in frontend!');
+    //       }
       
-//           return response.json()
+    //       return response.json()
       
-//       }
+    //   }
       
-//       if(!baseUrl)return null
+    //   if(!baseUrl)return null
       
-//       const allProducts = await getAllProductsData()
+    //   const allProducts = await getAllProductsData()
       
-//       console.table(allProducts)
+    //   console.table(allProducts)
 
       
      
@@ -55,12 +55,12 @@
         
 
 
-//   return (
-//    <Bounded>
+  return (
+   <Bounded>
 
-// <AdminClientPage allProducts={allProducts} />
+<AdminClientPage allProducts={allProducts} />
 
 
-//    </Bounded>
-//   )
-// }
+   </Bounded>
+  )
+}

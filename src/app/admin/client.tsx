@@ -1,22 +1,21 @@
-// "use client"
+"use client"
 
 
-// import React, { useEffect, useRef, useState } from 'react'
-// import dbConnect from "@/lib/dbConnect";
-// import Link from 'next/link';
-// import Image from 'next/image';
-// import { useStateContext } from "@/StateManager";
-// import { CldUploadWidget } from 'next-cloudinary';
-// import ImageUpload from './ImageUpload';
-// import addImagePic from "../../../public/add_image.jpg"
-// import addSubImagePic from "../../../public/add_sub_image.jpg"
-
-
+import React, { useEffect, useRef, useState } from 'react'
+import dbConnect from "@/lib/dbConnect";
+import Link from 'next/link';
+import Image from 'next/image';
+import { useStateContext } from "@/StateManager";
+import { CldUploadWidget } from 'next-cloudinary';
+import addImagePic from "../../../public/add_image.jpg"
+import addSubImagePic from "../../../public/add_sub_image.jpg"
 
 
 
 
-// export default function AdminClientPage({allProducts}:any) {
+
+
+export default function AdminClientPage({allProducts}:any) {
 
 
 //     const isDevelopment = process.env.NODE_ENV === 'development' ;
@@ -317,256 +316,256 @@
 
 
 
-//   return (
+  return (
 
-// <div className="content">
+<div className="content">
 
-// {isAuthenticated ? (
+{/* {isAuthenticated ? (
 
 
 
 
 
-//   <>
-// <form
-// onSubmit={handleSubmit}
-//  className="add_product_div w-full flex-col">
+  <>
+<form
+onSubmit={handleSubmit}
+ className="add_product_div w-full flex-col">
 
-// <div className="image_div flex w-full">
+<div className="image_div flex w-full">
 
-// <>
-// <div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+<>
+<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
 
-// <CldUploadWidget uploadPreset="x2uckqjw"
+<CldUploadWidget uploadPreset="x2uckqjw"
 
-//   onSuccess={(result, { widget }) => {
-//     setResource(result?.info!);
-//     localStorage.setItem('RESOURCE_ID_KEY', JSON.stringify(result?.info!));
-//     console.table(  'this are the ' + result?.info)  
-//     widget.close();
-//   }}
-//   >
-//         {({ open }) => {
-//           return (
-//             <div ref={mainImageInputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+  onSuccess={(result, { widget }) => {
+    setResource(result?.info!);
+    localStorage.setItem('RESOURCE_ID_KEY', JSON.stringify(result?.info!));
+    console.table(  'this are the ' + result?.info)  
+    widget.close();
+  }}
+  >
+        {({ open }) => {
+          return (
+            <div ref={mainImageInputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
 
 
-//           );
-//         }}
-//       </CldUploadWidget>
+          );
+        }}
+      </CldUploadWidget>
 
-//         </div>   {resource && isCloudinaryInfo(resource) && (
+        </div>   {resource && isCloudinaryInfo(resource) && (
 
-//   <>        <div
-//   ref={deleteBTN}
-//   onClick={()=>{handleImageDelete(resource.public_id,0)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
-//  <Image src={`${resource.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
-// )}
+  <>        <div
+  ref={deleteBTN}
+  onClick={()=>{handleImageDelete(resource.public_id,0)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
+ <Image src={`${resource.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
+)}
 
-// {!resource && (
-//   <Image
-//   onClick={()=>{changeImage(0)}}
-//   src={addImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
-// )}
-// </>
+{!resource && (
+  <Image
+  onClick={()=>{changeImage(0)}}
+  src={addImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
+)}
+</>
 
-// <>
-// <div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+<>
+<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
 
-// <CldUploadWidget uploadPreset="x2uckqjw"
+<CldUploadWidget uploadPreset="x2uckqjw"
 
-//   onSuccess={(result, { widget }) => {
-//     setResource1(result?.info!);
-//     localStorage.setItem('RESOURCE_ID_KEY1', JSON.stringify(result?.info!));
+  onSuccess={(result, { widget }) => {
+    setResource1(result?.info!);
+    localStorage.setItem('RESOURCE_ID_KEY1', JSON.stringify(result?.info!));
 
-//     console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
+    console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
 
-//     widget.close();
-//   }}>
-//         {({ open }) => {
-//           return (
-//             <div ref={complimentaryImage1InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+    widget.close();
+  }}>
+        {({ open }) => {
+          return (
+            <div ref={complimentaryImage1InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
 
 
-//           );
-//         }}
-//       </CldUploadWidget>
+          );
+        }}
+      </CldUploadWidget>
 
-//         </div>   {resource1 && isCloudinaryInfo(resource1) && (
-//           <>
-//           <div ref={deleteBTN1} onClick={()=>{handleImageDelete(resource1.public_id,1)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
-//   <Image src={`${resource1.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/>
-//   </>
-// )}
+        </div>   {resource1 && isCloudinaryInfo(resource1) && (
+          <>
+          <div ref={deleteBTN1} onClick={()=>{handleImageDelete(resource1.public_id,1)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
+  <Image src={`${resource1.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/>
+  </>
+)}
 
-// {!resource1 && (
-//   <Image
-//   onClick={()=>{changeImage(1)}}
-//   src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
-// )}
-// </>
+{!resource1 && (
+  <Image
+  onClick={()=>{changeImage(1)}}
+  src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
+)}
+</>
 
-// <>
-// <div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+<>
+<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
 
-// <CldUploadWidget uploadPreset="x2uckqjw"
+<CldUploadWidget uploadPreset="x2uckqjw"
 
-//   onSuccess={(result, { widget }) => {
-//     setResource2(result?.info!);
-//     localStorage.setItem('RESOURCE_ID_KEY2', JSON.stringify(result?.info!));
+  onSuccess={(result, { widget }) => {
+    setResource2(result?.info!);
+    localStorage.setItem('RESOURCE_ID_KEY2', JSON.stringify(result?.info!));
 
-//     console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
+    console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
 
-//     widget.close();
-//   }}>
-//         {({ open }) => {
-//           return (
-//             <div ref={complimentaryImage2InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+    widget.close();
+  }}>
+        {({ open }) => {
+          return (
+            <div ref={complimentaryImage2InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
 
 
-//           );
-//         }}
-//       </CldUploadWidget>
+          );
+        }}
+      </CldUploadWidget>
 
-//         </div>   {resource2 && isCloudinaryInfo(resource2) && (
-//           <>
-//           <div ref={deleteBTN2} onClick={()=>{handleImageDelete(resource2.public_id,2)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
-//   <Image src={`${resource2.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
-// )}
+        </div>   {resource2 && isCloudinaryInfo(resource2) && (
+          <>
+          <div ref={deleteBTN2} onClick={()=>{handleImageDelete(resource2.public_id,2)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
+  <Image src={`${resource2.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
+)}
 
-// {!resource2 && (
-//   <Image
-//   onClick={()=>{changeImage(2)}}
-//   src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
-// )}
-// </>
+{!resource2 && (
+  <Image
+  onClick={()=>{changeImage(2)}}
+  src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
+)}
+</>
 
-// <>
-// <div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+<>
+<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
 
-// <CldUploadWidget uploadPreset="x2uckqjw"
+<CldUploadWidget uploadPreset="x2uckqjw"
 
-//   onSuccess={(result, { widget }) => {
-//     setResource3(result?.info!);
-//     localStorage.setItem('RESOURCE_ID_KEY3', JSON.stringify(result?.info!));
+  onSuccess={(result, { widget }) => {
+    setResource3(result?.info!);
+    localStorage.setItem('RESOURCE_ID_KEY3', JSON.stringify(result?.info!));
 
-//     console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
+    console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
 
-//     widget.close();
-//   }}>
-//         {({ open }) => {
-//           return (
-//             <div ref={complimentaryImage3InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+    widget.close();
+  }}>
+        {({ open }) => {
+          return (
+            <div ref={complimentaryImage3InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
 
 
-//           );
-//         }}
-//       </CldUploadWidget>
+          );
+        }}
+      </CldUploadWidget>
 
-//         </div>   {resource3 && isCloudinaryInfo(resource3) && (
-//         <>  <div ref={deleteBTN3} onClick={()=>{handleImageDelete(resource3.public_id,3)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
-//   <Image src={`${resource3.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
-// )}
+        </div>   {resource3 && isCloudinaryInfo(resource3) && (
+        <>  <div ref={deleteBTN3} onClick={()=>{handleImageDelete(resource3.public_id,3)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
+  <Image src={`${resource3.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
+)}
 
-// {!resource3 && (
-//   <Image
-//   onClick={()=>{changeImage(3)}}
-//   src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
-// )}
-// </>
+{!resource3 && (
+  <Image
+  onClick={()=>{changeImage(3)}}
+  src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
+)}
+</>
 
 
 
-// </div>
+</div>
 
-// <div className="category_div">
-// <input type="text" id="product_image_alt" name="product_image_alt" placeholder="Enter Image Alt Text" />
+<div className="category_div">
+<input type="text" id="product_image_alt" name="product_image_alt" placeholder="Enter Image Alt Text" />
 
-// <select id="productCategory" name="productCategory" >
-//   <option value="">Add a product category</option>
-//   <option value="Accessories">Accessories</option>
-//   <option value="NewLaptops">New Laptops</option>
-//   <option value="UsedLaptops">Used Laptops</option>
-// </select>
-// </div>
+<select id="productCategory" name="productCategory" >
+  <option value="">Add a product category</option>
+  <option value="Accessories">Accessories</option>
+  <option value="NewLaptops">New Laptops</option>
+  <option value="UsedLaptops">Used Laptops</option>
+</select>
+</div>
 
-// <div className="brandname_div"><input type="text" className="brandname" name="brandname" placeholder='Add a Brand Name' /></div>
-// <div className="title_div"><input type="text" className="title" name="title" placeholder='Add a Title' /></div>
-// <div className="shortdescription_div"><input type="text" className="shortdescription" name="shortdescription" placeholder='Add a Short Description' /></div>
-// <div className="fulldescription_div"><input type="text" className="fulldescription"  name="fulldescription" placeholder='Add a full Description' /></div>
-// <div className="price_div"><input type="number" className="price" name="price" placeholder='Add a Price' /></div>
+<div className="brandname_div"><input type="text" className="brandname" name="brandname" placeholder='Add a Brand Name' /></div>
+<div className="title_div"><input type="text" className="title" name="title" placeholder='Add a Title' /></div>
+<div className="shortdescription_div"><input type="text" className="shortdescription" name="shortdescription" placeholder='Add a Short Description' /></div>
+<div className="fulldescription_div"><input type="text" className="fulldescription"  name="fulldescription" placeholder='Add a full Description' /></div>
+<div className="price_div"><input type="number" className="price" name="price" placeholder='Add a Price' /></div>
 
 
-// <div onClick={()=>{console.table(resource)}}>show result</div>
-// <button type="submit">Post Product</button>
+<div onClick={()=>{console.table(resource)}}>show result</div>
+<button type="submit">Post Product</button>
 
 
 
 
 
-// </form>
+</form>
 
 
 
 
-// <div className="diplay_added_products">
+<div className="diplay_added_products">
 
-// <div className="w-full pb-[4vw]">
+<div className="w-full pb-[4vw]">
 
 
 
 
 
-//    <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
+   <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
 
 
 
 
-//        {allProducts.map((product:any,index:number) => (
-//              <div
-//                key={product._id}
-//                id={product._id}
-//             //    ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
-//                // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
-//                className="laptopProduct  hover:border-x-2
-//                landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
-//              >
-//                 <div className="flex flex-col items-start">
-//                <Link  href={`admin/product/${product._id}`}>
-//                  <div className="laptopImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
-//                    <Image alt='' src={`${product.productMainImage}`} className="rounded-lg " width={960} height={1280} />
-//                  </div>
-//                </Link>
-//                <Link href={`/product/${product._id}`}>
-//                  <div className="laptopTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.brandName}<span className="ml-1 text-[#4b6363] text-wrap">{product.title}</span></div></div>
-//                </Link>
-//                <div className="laptopDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.shortDescription}</div>
-//                <div className="laptopPrice w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.price}</div>
-//              </div>
-//              </div>
-//            ))}
-//          </div>
-//          </div>
-// </div>
+       {allProducts.map((product:any,index:number) => (
+             <div
+               key={product._id}
+               id={product._id}
+            //    ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
+               // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
+               className="laptopProduct  hover:border-x-2
+               landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
+             >
+                <div className="flex flex-col items-start">
+               <Link  href={`admin/product/${product._id}`}>
+                 <div className="laptopImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
+                   <Image alt='' src={`${product.productMainImage}`} className="rounded-lg " width={960} height={1280} />
+                 </div>
+               </Link>
+               <Link href={`/product/${product._id}`}>
+                 <div className="laptopTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.brandName}<span className="ml-1 text-[#4b6363] text-wrap">{product.title}</span></div></div>
+               </Link>
+               <div className="laptopDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.shortDescription}</div>
+               <div className="laptopPrice w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.price}</div>
+             </div>
+             </div>
+           ))}
+         </div>
+         </div>
+</div>
 
-// </>
-// ) : (
-//   <form onSubmit={handleLogin}>
+</>
+) : (
+  <form onSubmit={handleLogin}>
 
-// <input type="text" name='userName' placeholder='userName' />
-// <input type="text" name='password'  placeholder='password' />
+<input type="text" name='userName' placeholder='userName' />
+<input type="text" name='password'  placeholder='password' />
 
-//     <button type="submit">Login</button>
-//   </form>
-// )}
+    <button type="submit">Login</button>
+  </form>
+)} */}
 
 
-// </div>
+</div>
 
 
 
 
-//   )
-// }
+  )
+}
 
 

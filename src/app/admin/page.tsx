@@ -15,6 +15,7 @@ export default async function AdminPage() {
       ? `http://localhost:3000`
       : "https://prodigital-company.vercel.app";
      const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
+     const imageUrl = `${baseUrl}/api/imageupload`;
   
 
 
@@ -24,7 +25,7 @@ export default async function AdminPage() {
         await dbConnect()
         
         
-        const response = await fetch(allProductsUrl,{cache: 'no-store'});
+        const response = await fetch(allProductsUrl);
         
         
        
@@ -46,6 +47,32 @@ export default async function AdminPage() {
       
       console.table(allProducts)
 
+      
+      const getImage = async () =>{
+        await dbConnect()
+        
+        
+        const response = await fetch(imageUrl,);
+        
+        
+       
+      
+        if (!response.ok) {
+            console.error('Error fetching data:', response.statusText);
+          
+          } else {
+            
+            console.log('Data successfully recieved in frontend!');
+          }
+      
+          return response.json()
+      
+      }
+      if(!baseUrl)return null
+      
+      const image = await getImage()
+      
+      console.table(`this is the image :::: ${image?.image}`)
 
       
       
@@ -56,7 +83,7 @@ export default async function AdminPage() {
   return (
    <Bounded>
 
-<AdminClientPage allProducts={allProducts}/>
+<AdminClientPage allProducts={allProducts} image={image.image}/>
 
 
    </Bounded>

@@ -2,12 +2,10 @@
 
 import Bounded from "@/app/components/Bounded";
 import { Content } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
-import Link from "next/link";
 import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
-import { ProductsOfTheWeekSlice } from '../../../prismicio-types';
 import gsap from 'gsap'
+import Link from "next/link";
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useStateContext } from "@/StateManager";
 import Image from "next/image";

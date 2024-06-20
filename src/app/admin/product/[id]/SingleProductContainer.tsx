@@ -7,6 +7,7 @@ import exitIcon from "../../../../../public/exiticon.png"
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useStateContext } from "@/StateManager";
+import { CldUploadWidget } from "next-cloudinary";
 
 
 export default function SingleProductContainer({productData}:any) {
@@ -62,56 +63,12 @@ const baseUrl = isDevelopment
 
 
 
-  const handleAddToCartedProducts = () => {
-    const productToAdd = productData;
-
-
-    const existingProductIndex = cartedProducts.findIndex(
-             (item) => item._id === productToAdd._id
-           );
-    
-           if (existingProductIndex !== -1) {
-             alert('This Product is Already in Your cart');
-    
-           } else {
-             const updatedProduct = {
-               ...productToAdd, 
-               quantity: 1,
-               totalPrice: productToAdd.price, 
-             };
-      
-
-    setCartedProducts((prevCartedProducts) => [
-      ...prevCartedProducts,
-      updatedProduct,
-    ]);
-
-    localStorage.setItem(
-      "cartedProducts",
-      JSON.stringify([...cartedProducts, updatedProduct])
-    );
-
-    let cartedProductsFromLS = localStorage.getItem("cartedProducts");
-    
-    if (cartedProductsFromLS)setCartLength(JSON.parse(cartedProductsFromLS).length);
-    
-  };
-  }
+ 
 
 
 
  
-  useEffect(() => {
-    const existingCartedProductsData = localStorage.getItem("cartedProducts");
 
-    if (!existingCartedProductsData) {
-      localStorage.setItem("cartedProducts", JSON.stringify([]));
-
-    } else {
-      setCartedProducts(JSON.parse(existingCartedProductsData));
-      setCartLength(JSON.parse(existingCartedProductsData).length);
-    }
-  }, []);
 
   
 
@@ -295,6 +252,69 @@ const baseUrl = isDevelopment
 
 
 
+
+  interface CloudinaryImageInfo {
+    public_id?: string;
+    secure_url?: string;
+    url?: string;
+  }
+  const [resource, setResource] = useState<CloudinaryImageInfo | null | string>(null);
+  const [resource1, setResource1] = useState<CloudinaryImageInfo | null | string>(null);
+  const [resource2, setResource2] = useState<CloudinaryImageInfo | null | string>(null);
+  const [resource3, setResource3] = useState<CloudinaryImageInfo | null | string>(null);
+function isCloudinaryInfo(value: string | CloudinaryImageInfo): value is CloudinaryImageInfo {
+return typeof value === 'object' && 'public_id' in value; // Check for object with public_id
+}
+
+  const handleImageDelete = async(public_id:any,number:number ) =>{
+
+
+    if (!public_id ) {
+      console.error('No public_id available for deletion');
+      return; 
+    }
+  
+    try {
+      const response = await fetch(`${baseUrl}/api/removeCloudinaryImage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ public_id }),
+      });
+  if(response.ok){
+  
+    switch (number) {
+      case 0:
+      setResource(null);
+        break;
+      case 1:
+        setResource1(null);
+        break;
+      case 2:
+        setResource2(null);
+  
+        break;
+      case 3:
+        setResource3(null);
+  
+        break;
+      default:
+        console.error('Invalid number passed to handleImage');
+    }
+  
+  
+  
+  }
+  
+  }
+  
+  catch (error) {
+    console.error('Error deleting image:', error);
+  }
+  }
+
+
+
+
     
   return (
     <Bounded>
@@ -319,53 +339,115 @@ onSubmit={handleSubmit}>
 
    <div className="complimentaryimages flex  mb-[1vw] portrait:sm:w-[10vw] space-x-[1vw]">
    
+   <>
     <div className="changeImage relative">
-    <input 
-ref={complimentaryImage1InputRef}
- type="file" id="product_main_image" name="product_main_image" className="hidden"
-  onChange={(event)=>{handleImage(event,3)}}  accept="image/*"/>
+    <CldUploadWidget uploadPreset="x2uckqjw"
+
+onSuccess={(result, { widget }) => {
+  setResource1(result?.info!);
+  localStorage.setItem('RESOURCE_ID_KEY', JSON.stringify(result?.info!));
+  console.table(  'this are the ' + result?.info)  
+  widget.close();
+}}
+>
+      {({ open }) => {
+        return (
+          <div ref={complimentaryImage1InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+
+
+        );
+      }}
+    </CldUploadWidget>
+
+      <div
+    onClick={()=>{changeMainImage(1)}}
+      
+      className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
+      <Image alt='' src={resource1 && isCloudinaryInfo(resource1)?`${resource1!.url}`:`${imageData1}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
+      </>
+
+      <>
+    <div className="changeImage relative">
+    <CldUploadWidget uploadPreset="x2uckqjw"
+
+onSuccess={(result, { widget }) => {
+  setResource2(result?.info!);
+  localStorage.setItem('RESOURCE_ID_KEY', JSON.stringify(result?.info!));
+  console.table(  'this are the ' + result?.info)  
+  widget.close();
+}}
+>
+      {({ open }) => {
+        return (
+          <div ref={complimentaryImage2InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+
+
+        );
+      }}
+    </CldUploadWidget>
+
+      <div
+    onClick={()=>{changeMainImage(2)}}
+      
+      className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
+      <Image alt='' src={resource2 && isCloudinaryInfo(resource2)?`${resource2!.url}`:`${imageData2}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
+      </>
+      <>
+    <div className="changeImage relative">
+    <CldUploadWidget uploadPreset="x2uckqjw"
+
+onSuccess={(result, { widget }) => {
+  setResource3(result?.info!);
+  localStorage.setItem('RESOURCE_ID_KEY', JSON.stringify(result?.info!));
+  console.table(  'this are the ' + result?.info)  
+  widget.close();
+}}
+>
+      {({ open }) => {
+        return (
+          <div ref={complimentaryImage3InputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+
+
+        );
+      }}
+    </CldUploadWidget>
 
       <div
     onClick={()=>{changeMainImage(3)}}
       
       className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
-      <Image alt='' src={`${imageData1}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
-    
-    <div className="changeImage relative">
-    <input 
-ref={complimentaryImage2InputRef}
- type="file" id="product_main_image" name="product_main_image" className="hidden"
-  onChange={(event)=>{handleImage(event,2)}}  accept="image/*"/>
-    <div 
-    onClick={()=>{changeMainImage(2)}}
-    
-    className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
-      <Image alt='' src={`${imageData2}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
-    
-    <div className="changeImage relative">
-    <input 
-ref={complimentaryImage3InputRef}
- type="file" id="product_main_image" name="product_main_image" className="hidden"
-  onChange={(event)=>{handleImage(event,1)}}  accept="image/*"/>
-    <div 
-    onClick={()=>{changeMainImage(1)}}
-    className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
-      <Image alt='' src={`${imageData3}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
-        
+      <Image alt='' src={resource3 && isCloudinaryInfo(resource3)?`${resource3!.url}`:`${imageData3}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
+      </>
         
         
         </div>
         <div  className="mainhairImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
-<input 
-ref={mainImageInputRef}
- type="file" id="product_main_image" name="product_main_image" className="hidden"
-  onChange={(event)=>{handleImage(event,0)}}  accept="image/*"/>
+        
+   
+    <CldUploadWidget uploadPreset="x2uckqjw"
 
-    <div 
+onSuccess={(result, { widget }) => {
+  setResource(result?.info!);
+  localStorage.setItem('RESOURCE_ID_KEY', JSON.stringify(result?.info!));
+  console.table(  'this are the ' + result?.info)  
+  widget.close();
+}}
+>
+      {({ open }) => {
+        return (
+          <div ref={mainImageInputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+
+
+        );
+      }}
+    </CldUploadWidget>
+
+      <div
     onClick={()=>{changeMainImage(0)}}
-    className="button absolute text-[20vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
-
-        <Image alt='' src={`${imageData}`} className="rounded-lg " width={960} height={1280} />
+      
+      className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
+      <Image alt='' src={resource && isCloudinaryInfo(resource)?`${resource!.url}`:`${imageData}`} className="rounded-lg landscape:w-[24vw] portrait:w-full " width={960} height={1280} />
+      
         </div>
 
    </div>

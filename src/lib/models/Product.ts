@@ -1,6 +1,17 @@
 import {Schema,model,models} from "mongoose"
+import { buffer } from "stream/consumers";
 
 
+
+
+
+const imageSchema = new Schema({
+  image: {
+    type: Buffer,
+    required: true,
+  },
+ 
+})
 
 const userSchema = new Schema({
   userName: {
@@ -40,6 +51,22 @@ const productSchema = new Schema({
     type: Number,
     required: true,
   },
+  imageID: {
+    type: String,
+    required: true,
+  },
+image1ID: {
+  type: String,
+  required: true,
+},
+image2ID: {
+  type: String,
+  required: true,
+},
+image3ID: {
+  type: String,
+  required: true,
+},
   productMainImage: {
     type: String,
     required: true,
@@ -70,6 +97,8 @@ const productSchema = new Schema({
 
 export const allProducts = models['allProducts'] || model('allProducts', productSchema, 'allProducts');
 export const user = models['user'] || model('user', userSchema, 'user');
+export const image = models['image'] || model('image', imageSchema, 'image');
+
 
 
 

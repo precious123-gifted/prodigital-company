@@ -2,6 +2,7 @@
 import { NextRequest } from "next/server";
 import dbConnect  from "@/lib/dbConnect";
 import { allProducts } from "@/lib/models/Product";
+import { writeFile } from 'fs/promises'
 
 
 
@@ -58,14 +59,21 @@ async function getRequestBody(request: NextRequest) {
 }
 
 
+
+
+
+
 export async function POST(request: NextRequest) {
 await dbConnect()
 
   try {
     const processedData = await getRequestBody(request);
-
+console.table(processedData)
     if (!Array.isArray(processedData)) {
-      return new Response('Invalid data format. Please provide an array of objects.', { status: 400 });
+      return new Response(JSON.stringify({
+        message: 'Invalid data format. Please provide an array of objects.',
+        status: 400
+      }), { status: 400 });
     }
 
     // Check for empty database before iterating
@@ -78,25 +86,32 @@ await dbConnect()
         await newItem.save();
         console.log('Product saved successfully:', newItem.id);
       }
-      return new Response('Data received and saved successfully.', { status: 201 });
+      
+      return new Response(JSON.stringify({
+        message: 'Data received and saved successfully.',
+        status: 201
+      }), { status: 201 });
     }
 
 
     for (const item of processedData) {
-      const productMainImage = item.productMainImage; 
+      const title = item.title; 
 
-      const query = { productMainImage: productMainImage };
+      const query = { title: title };
 
       try {
         const existingItem = await allProducts.findOne(query);
 
         if (existingItem) {
           // Handle potential duplicate based on price
-          console.warn(`Potential duplicate product detected with price: ${productMainImage}`);
+          console.warn(`Potential duplicate product detected with price: ${title}`);
           // You can choose to return an error or adjust the new item (e.g., add a suffix)
 
           // Uncomment if you want to reject duplicates based on price
-          return new Response(`Duplicate item detected with price: ${productMainImage}`, { status: 409 });
+          return new Response(JSON.stringify({
+            message: `Duplicate item detected with price: ${title}.`,
+            status: 409
+          }), { status: 409 });
          
         }
 
@@ -105,14 +120,20 @@ await dbConnect()
         console.log('Product saved successfully:', newItem.id);
       } catch (error) {
         console.error('Error saving product:', item.id, error);
-        return new Response('Error saving product.', { status: 500 });
+        return new Response(JSON.stringify({
+          message: 'Error saving product.',
+          status: 500
+        }), { status: 500 });
       }
     }
 
     return new Response('Data received and saved successfully.', { status: 201 });
   } catch (error) {
     console.error('Error processing POST request:', error);
-    return new Response('Error receiving or saving data.', { status: 500 });
+    return new Response(JSON.stringify({
+      message: 'Error receiving or saving data.',
+      status: 500
+    }), { status: 500 });
   }
 }
 

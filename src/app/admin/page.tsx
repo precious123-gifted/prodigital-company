@@ -10,56 +10,56 @@ import { allProducts } from '../../lib/models/Product';
 export default async function AdminPage() {
 
 
-    // const isDevelopment = process.env.NODE_ENV === 'development' ;
-    // const baseUrl = isDevelopment
-    //   ? `http://localhost:3000`
-    //   : "https://prodigital-company.vercel.app";
-    //  const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
-    //  const imageUrl = `${baseUrl}/api/imageupload`;
+     const isDevelopment = process.env.NODE_ENV === 'development' ;
+     const baseUrl = isDevelopment
+       ? `http://localhost:3000`
+       : "https://prodigital-company.vercel.app";
+      const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
+      const imageUrl = `${baseUrl}/api/imageupload`;
   
 
 
 
 
-    //   const getAllProductsData = async () =>{
-    //     await dbConnect()
-        
-        
-    //     const response = await fetch(allProductsUrl);
-        
-        
-       
+       const getAllProductsData = async () =>{
+         await dbConnect()
       
-    //     if (!response.ok) {
-    //         console.error('Error fetching data:', response.statusText);
-          
-    //       } else {
-    //         console.log('Data successfully recieved in frontend!');
-    //       }
       
-    //       return response.json()
+         const response = await fetch(allProductsUrl);
       
-    //   }
-      
-    //   if(!baseUrl)return null
-      
-    //   const allProducts = await getAllProductsData()
-      
-    //   console.table(allProducts)
-
       
      
-      
-      
-
+    
+         if (!response.ok) {
+             console.error('Error fetching data:', response.statusText);
         
+           } else {
+             console.log('Data successfully recieved in frontend!');
+           }
+    
+           return response.json()
+    
+       }
+    
+       if(!baseUrl)return null
+    
+       const allProducts = await getAllProductsData()
+    
+       console.table(allProducts)
+
+    
+    
+    
+    
+
+      
 
 
   return (
    <Bounded>
 
 <AdminClientPage
-//  allProducts={allProducts}
+  allProducts={allProducts}
  />
 
 

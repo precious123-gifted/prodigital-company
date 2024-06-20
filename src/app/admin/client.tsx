@@ -16,305 +16,216 @@ import addSubImagePic from "../../../public/add_sub_image.jpg"
 
 
 export default function AdminClientPage(
-  // {allProducts}:any
-
-) {
-
-
-//     const isDevelopment = process.env.NODE_ENV === 'development' ;
-//     const baseUrl = isDevelopment
-//       ? `http://localhost:3000`
-//       : "https://prodigital-company.vercel.app";
-//      const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
-//      const loginUrl = `${baseUrl}/api/login`;
-
-
-//      const [isAuthenticated, setIsAuthenticated] = useState(false);
-//      const [username, setUsername] = useState('');
-//      const [password, setPassword] = useState('');
-
-
-
-
-//     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
-//       event.preventDefault();
-
-
-
-//       const form = event.target as HTMLFormElement;
-//       const formData = new FormData(form);
-
-//       const userName = formData.get('userName');
-//       const password = formData.get('password');
-
-
-
-//       const loginData = { userName, password };
-
-//       console.table(loginData);
-
-//       try {
-//         const response = await fetch(loginUrl, {
-//           method: 'POST',
-//           headers: { 'Content-Type': 'application/json' },
-//           body: JSON.stringify(loginData),
-//         });
-
-//         if (response.ok) {
-//           const data = await response.json();
-
-//           console.log('Data sent successfully:', data);
-//           setIsAuthenticated(true)
-//           console.log(isAuthenticated)
-//         } else if (response.status === 409) {
-//           console.error('Server responded with conflict (409):', response.statusText);
-//           alert('username or password is incorrect.');
-//         } else {
-
-//           console.error('Server responded with error:', response.status, response.statusText);
-//         }
-//       } catch (error) {
-//         console.error('Error sending data:', error);
-//       }
-//     };
-
-
-//       const [imageData, setImageData] = useState<string | null>(null);
-//       const [imageData1, setImageData1] = useState<string | null>(null);
-//       const [imageData2, setImageData2] = useState<string | null>(null);
-//       const [imageData3, setImageData3] = useState<string | null>(null);
-//       const [products, setProducts] = useState();
-//       const {productOfTheWeek, setProductOfTheWeek} = useStateContext();
-
-
-
-
-
-
-
-
-
-
-//       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-//         // event.preventDefault();
-
-
-
-//         const form = event.target as HTMLFormElement;
-//         const formData = new FormData(form);
-//         const altText = formData.get('product_image_alt');
-//         const category = formData.get('productCategory');
-//         const brandName = formData.get('brandname');
-//         const title = formData.get('title');
-//         const shortDescription = formData.get('shortdescription');
-//         const fullDescription = formData.get('fulldescription');
-//         const price = formData.get('price');
-
-//         const product = [
-//           {
-//             imageID:resource ? (typeof resource === 'object' && isCloudinaryInfo(resource) ? resource.public_id : null) : null,
-//             image1ID:resource1 ? (typeof resource1 === 'object' && isCloudinaryInfo(resource1) ? resource1.public_id : null) : null,
-//             image2ID:resource2 ? (typeof resource2 === 'object' && isCloudinaryInfo(resource2) ? resource2.public_id : null) : null,
-//             image3ID:resource3 ? (typeof resource3 === 'object' && isCloudinaryInfo(resource3) ? resource3.public_id : null) : null,
-//             productMainImage: resource ? (typeof resource === 'object' && isCloudinaryInfo(resource) ? resource.url : null) : null,
-//             productComplementaryImage1: resource1 ? (typeof resource1 === 'object' && isCloudinaryInfo(resource1) ? resource1.url : null) : null,
-//             productComplementaryImage2: resource2 ? (typeof resource2 === 'object' && isCloudinaryInfo(resource2) ? resource2.url : null) : null,
-//             productComplementaryImage3: resource3 ? (typeof resource3 === 'object' && isCloudinaryInfo(resource3) ? resource3.url : null) : null,
-//             altText,
-//             category,
-//             brandName,
-//             title,
-//             shortDescription,
-//             fullDescription,
-//             price,
-//             postedAt: new Date().toISOString(),
-//           },
-//         ];
-
-//         console.table(product);
-
-
-//         try {
-//           const response = await fetch(allProductsUrl, {
-//             method: 'POST',
-//             headers: { 'Content-Type': "application/x-www-form-urlencoded", },
-//             body: JSON.stringify(product),
-//           });
-
-//           if (response.status === 201) {
-//             localStorage.removeItem("RESOURCE_ID_KEY")
-//             localStorage.removeItem("RESOURCE_ID_KEY1")
-//             localStorage.removeItem("RESOURCE_ID_KEY2")
-//             localStorage.removeItem("RESOURCE_ID_KEY3")
-//             const data = await response.json();
-           
-//             console.log('Data sent successfully:', data);
-//           } else if (response.status === 409) {
-//             console.error('Server responded with conflict (409):', response.statusText);
-//             alert('This product image already exist. Please use a different title and try again.');
-//           } else {
-//             console.error('Server responded with error:', response.status, response.statusText);
-//           }
-//         } catch (error) {
-//           console.error('Error sending data:', error);
-//         }
-//       };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//       interface CloudinaryImageInfo {
-//         public_id?: string;
-//         secure_url?: string;
-//         url?: string;
-//       }
-//       const [resource, setResource] = useState<CloudinaryImageInfo | null | string>(null);
-//       const [resource1, setResource1] = useState<CloudinaryImageInfo | null | string>(null);
-//       const [resource2, setResource2] = useState<CloudinaryImageInfo | null | string>(null);
-//       const [resource3, setResource3] = useState<CloudinaryImageInfo | null | string>(null);
-// function isCloudinaryInfo(value: string | CloudinaryImageInfo): value is CloudinaryImageInfo {
-//   return typeof value === 'object' && 'public_id' in value; // Check for object with public_id
-// }
-
-
-
-// const mainImageInputRef = useRef<HTMLDivElement>(null);
-// const complimentaryImage1InputRef = useRef<HTMLDivElement>(null);
-// const complimentaryImage2InputRef = useRef<HTMLDivElement>(null);
-// const complimentaryImage3InputRef = useRef<HTMLDivElement>(null);
-
-
-// const changeImage = (number:number) => {
-
-
-//   switch (number) {
-//     case 0:
-//     mainImageInputRef.current?.click();
-//       break;
-//     case 1:
-//       complimentaryImage1InputRef.current?.click();
-//       break;
-//     case 2:
-//       complimentaryImage2InputRef.current?.click();
-
-//       break;
-//     case 3:
-//       complimentaryImage3InputRef.current?.click();
-
-//       break;
-//     default:
-//       console.error('Invalid number passed to handleImage');
-//   }
-
-// };
-
-// const deleteBTN = useRef<HTMLDivElement>(null);
-// const deleteBTN1 = useRef<HTMLDivElement>(null);
-// const deleteBTN2 = useRef<HTMLDivElement>(null);
-// const deleteBTN3 = useRef<HTMLDivElement>(null);
-
-
-// const deleteImages = async () => {
-//   const resourceKeys = [
-//     "RESOURCE_ID_KEY",
-//     "RESOURCE_ID_KEY1",
-//     "RESOURCE_ID_KEY2",
-//     "RESOURCE_ID_KEY3",
-//   ];
-
-//   for (const key of resourceKeys) {
-//     const resourceString = localStorage.getItem(key);
-
-//     if (resourceString) {
-//       try {
-//         const resourceObject = JSON.parse(resourceString);
-//         const public_id = resourceObject.public_id;
-//         console.log("Deleting image:", public_id);
-
-//         const response = await fetch(`${baseUrl}/api/removeCloudinaryImage`, {
-//           method: 'POST',
-//           headers: { 'Content-Type': 'application/json' },
-//           body: JSON.stringify({ public_id }),
-//         });
-
-//         if (response.ok) {
-//           localStorage.removeItem(key);
-//           console.log("Image deleted from local storage:", public_id);
-//         } else {
-//           console.error("Error deleting image from server:", public_id);
-//         }
-//       } catch (error) {
-//         console.error("Error processing resource:", key, error);
-//       }
-//     } else {
-//       console.log("No image resource found for key:", key);
-//     }
-//   }
-// };
-
-
-
-// useEffect(() => {
-// deleteImages()
-
-// }, []);
-
-
-// const handleImageDelete = async(public_id:any,number:number ) =>{
-
-
-//   if (!public_id ) {
-//     console.error('No public_id available for deletion');
-//     return; 
-//   }
-
-//   try {
-//     const response = await fetch(`${baseUrl}/api/removeCloudinaryImage`, {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ public_id }),
-//     });
-// if(response.ok){
-
-//   switch (number) {
-//     case 0:
-//     setResource(null);
-//       break;
-//     case 1:
-//       setResource1(null);
-//       break;
-//     case 2:
-//       setResource2(null);
-
-//       break;
-//     case 3:
-//       setResource3(null);
-
-//       break;
-//     default:
-//       console.error('Invalid number passed to handleImage');
-//   }
-
-
-
-// }
-
-// }
-
-// catch (error) {
-//   console.error('Error deleting image:', error);
-// }
-// }
+ {allProducts}:any
+){
+     const isDevelopment = process.env.NODE_ENV === 'development' ;
+     const baseUrl = isDevelopment
+       ? `http://localhost:3000`
+       : "https://prodigital-company.vercel.app";
+      const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
+      const loginUrl = `${baseUrl}/api/login`;
+      const [isAuthenticated, setIsAuthenticated] = useState(false);
+      const [username, setUsername] = useState('');
+      const [password, setPassword] = useState('');
+     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+       event.preventDefault();
+       const form = event.target as HTMLFormElement;
+       const formData = new FormData(form);
+       const userName = formData.get('userName');
+       const password = formData.get('password');
+       const loginData = { userName, password };
+       console.table(loginData);
+       try {
+         const response = await fetch(loginUrl, {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify(loginData),
+         });
+         if (response.ok) {
+           const data = await response.json();
+           console.log('Data sent successfully:', data);
+           setIsAuthenticated(true)
+           console.log(isAuthenticated)
+         } else if (response.status === 409) {
+           console.error('Server responded with conflict (409):', response.statusText);
+           alert('username or password is incorrect.');
+         } else {
+           console.error('Server responded with error:', response.status, response.statusText);
+         }
+       } catch (error) {
+         console.error('Error sending data:', error);
+       }
+     };
+       const [imageData, setImageData] = useState<string | null>(null);
+       const [imageData1, setImageData1] = useState<string | null>(null);
+       const [imageData2, setImageData2] = useState<string | null>(null);
+       const [imageData3, setImageData3] = useState<string | null>(null);
+       const [products, setProducts] = useState();
+       const {productOfTheWeek, setProductOfTheWeek} = useStateContext();
+       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+         // event.preventDefault();
+         const form = event.target as HTMLFormElement;
+         const formData = new FormData(form);
+         const altText = formData.get('product_image_alt');
+         const category = formData.get('productCategory');
+         const brandName = formData.get('brandname');
+         const title = formData.get('title');
+         const shortDescription = formData.get('shortdescription');
+         const fullDescription = formData.get('fulldescription');
+         const price = formData.get('price');
+         const product = [
+           {
+             imageID:resource ? (typeof resource === 'object' && isCloudinaryInfo(resource) ? resource.public_id : null) : null,
+             image1ID:resource1 ? (typeof resource1 === 'object' && isCloudinaryInfo(resource1) ? resource1.public_id : null) : null,
+             image2ID:resource2 ? (typeof resource2 === 'object' && isCloudinaryInfo(resource2) ? resource2.public_id : null) : null,
+             image3ID:resource3 ? (typeof resource3 === 'object' && isCloudinaryInfo(resource3) ? resource3.public_id : null) : null,
+             productMainImage: resource ? (typeof resource === 'object' && isCloudinaryInfo(resource) ? resource.url : null) : null,
+             productComplementaryImage1: resource1 ? (typeof resource1 === 'object' && isCloudinaryInfo(resource1) ? resource1.url : null) : null,
+             productComplementaryImage2: resource2 ? (typeof resource2 === 'object' && isCloudinaryInfo(resource2) ? resource2.url : null) : null,
+             productComplementaryImage3: resource3 ? (typeof resource3 === 'object' && isCloudinaryInfo(resource3) ? resource3.url : null) : null,
+             altText,
+             category,
+             brandName,
+             title,
+             shortDescription,
+             fullDescription,
+             price,
+             postedAt: new Date().toISOString(),
+           },
+         ];
+         console.table(product);
+         try {
+           const response = await fetch(allProductsUrl, {
+             method: 'POST',
+             headers: { 'Content-Type': "application/x-www-form-urlencoded", },
+             body: JSON.stringify(product),
+           });
+           if (response.status === 201) {
+             localStorage.removeItem("RESOURCE_ID_KEY")
+             localStorage.removeItem("RESOURCE_ID_KEY1")
+             localStorage.removeItem("RESOURCE_ID_KEY2")
+             localStorage.removeItem("RESOURCE_ID_KEY3")
+             const data = await response.json();
+         
+             console.log('Data sent successfully:', data);
+           } else if (response.status === 409) {
+             console.error('Server responded with conflict (409):', response.statusText);
+             alert('This product image already exist. Please use a different title and try again.');
+           } else {
+             console.error('Server responded with error:', response.status, response.statusText);
+           }
+         } catch (error) {
+           console.error('Error sending data:', error);
+         }
+       };
+       interface CloudinaryImageInfo {
+         public_id?: string;
+         secure_url?: string;
+         url?: string;
+       }
+       const [resource, setResource] = useState<CloudinaryImageInfo | null | string>(null);
+       const [resource1, setResource1] = useState<CloudinaryImageInfo | null | string>(null);
+       const [resource2, setResource2] = useState<CloudinaryImageInfo | null | string>(null);
+       const [resource3, setResource3] = useState<CloudinaryImageInfo | null | string>(null);
+ function isCloudinaryInfo(value: string | CloudinaryImageInfo): value is CloudinaryImageInfo {
+   return typeof value === 'object' && 'public_id' in value; // Check for object with public_id
+ }
+ const mainImageInputRef = useRef<HTMLDivElement>(null);
+ const complimentaryImage1InputRef = useRef<HTMLDivElement>(null);
+ const complimentaryImage2InputRef = useRef<HTMLDivElement>(null);
+ const complimentaryImage3InputRef = useRef<HTMLDivElement>(null);
+ const changeImage = (number:number) => {
+   switch (number) {
+     case 0:
+     mainImageInputRef.current?.click();
+       break;
+     case 1:
+       complimentaryImage1InputRef.current?.click();
+       break;
+     case 2:
+       complimentaryImage2InputRef.current?.click();
+       break;
+     case 3:
+       complimentaryImage3InputRef.current?.click();
+       break;
+     default:
+       console.error('Invalid number passed to handleImage');
+   }
+ };
+ const deleteBTN = useRef<HTMLDivElement>(null);
+ const deleteBTN1 = useRef<HTMLDivElement>(null);
+ const deleteBTN2 = useRef<HTMLDivElement>(null);
+ const deleteBTN3 = useRef<HTMLDivElement>(null);
+ const deleteImages = async () => {
+   const resourceKeys = [
+     "RESOURCE_ID_KEY",
+     "RESOURCE_ID_KEY1",
+     "RESOURCE_ID_KEY2",
+     "RESOURCE_ID_KEY3",
+   ];
+   for (const key of resourceKeys) {
+     const resourceString = localStorage.getItem(key);
+     if (resourceString) {
+       try {
+         const resourceObject = JSON.parse(resourceString);
+         const public_id = resourceObject.public_id;
+         console.log("Deleting image:", public_id);
+         const response = await fetch(`${baseUrl}/api/removeCloudinaryImage`, {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify({ public_id }),
+         });
+         if (response.ok) {
+           localStorage.removeItem(key);
+           console.log("Image deleted from local storage:", public_id);
+         } else {
+           console.error("Error deleting image from server:", public_id);
+         }
+       } catch (error) {
+         console.error("Error processing resource:", key, error);
+       }
+     } else {
+       console.log("No image resource found for key:", key);
+     }
+   }
+ };
+ useEffect(() => {
+ deleteImages()
+ }, []);
+ const handleImageDelete = async(public_id:any,number:number ) =>{
+   if (!public_id ) {
+     console.error('No public_id available for deletion');
+     return; 
+   }
+   try {
+     const response = await fetch(`${baseUrl}/api/removeCloudinaryImage`, {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ public_id }),
+     });
+ if(response.ok){
+   switch (number) {
+     case 0:
+     setResource(null);
+       break;
+     case 1:
+       setResource1(null);
+       break;
+     case 2:
+       setResource2(null);
+       break;
+     case 3:
+       setResource3(null);
+       break;
+     default:
+       console.error('Invalid number passed to handleImage');
+   }
+ }
+ }
+ catch (error) {
+   console.error('Error deleting image:', error);
+ }
+ }
 
 
 
@@ -323,7 +234,7 @@ export default function AdminClientPage(
 
 <div className="content">
 
-{/* {isAuthenticated ? (
+ {isAuthenticated ? (
 
 
 
@@ -560,7 +471,7 @@ onSubmit={handleSubmit}
 
     <button type="submit">Login</button>
   </form>
-)} */}
+)} 
 
 
 </div>

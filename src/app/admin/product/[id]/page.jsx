@@ -1,5 +1,5 @@
-// import SingleProductContainer from "./SingleProductContainer";
-// import dbConnect from "@/lib/dbConnect";
+import SingleProductContainer from "./SingleProductContainer";
+import dbConnect from "@/lib/dbConnect";
 
 // const isDevelopment = process.env.NODE_ENV === 'development' ;
 // const baseUrl = isDevelopment
@@ -64,18 +64,18 @@
 // }
 
 
-// export default async function ProductInfoPage({params}) {
+export default async function ProductInfoPage({params}) {
 //   await dbConnect()
 
 // const product = await getProduct(params.id)
 
 // console.log(`this is the params id ${params.id} and ${product}`)
 
-//   return (
-//     <div>
+  return (
+    <div>
    
-//    <SingleProductContainer productData={product}/>
+   <SingleProductContainer productData={product}/>
     
-//   </div>
-//   )
-// }
+  </div>
+  )
+}

@@ -74,7 +74,9 @@ export default async function ProductInfoPage({params}) {
   return (
     <div>
    
-   <SingleProductContainer productData={product}/>
+   <SingleProductContainer
+    // productData={product}
+    />
     
   </div>
   )

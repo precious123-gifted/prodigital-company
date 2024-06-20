@@ -9,7 +9,10 @@ import { useStateContext } from "@/StateManager";
 import { CldUploadWidget } from "next-cloudinary";
 
 
-export default function SingleProductContainer({productData}:any) {
+export default function SingleProductContainer(
+  // {productData}:any
+
+) {
 
 
 //   interface Product {

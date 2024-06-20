@@ -58,7 +58,9 @@ export default async function AdminPage() {
   return (
    <Bounded>
 
-<AdminClientPage allProducts={allProducts} />
+<AdminClientPage
+//  allProducts={allProducts}
+ />
 
 
    </Bounded>

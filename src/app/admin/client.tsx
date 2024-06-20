@@ -27,7 +27,7 @@ export default function AdminClientPage({allProducts}:any) {
      const loginUrl = `${baseUrl}/api/login`;
 
 
-     const [isAuthenticated, setIsAuthenticated] = useState(true);
+     const [isAuthenticated, setIsAuthenticated] = useState(false);
      const [username, setUsername] = useState('');
      const [password, setPassword] = useState('');
 

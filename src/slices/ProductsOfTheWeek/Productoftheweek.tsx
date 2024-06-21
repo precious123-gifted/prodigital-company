@@ -2,15 +2,13 @@
 
 import Bounded from "@/app/components/Bounded";
 import { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
-import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
-import gsap from 'gsap'
 import Link from "next/link";
+import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
+import { ProductsOfTheWeekSlice } from '../../../prismicio-types';
+import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { useStateContext } from "@/StateManager";
-import Image from "next/image";
-
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,101 +17,102 @@ gsap.registerPlugin(ScrollTrigger);
 /**
  * Props for `ProductsOfTheWeek`.
  */
-export type ProductsOfTheWeekProps =  SliceComponentProps<Content.ProductsOfTheWeekSlice>;
+export type ProductsOfTheWeekProps =
+  SliceComponentProps<Content.ProductsOfTheWeekSlice>;
 
 /**
  * Component for "ProductsOfTheWeek" Slices.
  */
 const Productsoftheweek = (
     // { slice }: ProductsOfTheWeekProps,
-    {ProductsoftheweekData}:any,{slice}:any): JSX.Element => {
+    // {ProductsoftheweekData}:any,
+    {slice}:any): JSX.Element => {
 
 
 //refs
-const headerref = useRef(null)
-type ProductRef = MutableRefObject<HTMLDivElement | null>;
+// const headerref = useRef(null)
+// type ProductRef = MutableRefObject<HTMLDivElement | null>;
 
-const productrefs = useRef<ProductRef[]>([]);
-const {productOfTheWeek, setProductOfTheWeek} = useStateContext();
-
+// const productrefs = useRef<ProductRef[]>([]);
 
 
 
-const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
-  let opacityAnimation =   ScrollTrigger.create({
-    trigger: ref.current,
-    start: "top bottom",
-    end: "bottom top",
+
+     
+// const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
+//   let opacityAnimation =   ScrollTrigger.create({
+//     trigger: ref.current,
+//     start: "top bottom",
+//     end: "bottom top",
     
     
-      onEnter: () => {
-      gsap.to(ref.current,time, {
-        opacity:'100%',
-        scrub:1,
-        ease: "Power1.easeIn" ,
+//       onEnter: () => {
+//       gsap.to(ref.current,time, {
+//         opacity:'100%',
+//         scrub:1,
+//         ease: "Power1.easeIn" ,
         
-      });
+//       });
   
-    },
-    onLeave: () => {
-      gsap.to(ref.current,time, {
-        opacity:'0%',
-        scrub:1,
-        ease: "Power1.easeIn" 
+//     },
+//     onLeave: () => {
+//       gsap.to(ref.current,time, {
+//         opacity:'0%',
+//         scrub:1,
+//         ease: "Power1.easeIn" 
         
-      });
+//       });
   
   
      
       
-    },
-    onLeaveBack: () => {
-      gsap.to(ref.current,time, {
-        opacity:'0%',
-        scrub:1,
-        ease: "Power1.easeIn" 
+//     },
+//     onLeaveBack: () => {
+//       gsap.to(ref.current,time, {
+//         opacity:'0%',
+//         scrub:1,
+//         ease: "Power1.easeIn" 
         
-      });
+//       });
   
     
   
-    },
+//     },
     
-    onEnterBack: () => {
-      gsap.to(ref.current, time,{
-        opacity:'100%',
-        scrub:1,
-        ease: "Power1.easeIn" 
+//     onEnterBack: () => {
+//       gsap.to(ref.current, time,{
+//         opacity:'100%',
+//         scrub:1,
+//         ease: "Power1.easeIn" 
        
-      });
+//       });
   
      
   
-    },
-  })
-}
+//     },
+//   })
+// }
    
 
-const microActionOnProductClick = (productRef: ProductRef) =>{
+// const microActionOnProductClick = (productRef: ProductRef) =>{
 
-if(productRef.current)
-gsap.to(productRef.current,{width: "10vw"})
-
-
+// if(productRef.current)
+// gsap.to(productRef.current,{width: "10vw"})
 
 
-}
-useEffect(()=>{
-  console.table(`this is the products of the week array : ${productOfTheWeek}`)
-  opacityAnimation(headerref,0.4)
 
-  productrefs.current.forEach((ref)=>{
 
-    opacityAnimation(ref,0.6)
+// }
+// useEffect(()=>{
+//   opacityAnimation(headerref,0.4)
 
-  })
+//   productrefs.current.forEach((ref)=>{
 
-})   
+//     opacityAnimation(ref,0.6)
+
+//   })
+
+// })   
 
 
 
@@ -127,7 +126,9 @@ useEffect(()=>{
     >
 <div className="content w-full flex flex-col items-center pt-6  pb-[6vw] space-y-[8vw] portrait:space-y-[12vw]"> 
 
-        <div ref={headerref} className="heading opacity-0 text-[3vw] portrait:sm:text-[4vw] portrait:text-[7vw] portrait:mb-10">Products of the Week</div>
+        <div
+        //  ref={headerref}
+          className="heading opacity-0 text-[3vw] portrait:sm:text-[4vw] portrait:text-[7vw] portrait:mb-10">Products of the Week</div>
 
 
 <div className="hairsection w-full ">
@@ -141,7 +142,7 @@ useEffect(()=>{
 
       <div className="space-y-16 flex flex-col items-center  ">
         <div   className="hairProductsContainer w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20"> 
-        {ProductsoftheweekData.map((product:any,index:number) => (
+        {/* {ProductsoftheweekData.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}
@@ -153,17 +154,17 @@ useEffect(()=>{
             <div className="flex flex-col items-start">
             <Link  href={`/product/${product._id}`}> 
               <div className="hairImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
-                <Image src={product?.productMainImage} alt={product.altText}  className="rounded-lg "   width={960} height={1280} />
+                <PrismicNextImage field={product.productMainImage} className="rounded-lg " />
               </div>
             </Link>
             <Link href={`/product/${product._id}`}> 
-              <div className="hairTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.brandName}<span className="ml-1 text-[#4b6363] text-wrap">{product.title}</span></div></div>
+              <div className="hairTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.product.brandname}<span className="ml-1 text-[#4b6363] text-wrap">{product.product.title}</span></div></div>
             </Link>
-            <div className="hairDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.shortDescription}</div>
-            <div className="hairPrize w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.price}</div>
+            <div className="hairDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.product.shortdescription}</div>
+            <div className="hairPrize w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.product.price}</div>
             </div>
           </div>
-        ))}
+        ))} */}
 
 
       </div>

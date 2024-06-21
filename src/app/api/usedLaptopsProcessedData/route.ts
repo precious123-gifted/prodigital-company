@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     await dbConnect();
 
     // Fixed filter for newLaptops category
-    const filter = { 'category': 'UsedLaptops' };
+    const filter = { 'product.categories': 'usedLaptops' };
 
     const AllProducts = await allProducts.find(filter);
 
@@ -31,5 +31,11 @@ export async function GET(request: NextRequest) {
 
 
 
+async function getRequestBody(request: NextRequest) {
+  const requestClone = request.clone();
+  const body = await requestClone.json();
+
+  return body ;
+}
 
 

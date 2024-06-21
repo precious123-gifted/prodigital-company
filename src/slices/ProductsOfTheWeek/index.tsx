@@ -1,9 +1,7 @@
 
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import Productsoftheweek from './Productoftheweek';
-import dbConnect from "@/lib/dbConnect";
-
+import Productsoftheweek from "./Productoftheweek";
 
 
 
@@ -24,32 +22,51 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const baseUrl = isDevelopment
     ? `http://localhost:${process.env.PORT}`
     : "https://prodigital-company.vercel.app";
-  const ProductsoftheweekUrl = `${baseUrl}/api/productsOfTheWeek`;
+  const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
 
      
 
-  
+  // const getAllProductOfTheWeekData = async () =>{
 
-const getProductsOfTheWeekData = async () =>{
-  await dbConnect()
-  const response = await fetch(ProductsoftheweekUrl);
+  //   const response = await fetch(allProductsUrl);
   
+  //   if (!response.ok) {
+  //       console.error('Error fetching data:', response.statusText);
+      
+  //     } else {
+  //       console.log('Data successfully recieved in frontend!');
+  //     }
+  
+  //     return response.json()
+  
+  // }
  
+// const getAllProductOfTheWeekData = async () => {
+//   const response = await fetch(allProductsUrl);
 
-  if (!response.ok) {
-      console.error('Error fetching data:', response.statusText);
-    
-    } else {
-      console.log('Data successfully recieved in frontend!');
-    }
+//   if (!response.ok) {
+//     console.error('Error fetching data:', response.statusText);
+//     return []; // Return empty array on error
+//   }
 
-    return response.json()
+//   const allProducts = await response.json();
 
-}
+//   // Filter products based on matching main image IDs
+//   const filteredProducts = allProducts.filter((product:any) => {
+//     // Check if product has main image and loop through slice products
+//     return product.product.mainimage && slice.primary.products.some((sliceProduct) => {
+//       return product.product.mainimage.id === sliceProduct.mainproductimage.id;
+//     });
+//   });
 
-if(!baseUrl)return null
+//   console.log('Data successfully recieved in frontend!');
+//   return filteredProducts;
+// };
+  
 
-const productsOfTheWeek = await getProductsOfTheWeekData()
+//   if(!baseUrl)return null
+  
+//   const productsOftheWeek = await getAllProductOfTheWeekData()
 
 
 
@@ -68,7 +85,9 @@ const productsOfTheWeek = await getProductsOfTheWeekData()
 
   return (
     <>
-<Productsoftheweek ProductsoftheweekData={productsOfTheWeek} slice= { slice }/>
+<Productsoftheweek 
+// ProductsoftheweekData={productsOftheWeek} 
+slice= { slice }/>
 </>
   );
 };

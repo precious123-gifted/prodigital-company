@@ -99,7 +99,7 @@ export async function generateStaticParams() {
 
   try {
     await dbConnect()
-    const response = await fetch("https://prodigital-company.vercel.app/api/productsProcessedData");
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);

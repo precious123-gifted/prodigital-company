@@ -138,12 +138,12 @@ const {cartLength,setCartLength} = useStateContext()
    <div className="imagecontainer">
 
 <div className="complimentaryimages flex landscape:w-[8.5vw] portrait:w-full space-x-[1vw] mb-[1vw] portrait:sm:w-[10vw]">
-     <Image alt='' src={`${productData?.productComplementaryImage1}`} className="rounded-lg " width={960} height={1280} />
-     <Image alt='' src={`${productData?.productComplementaryImage2}`} className="rounded-lg " width={960} height={1280} />
-     <Image alt='' src={`${productData?.productComplementaryImage3}`} className="rounded-lg " width={960} height={1280} />
+     <Image alt='' src={`${productData.productComplementaryImage1}`} className="rounded-lg " width={960} height={1280} />
+     <Image alt='' src={`${productData.productComplementaryImage2}`} className="rounded-lg " width={960} height={1280} />
+     <Image alt='' src={`${productData.productComplementaryImage3}`} className="rounded-lg " width={960} height={1280} />
      </div>
      <div  className="mainhairImage landscape:w-[28vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
-     <Image alt='' src={`${productData?.productMainImage}`} className="rounded-lg " width={960} height={1280} />
+     <Image alt='' src={`${productData.productMainImage}`} className="rounded-lg " width={960} height={1280} />
      </div>
 
 </div>

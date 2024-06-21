@@ -158,7 +158,7 @@ console.log(`this is the params id ${params.id} and ${product}`)
   return (
     <div>
    
-   <SingleProductContainer productData={product}/>
+   {product && <SingleProductContainer productData={product}/>}
     
   </div>
   )

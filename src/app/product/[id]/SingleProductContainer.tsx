@@ -326,7 +326,11 @@ const {cartLength,setCartLength} = useStateContext()
 </div>
     
 <div className="content landscape:w-[55%] space-y-[10vw]">
-<div className="imagecontainer">
+
+   <div className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
+        <div  className="hairImage landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+
+        <div className="imagecontainer">
 
 <div className="complimentaryimages flex landscape:w-[8.5vw] portrait:w-full space-x-[1vw] mb-[1vw] portrait:sm:w-[10vw]">
     <><Image alt='' src={`${productData?.productComplementaryImage1}`} className="rounded-lg " width={960} height={1280} />
@@ -338,11 +342,7 @@ const {cartLength,setCartLength} = useStateContext()
      <Image alt='' src={`${productData?.productMainImage}`} className="rounded-lg " width={960} height={1280} />
      </div>
 
-</div>   <div className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
-        <div  className="hairImage landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
-
-
-
+</div>
 
         </div>
 

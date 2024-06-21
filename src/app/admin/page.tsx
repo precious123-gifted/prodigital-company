@@ -48,31 +48,7 @@ export default async function AdminPage() {
       console.table(allProducts)
 
       
-      const getImage = async () =>{
-        await dbConnect()
-        
-        
-        const response = await fetch(imageUrl,);
-        
-        
-       
-      
-        if (!response.ok) {
-            console.error('Error fetching data:', response.statusText);
-          
-          } else {
-            
-            console.log('Data successfully recieved in frontend!');
-          }
-      
-          return response.json()
-      
-      }
-      if(!baseUrl)return null
-      
-      const image = await getImage()
-      
-      console.table(`this is the image :::: ${image?.image}`)
+
 
       
       
@@ -83,7 +59,7 @@ export default async function AdminPage() {
   return (
    <Bounded>
 
-<AdminClientPage allProducts={allProducts} image={image.image}/>
+<AdminClientPage allProducts={allProducts}/>
 
 
    </Bounded>

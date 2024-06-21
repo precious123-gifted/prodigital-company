@@ -151,14 +151,14 @@ async function getProduct(id) {
 export default async function ProductInfoPage({params}) {
   await dbConnect()
 
-const product = await getProduct(params.id)
+const productData = await getProduct(params.id)
 
-console.log(`this is the params id ${params.id} and ${product}`)
+console.log(`this is the params id ${params.id} and ${productData}`)
 
   return (
     <div>
    
-   {product && <SingleProductContainer productData={product}/>}
+   {productData && <SingleProductContainer productData={productData}/>}
     
   </div>
   )

@@ -83,7 +83,6 @@
 
 
 
-import Image from "next/image";
 import SingleProductContainer from "./SingleProductContainer";
 import dbConnect from "@/lib/dbConnect";
 
@@ -159,10 +158,7 @@ console.log(`this is the params id ${params.id} and ${productData}`)
   return (
     <div>
    
-   {/* <SingleProductContainer productData={productData}/> */}
-   <Image alt='' src={`${productData?.productMainImage}`} className="rounded-lg " width={960} height={1280} />
-
-   
+  {baseUrl && <SingleProductContainer productData={productData}/>}
     
   </div>
   )

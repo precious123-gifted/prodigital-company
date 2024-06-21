@@ -315,7 +315,7 @@ const {cartLength,setCartLength} = useStateContext()
 
 
  
-
+useEffect(()=>{ console.table(productData) })
 
     
   return (

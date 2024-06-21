@@ -4,8 +4,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
-import { useStateContext } from "@/StateManager";
-import { CldUploadWidget } from 'next-cloudinary';
+import { CldUploadWidget } from 'next-cloudinary'
+import dbConnect from '@/lib/dbConnect';
 import addImagePic from "../../../public/add_image.jpg"
 import addSubImagePic from "../../../public/add_sub_image.jpg"
 
@@ -109,6 +109,7 @@ export default function AdminClientPage(
          ];
          console.table(product);
          try {
+          await dbConnect()
            const response = await fetch(allProductsUrl, {
              method: 'POST',
              headers: { 'Content-Type': "application/x-www-form-urlencoded", },

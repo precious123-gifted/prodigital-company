@@ -6,6 +6,7 @@ import React, { MutableRefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Bounded from "@/app/components/Bounded";
 import Layout from "../navlayout";
+import Image from "next/image";
 
 
 
@@ -71,8 +72,8 @@ console.log(products)
           >
             <Link  href={`/product/${product._id}`}> 
               <div className="laptopImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
-                {/* <PrismicNextImage field={product.product.mainimage} className="rounded-lg " /> */}
-              </div>
+                <Image src={`${product.productMainImage}`} alt={product.altText}  width={960} height={1280} className="rounded-lg " />
+                </div>
             </Link>
             <Link href={`/product/${product._id}`}> 
               <div className="laptopTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.brandName}<span className="ml-1 text-[#4b6363] text-wrap">{product.title}</span></div></div>

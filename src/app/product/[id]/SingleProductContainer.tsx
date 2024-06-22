@@ -76,7 +76,7 @@ const {cartLength,setCartLength} = useStateContext()
              const updatedProduct = {
                ...productToAdd, // Spread existing product properties
                quantity: 1, // Initial quantity (adjust as needed)
-               totalPrice: productToAdd.product.price, // Assuming "hairprize" holds the price
+               totalPrice: productToAdd.price, // Assuming "hairprize" holds the price
              };
       
 

@@ -110,6 +110,8 @@ const {cartLength,setCartLength} = useStateContext()
       setCartedProducts(JSON.parse(existingCartedProductsData));
       setCartLength(JSON.parse(existingCartedProductsData).length);
     }
+
+    console.table(product)
   }, []);
 
   

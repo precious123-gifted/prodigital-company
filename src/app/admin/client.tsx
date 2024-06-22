@@ -94,7 +94,7 @@ export default function AdminClientPage({allProducts}:any) {
 
 
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        // event.preventDefault();
+        event.preventDefault();
 
 
 

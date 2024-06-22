@@ -9,6 +9,7 @@ import Link from "next/link";
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useStateContext } from "@/StateManager";
 import Image from "next/image";
+import displayElementWhenPageLoads from "@/animation-provider/animation";
 
 
 
@@ -35,7 +36,20 @@ type ProductRef = MutableRefObject<HTMLDivElement | null>;
 
 const productrefs = useRef<ProductRef[]>([]);
 
+const button = useRef(null)
+const header = useRef(null)
 
+
+
+
+
+
+
+  const loadingAnimation = useEffect(()=>{
+
+    displayElementWhenPageLoads(button,0.5,450)
+    displayElementWhenPageLoads(header,0.5,750)
+  })
 
 
 const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
@@ -165,7 +179,11 @@ useEffect(()=>{
 
 
       </div>
-      
+
+      <div className="btn-div  h-[8vw] portrait:h-[12vw] w-full flex justify-center items-center"> 
+ <Link href={"/products"}> <div ref={button} className="button opacity-0 bg-[#333D3E] text-[#EBFEFF] cursor-pointer portrait:px-[22vw] px-[10vw] py-3 rounded-[0.280rem] text-[3vw] portrait:text-[8vw] hover:bg-[#252d2e] duration-[0.2s]  ease-in-out ">More Products</div> </Link> 
+  
+   </div>
       </div>
       </div>
       </div>

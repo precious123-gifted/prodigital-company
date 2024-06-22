@@ -31,7 +31,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   
   const getProductsOfTheWeekData = async () => {
     await dbConnect();
-    const response = await fetch(`${ProductsURL}?sort=-createdAt&limit=8`); // Use URL parameters
+    const response = await fetch(`${ProductsURL}?sort=-createdAt&limit=8`,{ next: { revalidate: 1 } }); // Use URL parameters
   
     if (!response.ok) {
       console.error('Error fetching data:', response.statusText);

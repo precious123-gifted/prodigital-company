@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     // Limit results to 4 and sort by _id descending (newest to oldest)
     const AllProducts = await allProducts.find({}, null, {
       sort: { _id: -1 },
-      limit: 4, // Limit the number of results to 4
+      limit: 8, // Limit the number of results to 4
     });
 
     storedData = AllProducts;

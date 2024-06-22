@@ -37,7 +37,7 @@ export async function generateStaticParams() {
 async function getProduct(id) { 
   await dbConnect()
   try {
-  await dbConnect()
+ 
 
     const response = await fetch(url);
 

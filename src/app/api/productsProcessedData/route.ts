@@ -10,7 +10,7 @@ import { writeFile } from 'fs/promises'
 
 
 // export async function GET(request: NextRequest) {
-
+// 
 //   let storedData: any ;
 
 //   try { 
@@ -29,7 +29,7 @@ import { writeFile } from 'fs/promises'
 
 //   return new Response(JSON.stringify(storedData), { status: 200 });
 // }
-
+export const revalidate = 1;
 export async function GET(request: NextRequest) {
   let storedData: any;
 

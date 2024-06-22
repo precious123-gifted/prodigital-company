@@ -13,16 +13,16 @@ const baseUrl = isDevelopment
 
 
 
- async function getProducts(category) { 
+  async function getProducts(category) { 
     await dbConnect()
     const categoryString = `${category}`;
-  const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
+  const url = `${baseUrl}/api/${categoryString}ProcessedData`;
   console.log(`this is the category from function getproduct: ${categoryString}`)
   console.log(`this is the url ${url}`)
   
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url,{cache: 'no-store'});
   
       if (!response.ok) {
         throw new Error(`Error fetching product category of ${category}: ${response.statusText}`);

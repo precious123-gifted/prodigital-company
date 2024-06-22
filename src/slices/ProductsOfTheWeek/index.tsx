@@ -24,7 +24,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const baseUrl = isDevelopment
     ? `http://localhost:${process.env.PORT}`
     : "https://prodigital-company.vercel.app";
-  const ProductsoftheweekUrl = `${baseUrl}/api/productsOfTheWeek`;
+  const ProductsoftheweekUrl = `${baseUrl}/api/productsProcessedData`;
 
      
 

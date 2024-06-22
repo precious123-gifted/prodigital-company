@@ -156,6 +156,9 @@ const {cartLength,setCartLength} = useStateContext()
         <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
         {product?.shortDescription}
           </div>
+          <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
+        {product?.fullDescription}
+          </div>
         <div className="hairPrize   font-medium text-green-900 text-[2vw]  portrait:text-[4vw]">
         {product?.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}
         </div>

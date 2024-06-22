@@ -64,7 +64,7 @@ console.log(allProducts)
 
 
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
-    {/* {allProducts.map((product:any,index:number) => (
+    {allProducts.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}
@@ -76,17 +76,17 @@ console.log(allProducts)
              <div className="flex flex-col items-start">
             <Link  href={`/product/${product._id}`}> 
               <div className="laptopImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
-                <PrismicNextImage field={product.product.mainimage} className="rounded-lg " />
+                {/* <PrismicNextImage field={product.product.mainimage} className="rounded-lg " /> */}
               </div>
             </Link>
             <Link href={`/product/${product._id}`}> 
-              <div className="laptopTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.product.brandname}<span className="ml-1 text-[#4b6363] text-wrap">{product.product.title}</span></div></div>
+              <div className="laptopTitle w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.brandName}<span className="ml-1 text-[#4b6363] text-wrap">{product.title}</span></div></div>
             </Link>
-            <div className="laptopDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.product.shortdescription}</div>
-            <div className="laptopPrice w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.product.price}</div>
+            <div className="laptopDescription w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.19vw]  portrait:text-[4vw] portrait:sm:text-[3vw]">{product.shortDescription}</div>
+            <div className="laptopPrice w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.price}</div>
           </div>
           </div>
-        ))} */}
+        ))}
       </div>
       </div>
       </Layout>

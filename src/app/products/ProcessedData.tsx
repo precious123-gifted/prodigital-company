@@ -72,7 +72,9 @@ export default async function ProductsData({settings}: any) {
     
   const getAllProductsData = async () =>{
     await dbConnect()
-    const response = await fetch(allProductsUrl);
+  const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
+
+    const response = await fetch(url);
     
    
   
@@ -87,7 +89,7 @@ export default async function ProductsData({settings}: any) {
   
   }
   
-  if(!baseUrl)return null
+  // if(!baseUrl)return null
   
   const allProducts = await getAllProductsData()
 

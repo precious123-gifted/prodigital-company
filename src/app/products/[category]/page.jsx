@@ -22,7 +22,7 @@ const baseUrl = isDevelopment
   
 
     try {
-      const response = await fetch(url,{cache: 'no-store'});
+      const response = await fetch(url,{ next: { revalidate: 0 } });
   
       if (!response.ok) {
         throw new Error(`Error fetching product category of ${category}: ${response.statusText}`);

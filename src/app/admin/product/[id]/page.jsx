@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
   try {
     await dbConnect()
-    const response = await fetch(url);
+    const response = await fetch(url,{ next: { revalidate: 0 } });
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);

@@ -65,7 +65,7 @@ async function getProduct(id) {
 
 
 export default async function ProductInfoPage({params}) {
-  await dbConnect()
+  
 
 const product = await getProduct(params.id)
 

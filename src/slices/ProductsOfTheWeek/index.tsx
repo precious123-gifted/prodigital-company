@@ -31,11 +31,11 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   
   const getProductsOfTheWeekData = async () => {
     await dbConnect();
-    const response = await fetch(`${ProductsURL}?sort=-createdAt&limit=8`,{ next: { revalidate: 1 } }); // Use URL parameters
+    const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
   
     if (!response.ok) {
       console.error('Error fetching data:', response.statusText);
-      return null; // Return null in case of error
+      return null;
     }
   
     const products = await response.json();
@@ -48,7 +48,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   
   const productsOfTheWeek = await getProductsOfTheWeekData();
   
-  // Use productsOfTheWeek for further processing or rendering
   
 
 
@@ -68,7 +67,9 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 
   return (
     <>
+     
 <Productsoftheweek ProductsoftheweekData={productsOfTheWeek} />
+ 
 </>
   );
 };

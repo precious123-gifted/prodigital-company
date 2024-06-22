@@ -1,3 +1,5 @@
+"use server"
+
 import SingleProductContainer from "./SingleProductContainer";
 import dbConnect from "@/lib/dbConnect";
 

@@ -143,21 +143,21 @@ const {cartLength,setCartLength} = useStateContext()
    <div className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
         <div  className="hairImage landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
     
-          <PrismicNextImage  field={product?.product.mainimage}  className="rounded-lg"/>
+          {/* <PrismicNextImage  field={product?.product.mainimage}  className="rounded-lg"/> */}
         </div>
 
 <div className="hairdetails ">
 
 <div className="space-y-[1vw]"> 
 <div className="hairTitle text-[2vw]   portrait:text-[5vw]">
-          {product?.product.title}
+          {product?.title}
           
           </div>
         <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
-        {product?.product.shortdescription}
+        {product?.shortDescription}
           </div>
         <div className="hairPrize   font-medium text-green-900 text-[2vw]  portrait:text-[4vw]">
-        {product?.product.price}
+        {product?.price}
         </div>
 </div>
    

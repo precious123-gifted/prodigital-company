@@ -12,7 +12,7 @@ import Layout from "./navlayout";
 
 
 export default function ProductsPageContent(
-  // {allProducts}: any
+  {allProducts}: any
 ) {
 
   
@@ -45,11 +45,11 @@ const microActionOnProductClick = (productRef: ProductRef) =>{
 
 
  
-// useEffect(()=>{
+useEffect(()=>{
 
-// console.log(allProducts)
+console.log(allProducts)
 
-// })
+})
 
 
 // allProducts.sort(() => Math.random() - 0.5);

@@ -70,26 +70,26 @@ export default async function ProductsData({settings}: any) {
 
 
     
-  // const getAllProductsData = async () =>{
-  //   await dbConnect()
-  //   const response = await fetch(allProductsUrl);
+  const getAllProductsData = async () =>{
+    await dbConnect()
+    const response = await fetch(allProductsUrl);
     
    
   
-  //   if (!response.ok) {
-  //       console.error('Error fetching data:', response.statusText);
+    if (!response.ok) {
+        console.error('Error fetching data:', response.statusText);
       
-  //     } else {
-  //       console.log('Data successfully recieved in frontend!');
-  //     }
+      } else {
+        console.log('Data successfully recieved in frontend!');
+      }
   
-  //     return response.json()
+      return response.json()
   
-  // }
+  }
   
-  // if(!baseUrl)return null
+  if(!baseUrl)return null
   
-  // const allProducts = await getAllProductsData()
+  const allProducts = await getAllProductsData()
 
 
 
@@ -99,7 +99,7 @@ export default async function ProductsData({settings}: any) {
   return (
       
    <ProductsPageContent 
-  //  allProducts={allProducts}
+   allProducts={allProducts}
    />
       
   )

@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     await dbConnect();
 
     // Fixed filter for newLaptops category
-    const filter = { 'category': 'usedLaptops' };
+    const filter = { 'category': 'UsedLaptops' };
 
     const AllProducts = await allProducts.find(filter);
 

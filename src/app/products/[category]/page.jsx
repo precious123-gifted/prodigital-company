@@ -16,7 +16,7 @@ const baseUrl = isDevelopment
  async function getProducts(category) { 
     await dbConnect()
     const categoryString = `${category}`;
-  const url = `https://prodigital-company.vercel.app/api/${categoryString}ProcessedData`;
+  const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
   console.log(`this is the category from function getproduct: ${categoryString}`)
   console.log(`this is the url ${url}`)
   

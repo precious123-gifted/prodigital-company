@@ -522,7 +522,7 @@ onSubmit={handleSubmit}
 
 
 
-       {/* {allProducts.map((product:any,index:number) => (
+       {allProducts.map((product:any,index:number) => (
              <div
                key={product._id}
                id={product._id}
@@ -544,7 +544,7 @@ onSubmit={handleSubmit}
                <div className="laptopPrice w-[12vw] portrait:w-[26vw]  cursor-pointer font-medium text-green-900 portrait:text-[4vw]">{product.price}</div>
              </div>
              </div>
-           ))} */}
+           ))}
          </div>
          </div>
 </div>

@@ -26,7 +26,7 @@ export default async function Products() {
   return (
     <section className=" flex justify-center bg-[#EBFEFF] text-[#333D3E]"  style={pontanoSans.style}>
 
-<ProductsData settings={settings}/>
+<ProductsData/>
 
     </section>
   )

@@ -12,7 +12,7 @@ import Layout from "./navlayout";
 
 
 export default function ProductsPageContent(
-  {allProducts}: any
+  {products}: any
 ) {
 
   
@@ -47,12 +47,12 @@ const microActionOnProductClick = (productRef: ProductRef) =>{
  
 useEffect(()=>{
 
-console.log(allProducts)
+console.log(products)
 
 })
 
 
-// allProducts.sort(() => Math.random() - 0.5);
+// products.sort(() => Math.random() - 0.5);
 
   return (
     <Bounded>
@@ -64,7 +64,7 @@ console.log(allProducts)
 
 
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
-    {allProducts.map((product:any,index:number) => (
+    {products.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}

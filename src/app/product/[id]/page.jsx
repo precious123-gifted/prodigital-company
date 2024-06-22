@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
   try {
     await dbConnect()
-    const response = await fetch(url);
+    const response = await fetch("https://prodigital-company.vercel.app/api/productsProcessedData");
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
     
 
     return productsData.map((data) => ({
-      id: data.id?.toString(), 
+      _id: data._id?.toString(), 
     }));
   } catch (error) {
     console.error('Error generating static params:', error);

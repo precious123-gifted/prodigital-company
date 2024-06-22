@@ -4,7 +4,7 @@ import dbConnect from "@/lib/dbConnect";
 const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
-  : process.env.NEXT_PUBLIC_VERCEL_URL;
+  : "https://prodigital-company.vercel.app";
 const url = `${baseUrl}/api/productsProcessedData`;
   
   
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
   try {
     await dbConnect()
-    const response = await fetch(url);
+    const response = await fetch("https://prodigital-company.vercel.app/api/productsProcessedData");
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);

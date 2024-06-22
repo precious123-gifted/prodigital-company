@@ -32,7 +32,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 
 const getProductsOfTheWeekData = async () =>{
   await dbConnect()
-  const response = await fetch(ProductsoftheweekUrl,{ next: { revalidate: 0 } });
+  const response = await fetch(ProductsoftheweekUrl,{ next: { revalidate: 1 } });
   
  
 

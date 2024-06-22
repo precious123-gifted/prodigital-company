@@ -141,7 +141,7 @@ const baseUrl = isDevelopment
   
 
     try {
-      const response = await fetch(url, { next: { revalidate: 0 } });
+      const response = await fetch(url, { next: { revalidate: 1 } });
   
       if (!response.ok) {
         throw new Error(`Error fetching products: ${response.statusText}`);

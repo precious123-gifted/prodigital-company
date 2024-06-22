@@ -10,7 +10,7 @@ import { useStateContext } from "@/StateManager";
 import { StateContextType } from "@/StateManager";
 
 
-export default function SingleProductContainer({productData}:any) {
+export default function SingleProductContainer({product}:any) {
 
 
   interface Product {
@@ -59,7 +59,7 @@ const {cartLength,setCartLength} = useStateContext()
 
 
   const handleAddToCartedProducts = () => {
-    const productToAdd = productData;
+    const productToAdd = product;
 
 
     const existingProductIndex = cartedProducts.findIndex(
@@ -141,21 +141,21 @@ const {cartLength,setCartLength} = useStateContext()
    <div className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
         <div  className="hairImage landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
     
-          <PrismicNextImage  field={productData?.product.mainimage}  className="rounded-lg"/>
+          <PrismicNextImage  field={product?.product.mainimage}  className="rounded-lg"/>
         </div>
 
 <div className="hairdetails ">
 
 <div className="space-y-[1vw]"> 
 <div className="hairTitle text-[2vw]   portrait:text-[5vw]">
-          {productData?.product.title}
+          {product?.product.title}
           
           </div>
         <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
-        {productData?.product.shortdescription}
+        {product?.product.shortdescription}
           </div>
         <div className="hairPrize   font-medium text-green-900 text-[2vw]  portrait:text-[4vw]">
-        {productData?.product.price}
+        {product?.product.price}
         </div>
 </div>
    

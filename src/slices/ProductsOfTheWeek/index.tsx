@@ -24,32 +24,32 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const baseUrl = isDevelopment
     ? `http://localhost:${process.env.PORT}`
     : "https://prodigital-company.vercel.app";
-  const ProductsoftheweekUrl = `${baseUrl}/api/productsProcessedData`;
+  const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
      
 
   
-
-const getProductsOfTheWeekData = async () =>{
-  await dbConnect()
-  const response = await fetch(ProductsoftheweekUrl,{ next: { revalidate: 1 } });
+  const getProductsOfTheWeekData = async () => {
+    await dbConnect();
+    const response = await fetch(`${ProductsURL}?sort=-createdAt&limit=8`); // Use URL parameters
   
- 
-
-  if (!response.ok) {
+    if (!response.ok) {
       console.error('Error fetching data:', response.statusText);
-    
-    } else {
-      console.log('Data successfully recieved in frontend!');
+      return null; // Return null in case of error
     }
-
-    return response.json()
-
-}
-
-if(!baseUrl)return null
-
-const productsOfTheWeek = await getProductsOfTheWeekData()
+  
+    const products = await response.json();
+    console.log('Data successfully received in frontend!');
+  
+    return products;
+  };
+  
+  if (!baseUrl) return null;
+  
+  const productsOfTheWeek = await getProductsOfTheWeekData();
+  
+  // Use productsOfTheWeek for further processing or rendering
+  
 
 
 

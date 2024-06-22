@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
   try {
     await dbConnect()
-    const response = await fetch("https://prodigital-company.vercel.app/api/productsProcessedData");
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);
@@ -37,7 +37,7 @@ export async function generateStaticParams() {
 async function getProduct(id) { 
   await dbConnect()
   try {
- 
+  await dbConnect()
 
     const response = await fetch(url);
 
@@ -55,11 +55,11 @@ async function getProduct(id) {
       return product;
     } else {
       console.warn(`Product with ID ${id} not found.`);
-      return null; 
+      return product; 
     }
   } catch (error) {
     console.error('Error fetching product:', error);
-    return null; 
+    return error; 
   }
 }
 
@@ -74,7 +74,7 @@ console.log(`this is the params id ${params.id} and ${product}`)
   return (
     <div>
    
-   <SingleProductContainer product={product}/>
+   <SingleProductContainer productData={product}/>
     
   </div>
   )

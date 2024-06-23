@@ -161,18 +161,18 @@ const handleClick = (imageUrl:string) => {
 <div className="complimentaryimages flex landscape:w-[24vw] portrait:w-full   portrait:sm:w-full justify-between mb-[1vw] portrait:mb-[4vw] ">
     <Image
     onClick={() => handleClick(singleProduct?.productMainImage)}
-    ref={complImage1} alt={singleProduct?.altText} src={`${singleProduct?.productMainImage}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productMainImage && 'border-4 border-solid border-[#314440]',)}  width={960} height={1280} />
+    ref={complImage1} alt={singleProduct?.altText} src={`${singleProduct?.productMainImage}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productMainImage && 'border-4 portrait:sm:border-[0.9vw] border-solid border-[#314440]',)}  width={960} height={1280} />
     <Image 
     onClick={() => handleClick(singleProduct?.productComplementaryImage1)}
-    ref={complImage2} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage1}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage1 && 'border-4 border-solid border-[#314440]',)}   width={960} height={1280} />
+    ref={complImage2} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage1}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage1 && 'border-4 portrait:sm:border-[0.9vw] border-solid border-[#314440]',)}   width={960} height={1280} />
      <Image 
     onClick={() => handleClick(singleProduct?.productComplementaryImage2)}
      
-     ref={complImage3} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage2}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage2 && 'border-4 border-solid border-[#314440]',)}  width={960} height={1280} />
+     ref={complImage3} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage2}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage2 && 'border-4 portrait:sm:border-[0.9vw] border-solid border-[#314440]',)}  width={960} height={1280} />
      <Image 
     onClick={() => handleClick(singleProduct?.productComplementaryImage3)}
      
-     ref={complImage4} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage3}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage3 && 'border-4 border-solid border-[#314440]',)}  width={960} height={1280} />
+     ref={complImage4} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage3}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage3 && 'border-4 portrait:sm:border-[0.9vw] border-solid border-[#314440]',)}  width={960} height={1280} />
      </div>
      <div  className="mainhairImage landscape:w-[24vw] portrait:w-full   portrait:sm:w-full object-fit">
      <Image ref={mainImage} alt={singleProduct?.altText} src={selectedImage} className="rounded-lg " width={960} height={1280} />
@@ -183,10 +183,8 @@ const handleClick = (imageUrl:string) => {
 <div className="hairdetails text-left ">
 
 <div className="space-y-[1vw]"> 
-<div className="hairTitle text-[2vw]   portrait:text-[5vw]">
-          {singleProduct?.title}
-          
-          </div>
+<div className="laptopTitle cursor-pointer text-[2vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{singleProduct.brandName}<span className="ml-1 text-[#4b6363] text-wrap">{singleProduct.title}</span></div></div>
+
         <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
         {singleProduct?.shortDescription}
           </div>

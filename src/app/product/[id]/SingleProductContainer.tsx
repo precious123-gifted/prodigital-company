@@ -10,7 +10,7 @@ import { useStateContext } from "@/StateManager";
 import { StateContextType } from "@/StateManager";
 
 
-export default function SingleProductContainer({product}:any) {
+export default function SingleProductContainer({singleProduct}:any) {
 
 
   interface Product {
@@ -59,7 +59,7 @@ const {cartLength,setCartLength} = useStateContext()
 
 
   const handleAddToCartedProducts = () => {
-    const productToAdd = product;
+    const productToAdd = singleProduct;
 
 
     const existingProductIndex = cartedProducts.findIndex(
@@ -111,7 +111,7 @@ const {cartLength,setCartLength} = useStateContext()
       setCartLength(JSON.parse(existingCartedProductsData).length);
     }
 
-    console.table(product)
+    console.table(singleProduct)
   }, []);
 
   
@@ -132,35 +132,44 @@ const {cartLength,setCartLength} = useStateContext()
 
     
   return (
-    <Bounded>
+<Bounded>
       <div className=" hairexpandedcontainer  text-[#384d4d] w-auto   flex flex-col  items-center text-center space-y-5  portrait:px-[8vw] py-[2vw] portrait:py-[8vw]">
 <div className="exiticon    w-full flex justify-end ">
+ 
 <Image onClick={handleExitClick} src={exitIcon} alt="exit-icon" className="landscape:w-[2vw] portrait:w-[6vw] portrait:sm:w-[4vw]  object-cover cursor-pointer"/>
 </div>
     
 <div className="content landscape:w-[55%] space-y-[10vw]">
 
    <div className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
-        <div  className="hairImage landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
-    
-        <Image src={`${product.productMainImage}`} alt={product.altText}  width={960} height={1280} className="rounded-lg " />
-        </div>
+   <div className="imagecontainer">
+
+<div className="complimentaryimages flex landscape:w-[8.5vw] portrait:w-full space-x-[1vw] mb-[1vw] portrait:sm:w-[10vw]">
+     <Image alt='' src={`${singleProduct?.productComplementaryImage1}`} className="rounded-lg " width={960} height={1280} />
+     <Image alt='' src={`${singleProduct?.productComplementaryImage2}`} className="rounded-lg " width={960} height={1280} />
+     <Image alt='' src={`${singleProduct?.productComplementaryImage3}`} className="rounded-lg " width={960} height={1280} />
+     </div>
+     <div  className="mainhairImage landscape:w-[28vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+     <Image alt='' src={`${singleProduct?.productMainImage}`} className="rounded-lg " width={960} height={1280} />
+     </div>
+
+</div>
 
 <div className="hairdetails ">
 
 <div className="space-y-[1vw]"> 
 <div className="hairTitle text-[2vw]   portrait:text-[5vw]">
-          {product?.title}
+          {singleProduct?.title}
           
           </div>
         <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
-        {product?.shortDescription}
+        {singleProduct?.shortDescription}
           </div>
           <div className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  ">
-        {product?.fullDescription}
+        {singleProduct?.fullDescription}
           </div>
         <div className="hairPrize   font-medium text-green-900 text-[2vw]  portrait:text-[4vw]">
-        {product?.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}
+        {singleProduct?.price}
         </div>
 </div>
    

@@ -9,6 +9,9 @@ import { useStateContext } from "@/StateManager";
 import { CldUploadWidget } from 'next-cloudinary';
 import addImagePic from "../../../public/add_image.jpg"
 import addSubImagePic from "../../../public/add_sub_image.jpg"
+import imagePlaceholder from "../../../public/image-fill.png"
+import { image } from '../../lib/models/Product';
+
 
 
 
@@ -330,12 +333,12 @@ catch (error) {
   <>
 <form
 onSubmit={handleSubmit}
- className="add_product_div w-full flex-col">
+ className="add_product_div w-full flex-col mb-[10vw] portrait:mb-[14vw]">
 
-<div className="image_div flex w-full">
+<div className="image_div mb-10 portrait:mb-[60vw] portrait:sm:mb-[50vw] relative   w-full grid  portrait:grid-cols-2 landscape:grid-cols-4     gap-y-20  portrait:gap-y-4 rounded-xl h-[20vw]">
 
-<>
-<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+<div className='image_upload_div flex justify-center'>
+<div  className="mainImage absolute">
 
 <CldUploadWidget uploadPreset="x2uckqjw"
 
@@ -348,30 +351,39 @@ onSubmit={handleSubmit}
   >
         {({ open }) => {
           return (
-            <div ref={mainImageInputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden">Upload</div>
+            <div ref={mainImageInputRef} onClick={() => open()}  className="bg-grey-1 text-black cursor-pointer hidden ">Upload</div>
 
 
           );
         }}
       </CldUploadWidget>
 
-        </div>   {resource && isCloudinaryInfo(resource) && (
+        </div>  
+         {resource && isCloudinaryInfo(resource) && (
 
-  <>        <div
+  <>   
+ <div className="image relative">
+ <div
   ref={deleteBTN}
-  onClick={()=>{handleImageDelete(resource.public_id,0)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
- <Image src={`${resource.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
+  onClick={()=>{handleImageDelete(resource.public_id,0)}} className='cursor-pointer text-[2vw] portrait:text-[4vw] hover:text-[#a03d42] text-[#dbbcbd] px-2  py-1 hover:bg-[#d2e7e9] bg-[#a6a7ac] transition duration-300 ease-in-out rounded-full absolute m-1'>X</div>
+   <Image src={`${resource.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded'/> </div></>
 )}
 
 {!resource && (
-  <Image
+  <div
   onClick={()=>{changeImage(0)}}
-  src={addImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
-)}
-</>
+     className='w-[15vw] bg-[#335241] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded cursor-pointer '>
+<div className="placeholder w-full">
+<Image src={imagePlaceholder} alt='image-fill' className='object-fit w-full '/>
 
-<>
-<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+</div>
+
+     </div>
+)}
+</div>
+
+<div className='image_upload_div flex justify-center'>
+<div  className="mainImage absolute  ">
 
 <CldUploadWidget uploadPreset="x2uckqjw"
 
@@ -393,21 +405,27 @@ onSubmit={handleSubmit}
       </CldUploadWidget>
 
         </div>   {resource1 && isCloudinaryInfo(resource1) && (
-          <>
-          <div ref={deleteBTN1} onClick={()=>{handleImageDelete(resource1.public_id,1)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
-  <Image src={`${resource1.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/>
-  </>
+          <div className='image relative'>
+          <div ref={deleteBTN1} onClick={()=>{handleImageDelete(resource1.public_id,1)}} className='cursor-pointer text-[2vw] portrait:text-[4vw] hover:text-[#a03d42] text-[#dbbcbd] px-2  py-1 hover:bg-[#d2e7e9] bg-[#a6a7ac] transition duration-300 ease-in-out rounded-full absolute m-1'>X</div>
+  <Image src={`${resource1.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded'/>
+  </div>
 )}
 
 {!resource1 && (
-  <Image
-  onClick={()=>{changeImage(1)}}
-  src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
+    <div
+    onClick={()=>{changeImage(1)}}
+       className='w-[15vw] bg-[#335241] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded cursor-pointer '>
+  <div className="placeholder w-full">
+  <Image src={imagePlaceholder} alt='image-fill' className='object-fit w-full '/>
+  
+  </div>
+  
+       </div>
 )}
-</>
+</div>
 
-<>
-<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+<div className='image_upload_div flex justify-center'>
+<div  className="mainImage absolute ">
 
 <CldUploadWidget uploadPreset="x2uckqjw"
 
@@ -429,20 +447,27 @@ onSubmit={handleSubmit}
       </CldUploadWidget>
 
         </div>   {resource2 && isCloudinaryInfo(resource2) && (
-          <>
-          <div ref={deleteBTN2} onClick={()=>{handleImageDelete(resource2.public_id,2)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
-  <Image src={`${resource2.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
+          <div className='image relative'>
+          <div ref={deleteBTN2} onClick={()=>{handleImageDelete(resource2.public_id,2)}} className='cursor-pointer text-[2vw] portrait:text-[4vw] hover:text-[#a03d42] text-[#dbbcbd] px-2  py-1 hover:bg-[#d2e7e9] bg-[#a6a7ac] transition duration-300 ease-in-out rounded-full absolute m-1'>X</div>
+  <Image src={`${resource2.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded'/></div>
 )}
 
 {!resource2 && (
-  <Image
+  <div
   onClick={()=>{changeImage(2)}}
-  src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
-)}
-</>
+     className='w-[15vw] bg-[#335241] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded cursor-pointer '>
+<div className="placeholder w-full">
+<Image src={imagePlaceholder} alt='image-fill' className='object-fit w-full '/>
 
-<>
-<div  className="mainImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+</div>
+
+     </div>
+
+)}
+</div>
+
+<div className='image_upload_div flex justify-center'>
+<div  className="mainImage absolute ">
 
 <CldUploadWidget uploadPreset="x2uckqjw"
 
@@ -464,16 +489,22 @@ onSubmit={handleSubmit}
       </CldUploadWidget>
 
         </div>   {resource3 && isCloudinaryInfo(resource3) && (
-        <>  <div ref={deleteBTN3} onClick={()=>{handleImageDelete(resource3.public_id,3)}} className='cursor-pointer text-[4vw] text-red-600'>X</div>
-  <Image src={`${resource3.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] rounded'/></>
+        <div className='image relative'>  <div ref={deleteBTN3} onClick={()=>{handleImageDelete(resource3.public_id,3)}} className='cursor-pointer text-[2vw] portrait:text-[4vw] hover:text-[#a03d42] text-[#dbbcbd] px-2  py-1 hover:bg-[#d2e7e9] bg-[#a6a7ac] transition duration-300 ease-in-out rounded-full absolute m-1'>X</div>
+  <Image src={`${resource3.url}`} alt="Product" width={960} height={1280}  className='w-[15vw] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded'/></div>
 )}
 
 {!resource3 && (
-  <Image
-  onClick={()=>{changeImage(3)}}
-  src={addSubImagePic} alt="Product" width={960} height={1280}  className='w-[15vw] rounded cursor-pointer'/>
+    <div
+    onClick={()=>{changeImage(3)}}
+       className='w-[15vw] bg-[#335241] portrait:w-[24vw] h-[20vw] portrait:h-[30vw] rounded cursor-pointer '>
+  <div className="placeholder w-full">
+  <Image src={imagePlaceholder} alt='image-fill' className='object-fit w-full '/>
+  
+  </div>
+  
+       </div>
 )}
-</>
+</div>
 
 
 

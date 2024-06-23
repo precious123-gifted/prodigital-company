@@ -8,5 +8,11 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  textarea::-webkit-scrollbar {
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  
 }
+
 

@@ -188,11 +188,15 @@ const baseUrl = isDevelopment
     const price = formData.get('price');
   
     const updatedProduct = {
-      _id: productData._id, // Use existing product ID
-      productMainImage: imageData || productData.productMainImage, // Update only if image changed
-      productComplementaryImage1: imageData1 || productData.productComplementaryImage1,
-      productComplementaryImage2: imageData2 || productData.productComplementaryImage2,
-      productComplementaryImage3: imageData3 || productData.productComplementaryImage3,
+      _id: productData._id,
+      imageID:resource ? (typeof resource === 'object' && isCloudinaryInfo(resource) ? resource.public_id : productData.imageID) : productData.imageID,
+      image1ID:resource1 ? (typeof resource1 === 'object' && isCloudinaryInfo(resource1) ? resource1.public_id : productData.image1ID) : productData.image1ID,
+      image2ID:resource2 ? (typeof resource2 === 'object' && isCloudinaryInfo(resource2) ? resource2.public_id : productData.image2ID) : productData.image2ID,
+      image3ID:resource3 ? (typeof resource3 === 'object' && isCloudinaryInfo(resource3) ? resource3.public_id : productData.image3ID) : productData.image3ID,
+      productMainImage: resource ? (typeof resource === 'object' && isCloudinaryInfo(resource) ? resource.url : productData.productMainImage) : productData.productMainImage,
+      productComplementaryImage1: resource1 ? (typeof resource1 === 'object' && isCloudinaryInfo(resource1) ? resource1.url : productData.productComplementaryImage1) : productData.productComplementaryImage1,
+      productComplementaryImage2: resource2 ? (typeof resource2 === 'object' && isCloudinaryInfo(resource2) ? resource2.url : productData.productComplementaryImage2) : productData.productComplementaryImage2,
+      productComplementaryImage3: resource3 ? (typeof resource3 === 'object' && isCloudinaryInfo(resource3) ? resource3.url : productData.productComplementaryImage3) : productData.productComplementaryImage3,
       altText,
       category,
       brandName,
@@ -212,6 +216,13 @@ const baseUrl = isDevelopment
         body: JSON.stringify(updatedProduct),
       });
       if (response.ok) {
+      // deleteImages()
+   if(resource){  handleImageDelete(productData.imageID,0)  }
+  if(resource1){ handleImageDelete(productData.image1ID,1)  }
+  if(resource2){ handleImageDelete(productData.image2ID,2)  }
+  if(resource3){ handleImageDelete(productData.image3ID,3)  }
+
+
         const data = await response.json();
         console.log('Data sent successfully:', data);
       } else if (response.status === 409) {
@@ -232,8 +243,15 @@ const baseUrl = isDevelopment
         const response = await fetch(`${allProductsUrl}/${productData._id}`, {
           method: 'DELETE',
         });
-  
+        
         if (response.ok) {
+          deleteImages()
+
+          if(resource){  handleImageDelete(productData.imageID,0)  }
+          if(resource1){ handleImageDelete(productData.image1ID,1)  }
+          if(resource2){ handleImageDelete(productData.image2ID,2)  }
+          if(resource3){ handleImageDelete(productData.image3ID,3)  }
+
           const data = await response.json();
           console.log('Product deleted successfully:', data);
           window.history.back();
@@ -308,6 +326,60 @@ return typeof value === 'object' && 'public_id' in value;
   }
 
 
+
+
+  const deleteImages = async () => {
+    const resourceKeys = [
+      "RESOURCE_ID_KEY",
+      "RESOURCE_ID_KEY1",
+      "RESOURCE_ID_KEY2",
+      "RESOURCE_ID_KEY3",
+    ];
+  
+    for (const key of resourceKeys) {
+      const resourceString = localStorage.getItem(key);
+  
+      if (resourceString) {
+        try {
+          const resourceObject = JSON.parse(resourceString);
+          const public_id = resourceObject.public_id;
+          console.log("Deleting image:", public_id);
+  
+          const response = await fetch(`${baseUrl}/api/removeCloudinaryImage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ public_id }),
+          });
+  
+          if (response.ok) {
+            localStorage.removeItem(key);
+            console.log("Image deleted from local storage:", public_id);
+          } else {
+            console.error("Error deleting image from server:", public_id);
+          }
+        } catch (error) {
+          console.error("Error processing resource:", key, error);
+        }
+      } else {
+        console.log("No image resource found for key:", key);
+      }
+    }
+  };
+  
+  
+  
+  useEffect(() => {
+  deleteImages()
+  
+  }, []);
+
+  // useEffect(() => {
+  // if(resource){  handleImageDelete(productData.imageID,0)  }
+  // if(resource1){ handleImageDelete(productData.image1ID,1)  }
+  // if(resource2){ handleImageDelete(productData.image2ID,2)  }
+  // if(resource3){ handleImageDelete(productData.image3ID,3)  }
+  
+  // }, [resource,resource1,resource2,resource3,productData.imageID,productData.image1ID,productData.image2ID,productData.image3ID,handleImageDelete]);
 
 
     
@@ -441,7 +513,7 @@ onSuccess={(result, { widget }) => {
     onClick={()=>{changeMainImage(0)}}
       
       className ="button absolute text-[8vw] portrait:text-[60vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
-      <Image alt='' src={resource && isCloudinaryInfo(resource)?`${resource!.url}`:`${imageData}`} className="rounded-lg landscape:w-[24vw] portrait:w-full " width={960} height={1280} />
+      <Image alt='' src={resource && isCloudinaryInfo(resource)?`${resource!.url}`:`${imageData}`} className="rounded-lg landscape:w-full portrait:w-full " width={960} height={1280} />
       
         </div>
 
@@ -462,7 +534,7 @@ onSuccess={(result, { widget }) => {
 <input type="text" defaultValue={productData?.brandName}  name="brandname" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Brand Name'  />
 <input type="text" defaultValue={productData?.title} name="title" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Title' />
 <input defaultValue={shortDescription} name="shortdescription"  className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Short Description' />
-<input defaultValue={productData?.fullDescription} name="fulldescription" className='fulldescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a full Description' />
+<textarea defaultValue={productData?.fullDescription} name="fulldescription" className='h-[8vw] resize-none fulldescription outline-none  portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a full Description' />
 <input defaultValue={productData?.price} type="number" name="price" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a Price' />
 
 </div>
@@ -473,7 +545,7 @@ onSuccess={(result, { widget }) => {
 <div className="action_buttons text-[1.6vw] portrait:text-[4vw] mt-[4vw] portrait:mt-[12vw] portrait:sm:mt-[8vw] flex justify-between">
 <div onClick={handleDeleteProduct} className="cursor-pointer px-[2vw]  portrait:px-[4vw] transition duration-300 ease-in-out   py-2 bg-[#ceafaf] text-[#833e3e]  hover:bg-[#833e3e] hover:text-[#ceafaf] rounded-sm" >Delete Product</div>
       
-      <button type="submit" className="cursor-pointer px-[2vw]  portrait:px-[4vw] transition duration-300 ease-in-out  py-2 bg-[#337243] text-[#ceecd5]  hover:bg-[#1e4728] hover:text-[#bae0c3] rounded-sm">Update Product</button>   
+      <button type="submit" className="cursor-pointer px-[2vw]  portrait:px-[4vw] transition duration-300 ease-in-out  py-2 bg-[#2a693a] text-[#ceecd5]  hover:bg-[#1e4728] hover:text-[#bae0c3] rounded-sm">Update Product</button>   
       
    </div>
 

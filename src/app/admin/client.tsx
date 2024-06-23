@@ -322,7 +322,7 @@ catch (error) {
 
   return (
 
-<div className="content">
+<div className="content portrait:pt-[6vw]">
 
 {isAuthenticated ? (
 
@@ -333,9 +333,9 @@ catch (error) {
   <>
 <form
 onSubmit={handleSubmit}
- className="add_product_div w-full flex-col mb-[10vw] portrait:mb-[14vw]">
+ className="add_product_div w-full flex-col mb-[10vw] portrait:mb-[14vw] ">
 
-<div className="image_div mb-10 portrait:mb-[60vw] portrait:sm:mb-[50vw] relative   w-full grid  portrait:grid-cols-2 landscape:grid-cols-4     gap-y-20  portrait:gap-y-4 rounded-xl h-[20vw]">
+<div className="image_div mb-10 portrait:mb-[60vw] portrait:sm:mb-[50vw] relative   w-full grid  portrait:grid-cols-2 landscape:grid-cols-4     gap-y-20  portrait:gap-y-8 rounded-xl h-[20vw]">
 
 <div className='image_upload_div flex justify-center'>
 <div  className="mainImage absolute">
@@ -510,26 +510,27 @@ onSubmit={handleSubmit}
 
 </div>
 
-<div className="category_div">
-<input type="text" id="product_image_alt" name="product_image_alt" placeholder="Enter Image Alt Text" />
+<div className="details_div flex flex-col text-[1.6vw] portrait:text-[4vw] space-y-[0.6vw] portrait:space-y-[2vw] w-[30vw] portrait:w-full portrait:sm:w-full">
+<input type="text" id="product_image_alt" name="product_image_alt" placeholder="Enter Image Alt Text" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'/>
 
-<select id="productCategory" name="productCategory" >
+<select id="productCategory" name="productCategory" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'>
   <option value="">Add a product category</option>
   <option value="Accessories">Accessories</option>
   <option value="NewLaptops">New Laptops</option>
   <option value="UsedLaptops">Used Laptops</option>
 </select>
+
+<input type="text" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="brandname" placeholder='Add a Brand Name'  />
+<input type="text" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="title" placeholder='Add a Title' />
+<input type="text" className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="shortdescription" placeholder='Add a Short Description' />
+<input type="text" className='fulldescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
+<input type="number" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="price" placeholder='Add a Price' />
+
 </div>
 
-<div className="brandname_div"><input type="text" className="brandname" name="brandname" placeholder='Add a Brand Name' /></div>
-<div className="title_div"><input type="text" className="title" name="title" placeholder='Add a Title' /></div>
-<div className="shortdescription_div"><input type="text" className="shortdescription" name="shortdescription" placeholder='Add a Short Description' /></div>
-<div className="fulldescription_div"><input type="text" className="fulldescription"  name="fulldescription" placeholder='Add a full Description' /></div>
-<div className="price_div"><input type="number" className="price" name="price" placeholder='Add a Price' /></div>
 
 
-<div onClick={()=>{console.table(resource)}}>show result</div>
-<button type="submit">Post Product</button>
+<button type="submit" className='mt-[3vw] portrait:mt-[10vw] portrait:sm:mt-[8vw] px-[2vw] py-4 w-full bg-[#20382a] hover:bg-[#172c20] transition duration-300 ease-in-out text-[#e3f5ea] hover:text-[#d0f7df] text-[1.6vw] portrait:text-[5.8vw]  rounded-md'>Post Product</button>
 
 
 
@@ -544,6 +545,7 @@ onSubmit={handleSubmit}
 
 <div className="w-full pb-[4vw]">
 
+<div className="heading text-[#20382a] text-[3vw] portrait:text-[7vw] portrait:sm:text-[7.2vw] mb-[8vw]  portrait:mb-[20vw] text-center">All Products</div>
 
 
 

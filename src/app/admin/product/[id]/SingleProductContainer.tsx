@@ -330,9 +330,9 @@ onSubmit={handleSubmit}>
     key={productData._id}
     id={productData._id}
    className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center space-x-[6vw] portrait:space-y-[3vw] ">
-   <div className="imagecontainer">
+   <div className="imagecontainer w-[100vw] portrait:w-[80vw]">
 
-   <div className="complimentaryimages flex  mb-[1vw] portrait:sm:w-[10vw] space-x-[1vw]">
+   <div className="complimentaryimages flex  mb-[1vw] landscape:w-full   space-x-[1vw]">
    
    <>
     <div className="changeImage relative">
@@ -357,7 +357,7 @@ onSuccess={(result, { widget }) => {
       <div
     onClick={()=>{changeMainImage(1)}}
       
-      className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
+      className="button absolute  text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 portrait:text-[20vw]">+</div>
       <Image alt='' src={resource1 && isCloudinaryInfo(resource1)?`${resource1!.url}`:`${imageData1}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
       </>
 
@@ -384,7 +384,7 @@ onSuccess={(result, { widget }) => {
       <div
     onClick={()=>{changeMainImage(2)}}
       
-      className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
+      className ="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 portrait:text-[20vw]">+</div>
       <Image alt='' src={resource2 && isCloudinaryInfo(resource2)?`${resource2!.url}`:`${imageData2}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
       </>
       <>
@@ -410,13 +410,13 @@ onSuccess={(result, { widget }) => {
       <div
     onClick={()=>{changeMainImage(3)}}
       
-      className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
+      className ="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 portrait:text-[20vw]">+</div>
       <Image alt='' src={resource3 && isCloudinaryInfo(resource3)?`${resource3!.url}`:`${imageData3}`} className="rounded-lg landscape:w-[8.5vw] portrait:w-full " width={960} height={1280} /></div>
       </>
         
         
         </div>
-        <div  className="mainhairImage relative landscape:w-[25vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+        <div  className="mainhairImage relative landscape:w-full portrait:w-full    object-contain">
         
    
     <CldUploadWidget uploadPreset="x2uckqjw"
@@ -440,49 +440,42 @@ onSuccess={(result, { widget }) => {
       <div
     onClick={()=>{changeMainImage(0)}}
       
-      className="button absolute text-[8vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
+      className ="button absolute text-[8vw] portrait:text-[60vw] cursor-pointer text-[#EBFEFF] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</div>
       <Image alt='' src={resource && isCloudinaryInfo(resource)?`${resource!.url}`:`${imageData}`} className="rounded-lg landscape:w-[24vw] portrait:w-full " width={960} height={1280} />
       
         </div>
 
    </div>
 
-<div className="hairdetails ">
 
-<div className="space-y-[1vw]"> 
-<div className="hairTitle text-[2vw]   portrait:text-[5vw]">
 
-<div className="category_div">
-<select defaultValue={productData.category} id="productCategory" name="productCategory" >
+<div className="details_div flex flex-col text-[1.6vw] portrait:text-[4vw] space-y-[0.6vw] portrait:space-y-[2vw] w-[30vw] portrait:w-full portrait:sm:w-full">
+<input type="text" defaultValue={productData?.altText}  name='product_image_alt' placeholder="Enter Image Alt Text" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'/>
+
+<select defaultValue={productData.category} id="productCategory" name="productCategory" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'>
   <option value="">Add a product category</option>
   <option value="Accessories">Accessories</option>
   <option value="NewLaptops">New Laptops</option>
   <option value="UsedLaptops">Used Laptops</option>
 </select>
+
+<input type="text" defaultValue={productData?.brandName}  name="brandname" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Brand Name'  />
+<input type="text" defaultValue={productData?.title} name="title" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Title' />
+<input defaultValue={shortDescription} name="shortdescription"  className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Short Description' />
+<input defaultValue={productData?.fullDescription} name="fulldescription" className='fulldescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a full Description' />
+<input defaultValue={productData?.price} type="number" name="price" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a Price' />
+
 </div>
 
-<input defaultValue={productData?.altText} type="text" name='product_image_alt'/>
-<input defaultValue={productData?.brandName} type="text" name="brandname" /> <input defaultValue={productData?.title} name="title" type="text" />
-          
-          </div>
-        <textarea defaultValue={shortDescription} name="shortdescription" className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  "/>
-        <textarea defaultValue={productData?.fullDescription} name="fulldescription" className="hairDescription text-[1.5vw]   portrait:text-[4vw] portrait:sm:text-[3vw]  "/>
 
-        
-          
-        <input defaultValue={productData?.price} type="number" name="price" className="hairPrize   font-medium text-green-900 text-[2vw]  portrait:text-[4vw]"/>
-        
-       
-</div>
-   
-
-<button type="submit" className="cursor-pointer">Post Product</button>
-      </div>
 </div>
 
+<div className="action_buttons text-[1.6vw] portrait:text-[4vw] mt-[4vw] portrait:mt-[12vw] portrait:sm:mt-[8vw] flex justify-between">
+<div onClick={handleDeleteProduct} className="cursor-pointer px-[2vw]  portrait:px-[4vw] transition duration-300 ease-in-out   py-2 bg-[#ceafaf] text-[#833e3e]  hover:bg-[#833e3e] hover:text-[#ceafaf] rounded-sm" >Delete Product</div>
       
-   
-<div onClick={handleDeleteProduct} className="cursor-pointer " >Delete Product</div>
+      <button type="submit" className="cursor-pointer px-[2vw]  portrait:px-[4vw] transition duration-300 ease-in-out  py-2 bg-[#337243] text-[#ceecd5]  hover:bg-[#1e4728] hover:text-[#bae0c3] rounded-sm">Update Product</button>   
+      
+   </div>
 
 </form>
 

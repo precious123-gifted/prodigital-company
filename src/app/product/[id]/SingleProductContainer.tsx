@@ -5,9 +5,10 @@ import { PrismicNextImage } from "@prismicio/next";
 import Bounded from "@/app/components/Bounded";
 import exitIcon from "../../../../public/exiticon.png"
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useStateContext } from "@/StateManager";
 import { StateContextType } from "@/StateManager";
+import { cn } from "@/lib/utils";
 
 
 export default function SingleProductContainer({singleProduct}:any) {
@@ -127,6 +128,19 @@ const {cartLength,setCartLength} = useStateContext()
   };
 
 
+
+
+const mainImage = useRef(null)
+const complImage1 = useRef(null)
+const complImage2 = useRef(null)
+const complImage3 = useRef(null)
+const complImage4 = useRef(null)
+
+const [selectedImage, setSelectedImage] = useState(singleProduct.productMainImage); // State for selected image
+
+const handleClick = (imageUrl:string) => {
+  setSelectedImage(imageUrl); // Update state on click
+};
  
 
 
@@ -145,12 +159,23 @@ const {cartLength,setCartLength} = useStateContext()
    <div className="imagecontainer w-full">
 
 <div className="complimentaryimages flex landscape:w-[24vw] portrait:w-full   portrait:sm:w-full justify-between mb-[1vw] portrait:mb-[4vw] ">
-    <Image alt='' src={`${singleProduct?.productComplementaryImage1}`} className="rounded-lg w-[6vw] portrait:w-[14vw] object-fit"  width={960} height={1280} />
-     <Image alt='' src={`${singleProduct?.productComplementaryImage2}`} className="rounded-lg w-[6vw] portrait:w-[14vw] object-fit" width={960} height={1280} />
-     <Image alt='' src={`${singleProduct?.productComplementaryImage3}`} className="rounded-lg w-[6vw] portrait:w-[14vw] object-fit" width={960} height={1280} />
+    <Image
+    onClick={() => handleClick(singleProduct?.productMainImage)}
+    ref={complImage1} alt={singleProduct?.altText} src={`${singleProduct?.productMainImage}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productMainImage && 'border-4 border-solid border-[#314440]',)}  width={960} height={1280} />
+    <Image 
+    onClick={() => handleClick(singleProduct?.productComplementaryImage1)}
+    ref={complImage2} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage1}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage1 && 'border-4 border-solid border-[#314440]',)}   width={960} height={1280} />
+     <Image 
+    onClick={() => handleClick(singleProduct?.productComplementaryImage2)}
+     
+     ref={complImage3} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage2}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage2 && 'border-4 border-solid border-[#314440]',)}  width={960} height={1280} />
+     <Image 
+    onClick={() => handleClick(singleProduct?.productComplementaryImage3)}
+     
+     ref={complImage4} alt={singleProduct?.altText} src={`${singleProduct?.productComplementaryImage3}`} className={cn(`rounded-lg w-[5vw] portrait:w-[14vw] object-fit`,selectedImage === singleProduct.productComplementaryImage3 && 'border-4 border-solid border-[#314440]',)}  width={960} height={1280} />
      </div>
      <div  className="mainhairImage landscape:w-[24vw] portrait:w-full   portrait:sm:w-full object-fit">
-     <Image alt='' src={`${singleProduct?.productMainImage}`} className="rounded-lg " width={960} height={1280} />
+     <Image ref={mainImage} alt={singleProduct?.altText} src={selectedImage} className="rounded-lg " width={960} height={1280} />
      </div>
 
 </div>

@@ -141,21 +141,21 @@ const {cartLength,setCartLength} = useStateContext()
     
 <div className="content landscape:w-[55%] space-y-[10vw]">
 
-   <div className="hairContainer   flex flex-col landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
-   <div className="imagecontainer">
+   <div className="hairContainer w-full   flex flex-col  landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
+   <div className="imagecontainer w-full">
 
-<div className="complimentaryimages flex landscape:w-[8.5vw] portrait:w-full space-x-[1vw] mb-[1vw] portrait:sm:w-[10vw]">
-     <Image alt='' src={`${singleProduct?.productComplementaryImage1}`} className="rounded-lg " width={960} height={1280} />
-     <Image alt='' src={`${singleProduct?.productComplementaryImage2}`} className="rounded-lg " width={960} height={1280} />
-     <Image alt='' src={`${singleProduct?.productComplementaryImage3}`} className="rounded-lg " width={960} height={1280} />
+<div className="complimentaryimages flex landscape:w-[24vw] portrait:w-full   portrait:sm:w-full justify-between mb-[1vw] portrait:mb-[4vw] ">
+    <Image alt='' src={`${singleProduct?.productComplementaryImage1}`} className="rounded-lg w-[6vw] portrait:w-[14vw] object-fit"  width={960} height={1280} />
+     <Image alt='' src={`${singleProduct?.productComplementaryImage2}`} className="rounded-lg w-[6vw] portrait:w-[14vw] object-fit" width={960} height={1280} />
+     <Image alt='' src={`${singleProduct?.productComplementaryImage3}`} className="rounded-lg w-[6vw] portrait:w-[14vw] object-fit" width={960} height={1280} />
      </div>
-     <div  className="mainhairImage landscape:w-[28vw] portrait:w-full   portrait:sm:w-[40vw] object-contain">
+     <div  className="mainhairImage landscape:w-[24vw] portrait:w-full   portrait:sm:w-full object-fit">
      <Image alt='' src={`${singleProduct?.productMainImage}`} className="rounded-lg " width={960} height={1280} />
      </div>
 
 </div>
 
-<div className="hairdetails ">
+<div className="hairdetails text-left ">
 
 <div className="space-y-[1vw]"> 
 <div className="hairTitle text-[2vw]   portrait:text-[5vw]">
@@ -174,14 +174,14 @@ const {cartLength,setCartLength} = useStateContext()
 </div>
    
 
-      <div onClick={handleAddToCartedProducts} className="portrait:hidden addtocartedProductsbtn  mt-[4vw] px-10 py-2 bg-[#202c2c] cursor-pointer text-[#F5ECF1] hover:text-[#bbdabd] hover:bg-[#121f1f] duration-[1s] ease-in-out   text-[1.5vw] portrait:text-[6vw]  portrait:sm:text-[4vw] rounded-md">Add to Cart</div>
+      <div onClick={handleAddToCartedProducts} className="portrait:hidden addtocartedProductsbtn  mt-[4vw] px-10 py-2 bg-[#202c2c] cursor-pointer text-[#F5ECF1] hover:text-[#bbdabd] hover:bg-[#121f1f] duration-[1s] ease-in-out   text-[1.5vw] portrait:text-[6vw]  portrait:sm:text-[4vw] rounded-md text-center">Add to Cart</div>
 
       </div>
 </div>
 
       
    
-      <div onClick={handleAddToCartedProducts} className="  landscape:hidden addtocartedProductsbtn  px-10 py-2  bg-[#202c2c] cursor-pointer text-[#F5ECF1] hover:text-[#bbdabd] hover:bg-[#121f1f] duration-[1s] ease-in-out text-[1.5vw] portrait:text-[6vw]  portrait:sm:text-[4vw] rounded-md">Add to Cart</div>
+      <div onClick={handleAddToCartedProducts} className="  landscape:hidden addtocartedProductsbtn  px-10 py-2  bg-[#202c2c] cursor-pointer text-[#F5ECF1] hover:text-[#bbdabd] hover:bg-[#121f1f] duration-[1s] ease-in-out text-[1.5vw] portrait:text-[6vw]  portrait:sm:text-[4vw] rounded-md text-center">Add to Cart</div>
 
 </div>
 

@@ -35,7 +35,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
     try {
       await dbConnect()
   const ProductsURL = `${baseUrl}/api/productsProcessedData`;
-  revalidatePath('https://prodigital-company.vercel.app/api/productsProcessedData')
 
       const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
   
@@ -49,6 +48,8 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
     const products = await response.json();
     console.log('Data successfully received in frontend!');
     if (products) {
+  revalidatePath('https://prodigital-company.vercel.app/api/productsProcessedData')
+
       return products;
     } else {
       console.warn(`${products} not found.`);

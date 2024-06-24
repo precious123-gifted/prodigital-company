@@ -29,7 +29,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
      
 
   
-  const getProductsOfTheWeekData = async () => {
+  async function getProductsOfTheWeekData() {
     await dbConnect();
 
     try {

@@ -2,19 +2,18 @@
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import Link from "next/link";
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { MutableRefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Bounded from "../components/Bounded";
 import Layout from "./navlayout";
 import Image from "next/image";
-import { getProducts } from "./ProcessedData";
 
 
 
 
 
 export default function ProductsPageContent(
-  // {products}: any
+  {products}: any
 ) {
 
   
@@ -54,24 +53,7 @@ console.log(products)
 })
 
 
-const [products, setProducts] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
-const [error, setError] = useState('');
-
-
-useEffect(() => {
-  const fetchData = async () => {
-    setIsLoading(true);
-    const response = await fetch('/api/productsProcessedData',{ next: { revalidate: 1 } });
-    const productsData = await response.json();
-
-    setProducts(productsData);
-    setIsLoading(false);
-  };
-
-  fetchData();
-}, []);
-
+// products.sort(() => Math.random() - 0.5);
 
   return (
     <Bounded>
@@ -83,7 +65,7 @@ useEffect(() => {
 
 
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
-    {products?.map((product:any,index:number) => (
+    {products.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}

@@ -47,7 +47,6 @@ const header = useRef(null)
 
 
   const loadingAnimation = useEffect(()=>{
-    revalidateTag("products");
 
     displayElementWhenPageLoads(button,0.5,450)
     displayElementWhenPageLoads(header,0.5,750)

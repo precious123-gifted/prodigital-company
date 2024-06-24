@@ -45,7 +45,6 @@ export async function GET(request: NextRequest) {
     console.error('Error retrieving data from MongoDB:', error);
     return new Response('Error fetching data.', { status: 500 });
   }
-  revalidatePath('https://prodigital-company.vercel.app/api/productsProcessedData')
 
   return new Response(JSON.stringify(storedData), { status: 200 });
 }

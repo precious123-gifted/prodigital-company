@@ -36,7 +36,6 @@ export async function GET(request: NextRequest) {
 
   try {
     await dbConnect();
-    revalidatePath('https://prodigital-company.vercel.app/api/productsProcessedData')
 
     // Sort products by _id in descending order (newest to oldest)
     const AllProducts = await allProducts.find({}, null, { sort: { _id: -1 } });
@@ -46,6 +45,7 @@ export async function GET(request: NextRequest) {
     console.error('Error retrieving data from MongoDB:', error);
     return new Response('Error fetching data.', { status: 500 });
   }
+  revalidatePath('https://prodigital-company.vercel.app/api/productsProcessedData')
 
   return new Response(JSON.stringify(storedData), { status: 200 });
 }

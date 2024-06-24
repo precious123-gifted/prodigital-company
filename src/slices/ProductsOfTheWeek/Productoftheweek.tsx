@@ -10,6 +10,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useStateContext } from "@/StateManager";
 import Image from "next/image";
 import displayElementWhenPageLoads from "@/animation-provider/animation";
+import { revalidateTag } from "next/cache";
 
 
 
@@ -46,6 +47,7 @@ const header = useRef(null)
 
 
   const loadingAnimation = useEffect(()=>{
+    revalidateTag("products");
 
     displayElementWhenPageLoads(button,0.5,450)
     displayElementWhenPageLoads(header,0.5,750)

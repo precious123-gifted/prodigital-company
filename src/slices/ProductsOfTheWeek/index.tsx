@@ -42,7 +42,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
     },
   });
 
-  revalidateTag("products");
   
   
       if (!response.ok) {

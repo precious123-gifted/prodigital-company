@@ -38,8 +38,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 
       const response = await fetch(`${ProductsURL}`,{
         next: {
-          revalidate:0,
-          tags: ['products'], // Add a cache tag named 'products'
+                    tags: ['products'], // Add a cache tag named 'products'
         },
       });
   

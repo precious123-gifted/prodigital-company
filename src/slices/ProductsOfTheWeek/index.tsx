@@ -3,6 +3,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import Productsoftheweek from './Productoftheweek';
 import dbConnect from "@/lib/dbConnect";
+import { revalidateTag } from "next/cache";
 
 
 
@@ -36,6 +37,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
       const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
+revalidateTag(ProductsURL)
   
       if (!response.ok) {
         console.error('Error fetching data:', response.statusText);

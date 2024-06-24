@@ -5,6 +5,7 @@ import Bounded from '../components/Bounded';
 import dbConnect from "@/lib/dbConnect";
 import AdminClientPage from './client';
 import { allProducts } from '../../lib/models/Product';
+import { revalidateTag } from 'next/cache';
 
 
 export default async function AdminPage() {
@@ -47,6 +48,7 @@ export default async function AdminPage() {
         try {
           await dbConnect()
           const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
+          revalidateTag(url)
     
           const response = await fetch(url, { next: { revalidate: 1 } });
           // revalidateTag(url);

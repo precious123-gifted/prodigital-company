@@ -1,5 +1,6 @@
 
 
+import { revalidateTag } from "next/cache";
 import SingleProductContainer from "./SingleProductContainer";
 import dbConnect from "@/lib/dbConnect";
 
@@ -19,6 +20,7 @@ export async function generateStaticParams() {
   const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
 
     const response = await fetch(url,{ next: { revalidate: 1 } });
+    revalidateTag(url)
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);
@@ -45,6 +47,7 @@ async function getProduct(id) {
   const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
 
     const response = await fetch(url,{ next: { revalidate: 1 } });
+    revalidateTag(url);
 
     if (!response.ok) {
       throw new Error(`Error fetching product ${id}: ${response.statusText}`);

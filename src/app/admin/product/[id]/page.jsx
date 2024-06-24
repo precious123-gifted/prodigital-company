@@ -1,3 +1,4 @@
+import { revalidateTag } from "next/cache";
 import SingleProductContainer from "./SingleProductContainer";
 import dbConnect from "@/lib/dbConnect";
 
@@ -40,6 +41,7 @@ async function getProduct(id) {
   await dbConnect()
 
     const response = await fetch(url);
+    revalidateTag(url)
 
     if (!response.ok) {
       throw new Error(`Error fetching product ${id}: ${response.statusText}`);

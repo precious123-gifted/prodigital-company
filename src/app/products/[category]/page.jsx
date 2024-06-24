@@ -1,5 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import CategoryDataPage from "./CategoryData";
+import { revalidateTag } from "next/cache";
+
 import Link from "next/link";
 
 const isDevelopment = process.env.NODE_ENV === 'development' ;
@@ -23,7 +25,7 @@ const baseUrl = isDevelopment
     try {
       await dbConnect()
   const url = `${baseUrl}/api/${categoryString}ProcessedData`;
-
+revalidateTag(url)
       const response = await fetch(url,{ next: { revalidate: 1 } });
   
       if (!response.ok) {

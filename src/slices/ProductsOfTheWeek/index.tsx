@@ -36,7 +36,13 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
       await dbConnect()
   const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
-      const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
+      const response = await fetch(`${ProductsURL}`,{
+    next: {
+      tags: ['products'], // Add a cache tag named 'products'
+    },
+  });
+
+  
   
       if (!response.ok) {
         console.error('Error fetching data:', response.statusText);
@@ -62,7 +68,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   };
   
   if (!baseUrl) return null;
-  
+  revalidateTag("products");
   const productsOfTheWeek = await getProductsOfTheWeekData();
   
   

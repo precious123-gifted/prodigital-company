@@ -153,7 +153,7 @@ useEffect(()=>{
 
       <div className="space-y-16 flex flex-col items-center  ">
         <div   className="hairProductsContainer w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20"> 
-        {ProductsoftheweekData.slice(0, 8).map((product:any,index:number) => (
+        {ProductsoftheweekData.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}

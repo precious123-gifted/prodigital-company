@@ -58,23 +58,20 @@ const [products, setProducts] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
 const [error, setError] = useState('');
 
+
 useEffect(() => {
   const fetchData = async () => {
     setIsLoading(true);
-    try {
-      const fetchedProducts = await getProducts();
-      setProducts(fetchedProducts);
-    } catch (err) {
-      setError((err as Error).message);
-    } finally {
-      setIsLoading(false);
-    }
+    const response = await fetch('/api/productsProcessedData',{ next: { revalidate: 1 } });
+    const productsData = await response.json();
+
+    setProducts(productsData);
+    setIsLoading(false);
   };
 
   fetchData();
 }, []);
 
-// products.sort(() => Math.random() - 0.5);
 
   return (
     <Bounded>

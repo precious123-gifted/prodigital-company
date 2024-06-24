@@ -42,6 +42,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
     },
   });
 
+  revalidateTag("products");
   
   
       if (!response.ok) {
@@ -68,7 +69,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   };
   
   if (!baseUrl) return null;
-  revalidateTag("products");
   const productsOfTheWeek = await getProductsOfTheWeekData();
   
   

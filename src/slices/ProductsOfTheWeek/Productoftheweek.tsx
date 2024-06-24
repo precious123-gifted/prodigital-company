@@ -3,7 +3,7 @@
 import Bounded from "@/app/components/Bounded";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, RefObject, useEffect, useRef, useState } from "react";
 import gsap from 'gsap'
 import Link from "next/link";
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
@@ -43,6 +43,7 @@ const header = useRef(null)
 
 
 
+const {fetchedData,setFetchedData} = useStateContext()
 
 
 
@@ -127,6 +128,7 @@ useEffect(()=>{
 
   })
 
+  console.table(fetchedData)
 })   
 
 
@@ -143,9 +145,6 @@ const baseUrl = isDevelopment
 
 
 
-// useEffect(()=>{
-//   GetProductsOfTheWeekData()
-// })
 
 
 
@@ -171,7 +170,7 @@ const baseUrl = isDevelopment
 
       <div className="space-y-16 flex flex-col items-center  ">
         <div   className="hairProductsContainer w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20"> 
-        {ProductsoftheweekData.slice(0, 8).map((product:any,index:number) => (
+        {fetchedData.slice(0, 8).map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}

@@ -7,6 +7,7 @@ import gsap from "gsap";
 import Bounded from "../components/Bounded";
 import Layout from "./navlayout";
 import Image from "next/image";
+import { useStateContext } from "@/StateManager";
 
 
 
@@ -18,6 +19,8 @@ export default function ProductsPageContent(
 
   
   
+const {fetchedData,setFetchedData} = useStateContext()
+
 
   interface forString{
 
@@ -47,8 +50,9 @@ const microActionOnProductClick = (productRef: ProductRef) =>{
 
  
 useEffect(()=>{
-
-console.log(products)
+setFetchedData(products)
+console.log('from server'+products)
+console.log('from statemanager'+fetchedData)
 
 })
 

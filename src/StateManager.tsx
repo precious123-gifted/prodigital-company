@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState,ReactNode, ReactHTMLElement, useRef } from 'react';
+import { createContext, useContext, useState,ReactNode, ReactHTMLElement, useRef, useEffect } from 'react';
 
 
 
@@ -55,7 +55,7 @@ interface PrismicNextImage {
 
 
 type CartedProducts = Product[];
-
+type Data =  Array<any> | [];
 export type StateContextType = {
   items: Item[];
   setItems: (items: Item[]) => void;
@@ -67,6 +67,8 @@ export type StateContextType = {
   setCartedProductsFromState: (products: CartedProducts) => void;
   cartLength: number | null ;
   setCartLength: (newLength: number) => void;
+  fetchedData: Data ; // Assuming Data is an interface or type for your fetched data structure
+  setFetchedData: (data: Data[]) => void;
 };
 
 
@@ -103,15 +105,36 @@ export const RefsProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
 export const StateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const isDevelopment = process.env.NODE_ENV === 'development' ;
+  const baseUrl = isDevelopment
+    ? `http://localhost:${process.env.PORT}`
+    : "https://prodigital-company.vercel.app";
+
+
   const [items, setItems] = useState<Item[]>([]);
   const [cartLength, setCartLength] = useState<number | null>(null);
   const [cartedProductsFromState, setCartedProductsFromState] = useState<Product[]>([]);
   const [cartedProducts, setCartedProducts] = useState<Product[]>([]);
-
+  const [fetchedData, setFetchedData] = useState<any>([]);
 
 const[menu,setMenu] = useState(true)
+
+const fetchData = async () => {
+  const ProductsURL = `https://prodigital-company.vercel.app/api/productsProcessedData`;
+
+  const response = await fetch(ProductsURL,{ next: { revalidate: 1 } }); // Replace with your endpoint
+  const data = await response.json();
+  setFetchedData(data);
+};
+
+// Fetch data on component mount
+useEffect(() => {
+  fetchData();
+  console.table(fetchData)
+}, []);
+
   
-  return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength}}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength,setFetchedData,fetchedData}}>{children}</StateContext.Provider>;
 };
 
 

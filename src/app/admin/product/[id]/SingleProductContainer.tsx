@@ -221,7 +221,10 @@ const baseUrl = isDevelopment
   if(resource1){ handleImageDelete(productData.image1ID,1)  }
   if(resource2){ handleImageDelete(productData.image2ID,2)  }
   if(resource3){ handleImageDelete(productData.image3ID,3)  }
-
+  localStorage.removeItem("RESOURCE_ID_KEY")
+  localStorage.removeItem("RESOURCE_ID_KEY1")
+  localStorage.removeItem("RESOURCE_ID_KEY2")
+  localStorage.removeItem("RESOURCE_ID_KEY3")
 
         const data = await response.json();
         console.log('Data sent successfully:', data);

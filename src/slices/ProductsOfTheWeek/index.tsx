@@ -31,7 +31,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   
   const getProductsOfTheWeekData = async () => {
     await dbConnect();
-    const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
+    const response = await fetch(`${ProductsURL}`,{ cache: 'no-store' });
   
     if (!response.ok) {
       console.error('Error fetching data:', response.statusText);

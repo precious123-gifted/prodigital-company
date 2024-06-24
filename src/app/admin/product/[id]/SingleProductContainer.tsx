@@ -6,6 +6,7 @@ import exitIcon from "../../../../../public/exiticon.png"
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useStateContext } from "@/StateManager";
+import { revalidateTag } from "next/cache";
 import { CldUploadWidget } from "next-cloudinary";
 
 
@@ -217,6 +218,9 @@ const baseUrl = isDevelopment
       });
       if (response.ok) {
       // deleteImages()
+
+      // Call revalidateTag with appropriate cache tag
+     revalidateTag("products");
    if(resource){  handleImageDelete(productData.imageID,0)  }
   if(resource1){ handleImageDelete(productData.image1ID,1)  }
   if(resource2){ handleImageDelete(productData.image2ID,2)  }

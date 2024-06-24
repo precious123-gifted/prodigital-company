@@ -37,12 +37,10 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
       const response = await fetch(`${ProductsURL}`,{
-    next: {
-      tags: ['products'], // Add a cache tag named 'products'
-    },
-  });
-
-  
+        next: {
+          tags: ['products'], // Add a cache tag named 'products'
+        },
+      });
   
       if (!response.ok) {
         console.error('Error fetching data:', response.statusText);
@@ -68,6 +66,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   };
   
   if (!baseUrl) return null;
+  
   const productsOfTheWeek = await getProductsOfTheWeekData();
   
   

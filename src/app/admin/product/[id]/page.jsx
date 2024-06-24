@@ -80,3 +80,5 @@ console.log(`this is the params id ${params.id} and ${product}`)
   </div>
   )
 }
+
+export const revalidate = 1

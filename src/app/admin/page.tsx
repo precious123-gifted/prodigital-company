@@ -96,3 +96,6 @@ export default async function AdminPage() {
    </Bounded>
   )
 }
+
+export const revalidate = 1
+

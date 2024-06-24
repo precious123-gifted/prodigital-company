@@ -46,7 +46,6 @@ async function getProduct(id) {
   const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
 
     const response = await fetch(url,{ next: { revalidate: 1 } });
-    revalidateTag(url);
 
     if (!response.ok) {
       throw new Error(`Error fetching product ${id}: ${response.statusText}`);
@@ -86,3 +85,5 @@ console.log(`this is the params id ${params.id} and ${product}`)
   </div>
   )
 }
+
+export const revalidate = 1

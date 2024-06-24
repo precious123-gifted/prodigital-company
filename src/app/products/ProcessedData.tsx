@@ -27,7 +27,6 @@ const baseUrl = isDevelopment
       const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
 
       const response = await fetch(url, { next: { revalidate: 1 } });
-      // revalidateTag(url);
   
       if (!response.ok) {
         throw new Error(`Error fetching products: ${response.statusText}`);
@@ -65,3 +64,5 @@ const baseUrl = isDevelopment
       )
     }
   
+export const revalidate = 1
+

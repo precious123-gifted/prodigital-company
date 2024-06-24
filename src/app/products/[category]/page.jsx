@@ -62,4 +62,7 @@ const baseUrl = isDevelopment
       </div>
       )
     }
+
+export const revalidate = 1
+
   

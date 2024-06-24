@@ -92,3 +92,5 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 };
 
 export default ProductsOfTheWeek;
+export const revalidate = 1
+

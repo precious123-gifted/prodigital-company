@@ -24,7 +24,7 @@ const baseUrl = isDevelopment
 
     try {
       await dbConnect()
-  const url = `${baseUrl}/api/${categoryString}ProcessedData`;
+  const url = `${baseUrl}/api/productsProcessedData/category/${categoryString}`;
       const response = await fetch(url,{ next: { revalidate: 1 } });
   
       if (!response.ok) {

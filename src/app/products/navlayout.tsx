@@ -14,9 +14,9 @@ export default function Layout({
 const pathname = usePathname()
 
 const isProductsActive = pathname  === '/products'
-const isUsedLaptopsActive = pathname  === '/products/usedLaptops'
-const isNewLaptopsActive = pathname  === '/products/newLaptops'
-const isAccessoriesActive = pathname  === '/products/accessories'
+const isUsedLaptopsActive = pathname  === '/products/UsedLaptops'
+const isNewLaptopsActive = pathname  === '/products/NewLaptops'
+const isAccessoriesActive = pathname  === '/products/Accessories'
 
 
 
@@ -33,7 +33,7 @@ const isAccessoriesActive = pathname  === '/products/accessories'
       >
     All Products
   </Link>
-  <Link href={pathname.includes('/products/') ? '/products/newLaptops' : '/products/newLaptops'}
+  <Link href={pathname.includes('/products/') ? '/products/NewLaptops' : '/products/NewLaptops'}
    className={cn(
     'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
      isNewLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'
@@ -41,7 +41,7 @@ const isAccessoriesActive = pathname  === '/products/accessories'
   >
     New Laptops
   </Link>
-  <Link href={pathname.includes('/products/') ? '/products/usedLaptops' : '/products/usedLaptops'} 
+  <Link href={pathname.includes('/products/') ? '/products/UsedLaptops' : '/products/UsedLaptops'} 
   className={cn(
     'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
      isUsedLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'
@@ -49,7 +49,7 @@ const isAccessoriesActive = pathname  === '/products/accessories'
   >
     Used Laptops
   </Link>
-  <Link href={pathname.includes('/products/') ? '/products/accessories' : '/products/accessories'} 
+  <Link href={pathname.includes('/products/') ? '/products/Accessories' : '/products/Accessories'} 
    className={cn(
     'px-3 py-2 rounded landscape:hover:bg-[#ddcbc2] ease-in-out text-[#665952] ',
      isAccessoriesActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'

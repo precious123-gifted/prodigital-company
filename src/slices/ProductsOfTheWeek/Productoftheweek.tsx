@@ -10,6 +10,8 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useStateContext } from "@/StateManager";
 import Image from "next/image";
 import displayElementWhenPageLoads from "@/animation-provider/animation";
+import useSWR from 'swr';
+import dbConnect from "@/lib/dbConnect";
 
 
 
@@ -128,6 +130,22 @@ useEffect(()=>{
 })   
 
 
+
+const isDevelopment = process.env.NODE_ENV === 'development' ;
+const baseUrl = isDevelopment
+  ? `http://localhost:${process.env.PORT}`
+  : "https://prodigital-company.vercel.app";
+
+
+
+
+
+
+
+
+// useEffect(()=>{
+//   GetProductsOfTheWeekData()
+// })
 
 
 

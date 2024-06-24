@@ -4,6 +4,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import Productsoftheweek from './Productoftheweek';
 import dbConnect from "@/lib/dbConnect";
 import { revalidatePath, revalidateTag } from "next/cache";
+import useSWR from "swr";
 
 
 
@@ -36,7 +37,10 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
       await dbConnect()
   const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
-      const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
+  const cacheBuster = new Date().getTime();
+  const urlWithCacheBuster = `${ProductsURL}?cacheBuster=${cacheBuster}`;
+
+      const response = await fetch(`${urlWithCacheBuster}`,{ next: { revalidate: 1 } });
   
       if (!response.ok) {
         console.error('Error fetching data:', response.statusText);
@@ -64,7 +68,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   
   if (!baseUrl) return null;
   
-  const productsOfTheWeek = await getProductsOfTheWeekData();
   
   
 
@@ -76,6 +79,7 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 
 
  
+  const productsOfTheWeek = await getProductsOfTheWeekData();
   
 
 

@@ -22,6 +22,7 @@ const baseUrl = isDevelopment
   
 
     try {
+      await dbConnect()
       const response = await fetch(url,{ next: { revalidate: 1 } });
   
       if (!response.ok) {

@@ -31,17 +31,32 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   
   const getProductsOfTheWeekData = async () => {
     await dbConnect();
-    const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
+
+    try {
+      await dbConnect()
+      const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
   
-    if (!response.ok) {
-      console.error('Error fetching data:', response.statusText);
-      return null;
-    }
+      if (!response.ok) {
+        console.error('Error fetching data:', response.statusText);
+        return null;
+      }
+  
+   
   
     const products = await response.json();
     console.log('Data successfully received in frontend!');
+    if (products) {
+      return products;
+    } else {
+      console.warn(`${products} not found.`);
+      return null; 
+    }
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return null; 
+  }
+
   
-    return products;
   };
   
   if (!baseUrl) return null;

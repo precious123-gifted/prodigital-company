@@ -5,9 +5,9 @@ import Bounded from "@/app/components/Bounded";
 import exitIcon from "../../../../../public/exiticon.png"
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useStateContext } from "@/StateManager";
-import { revalidateTag } from "next/cache";
+
 import { CldUploadWidget } from "next-cloudinary";
+import { ToastContainer, toast } from "react-toastify";
 
 
 export default function SingleProductContainer({productData}:any) {
@@ -48,8 +48,7 @@ export default function SingleProductContainer({productData}:any) {
   }
 
 
-  const [cartedProducts, setCartedProducts] = useState<Product[]>([]);
-const {cartLength,setCartLength} = useStateContext() 
+
 
 
 
@@ -168,11 +167,10 @@ const baseUrl = isDevelopment
 
 
   const [shortDescription, setShortDescription] = useState(productData?.shortDescription || '');
-  const [price, setPrice] = useState(productData?.price || '');
 
 
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdate = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   
 
@@ -208,7 +206,6 @@ const baseUrl = isDevelopment
       postedAt: new Date().toISOString(),
     };
 
-    console.table(updatedProduct)
 
     try {
       const response = await fetch(allProductsUrl, { 
@@ -217,10 +214,7 @@ const baseUrl = isDevelopment
         body: JSON.stringify(updatedProduct),
       });
       if (response.ok) {
-      // deleteImages()
-
-      // Call revalidateTag with appropriate cache tag
-     revalidateTag("products");
+    
    if(resource){  handleImageDelete(productData.imageID,0)  }
   if(resource1){ handleImageDelete(productData.image1ID,1)  }
   if(resource2){ handleImageDelete(productData.image2ID,2)  }
@@ -229,7 +223,7 @@ const baseUrl = isDevelopment
   localStorage.removeItem("RESOURCE_ID_KEY1")
   localStorage.removeItem("RESOURCE_ID_KEY2")
   localStorage.removeItem("RESOURCE_ID_KEY3")
-
+toast('Product Updated Successfully')
         const data = await response.json();
         console.log('Data sent successfully:', data);
       } else if (response.status === 409) {
@@ -252,6 +246,7 @@ const baseUrl = isDevelopment
         });
         
         if (response.ok) {
+          toast('Product deleted Successfully')
           deleteImages()
 
           if(resource){  handleImageDelete(productData.imageID,0)  }
@@ -384,6 +379,8 @@ return typeof value === 'object' && 'public_id' in value;
     
   return (
     <Bounded>
+<ToastContainer/>
+      
       <div className=" hairexpandedcontainer  text-[#384d4d] w-auto   flex flex-col  items-center text-center space-y-5  portrait:px-[8vw] py-[2vw] portrait:py-[8vw]">
 <div className="exiticon    w-full flex justify-end ">
  
@@ -395,7 +392,7 @@ return typeof value === 'object' && 'public_id' in value;
 
 <form 
 id={productData._id}
-onSubmit={handleSubmit}>
+onSubmit={handleUpdate}>
 
 <div 
     key={productData._id}
@@ -555,6 +552,7 @@ onSuccess={(result, { widget }) => {
 
      
 </div>
+
     </Bounded>
     
   )

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useStateContext } from "@/StateManager";
 import { cn } from "@/lib/utils";
+import { ToastContainer, toast } from "react-toastify";
 
 
 
@@ -66,7 +67,7 @@ export default function SingleProductContainer({singleProduct}:any) {
            );
     
            if (existingProductIndex !== -1) {
-             alert('This Product is Already in Your cart');
+             toast('This Product is Already in Your cart');
     
            } else {
              const updatedProduct = {
@@ -90,6 +91,9 @@ export default function SingleProductContainer({singleProduct}:any) {
     
     if (cartedProductsFromLS)setCartLength(JSON.parse(cartedProductsFromLS).length);
     
+    toast('This Product has been added to Your Cart')
+
+
   };
   }
 
@@ -187,7 +191,7 @@ const handleClick = (imageUrl:string) => {
         {singleProduct?.fullDescription}
           </div>
         <div className="hairPrize   font-medium text-green-900 text-[2vw]  portrait:text-[4vw]">
-        {singleProduct?.price}
+        {singleProduct.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}
         </div>
 </div>
    
@@ -205,6 +209,8 @@ const handleClick = (imageUrl:string) => {
 
      
 </div>
+<ToastContainer/>
+
     </Bounded>
     
   )

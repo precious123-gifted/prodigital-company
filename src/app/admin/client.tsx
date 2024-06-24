@@ -5,12 +5,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import dbConnect from "@/lib/dbConnect";
 import Link from 'next/link';
 import Image from 'next/image';
-import { useStateContext } from "@/StateManager";
 import { CldUploadWidget } from 'next-cloudinary';
-import addImagePic from "../../../public/add_image.jpg"
-import addSubImagePic from "../../../public/add_sub_image.jpg"
+import { ToastContainer, toast } from "react-toastify";
 import imagePlaceholder from "../../../public/image-fill.png"
-import { image } from '../../lib/models/Product';
 
 
 
@@ -150,6 +147,7 @@ export default function AdminClientPage({allProducts}:any) {
             const data = await response.json();
            
             console.log('Data sent successfully:', data);
+            toast('Product Uploaded Successfully')
           } else if (response.status === 409) {
             console.error('Server responded with conflict (409):', response.statusText);
             alert('This product image already exist. Please use a different title and try again.');
@@ -331,6 +329,7 @@ catch (error) {
 
 
   <>
+  <ToastContainer/>
 <form
 onSubmit={handleSubmit}
  className="add_product_div w-full flex-col mb-[10vw] portrait:mb-[14vw] ">

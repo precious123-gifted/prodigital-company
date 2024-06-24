@@ -1,6 +1,5 @@
 
 
-import { revalidateTag } from "next/cache";
 import SingleProductContainer from "./SingleProductContainer";
 import dbConnect from "@/lib/dbConnect";
 
@@ -79,8 +78,8 @@ console.log(`this is the params id ${params.id} and ${product}`)
   return (
     <div>
    
-{product &&   <SingleProductContainer singleProduct={product}/>}
-    
+  <SingleProductContainer singleProduct={product}/>
+   
   </div>
   )
 }

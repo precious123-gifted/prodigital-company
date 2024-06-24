@@ -10,34 +10,12 @@ import { revalidatePath } from "next/cache";
 
 
 
-// export async function GET(request: NextRequest) {
-// 
-//   let storedData: any ;
-
-//   try { 
-//     await dbConnect();
-//     const AllProducts = await allProducts.find({});
-
-
-//     storedData = AllProducts;
-
-    
-
-//   } catch (error) {
-//     console.error('Error retrieving data from MongoDB:', error);
-//     return new Response('Error fetching data.', { status: 500 });
-//   }
-
-//   return new Response(JSON.stringify(storedData), { status: 200 });
-// }
-export const revalidate = 0;
 export async function GET(request: NextRequest) {
   let storedData: any;
 
   try {
     await dbConnect();
 
-    // Sort products by _id in descending order (newest to oldest)
     const AllProducts = await allProducts.find({}, null, { sort: { _id: -1 } });
 
     storedData = AllProducts;
@@ -69,7 +47,6 @@ await dbConnect()
 
   try {
     const processedData = await getRequestBody(request);
-console.table(processedData)
     if (!Array.isArray(processedData)) {
       return new Response(JSON.stringify({
         message: 'Invalid data format. Please provide an array of objects.',
@@ -77,7 +54,7 @@ console.table(processedData)
       }), { status: 400 });
     }
 
-    // Check for empty database before iterating
+    
     const productCount = await allProducts.countDocuments();
 
     if (productCount === 0) {
@@ -104,11 +81,8 @@ console.table(processedData)
         const existingItem = await allProducts.findOne(query);
 
         if (existingItem) {
-          // Handle potential duplicate based on price
           console.warn(`Potential duplicate product detected with price: ${title}`);
-          // You can choose to return an error or adjust the new item (e.g., add a suffix)
-
-          // Uncomment if you want to reject duplicates based on price
+      
           return new Response(JSON.stringify({
             message: `Duplicate item detected with price: ${title}.`,
             status: 409
@@ -151,16 +125,15 @@ export async function PUT(request: NextRequest) {
 
     const { _id, ...updateData } = processedData;
 
-    const query = { _id }; // Use the provided _id from the form
+    const query = { _id }; 
 
     try {
-      const updatedProduct = await allProducts.findOneAndUpdate(query, updateData, { new: true }); // Update existing document and return the updated product
+      const updatedProduct = await allProducts.findOneAndUpdate(query, updateData, { new: true }); 
 
       if (!updatedProduct) {
         return new Response('Product not found.', { status: 404 });
       }
 
-      console.log('Product updated successfully:', updatedProduct);
       return new Response(JSON.stringify(updatedProduct), { status: 200 });
     } catch (error) {
       console.error('Error updating product:', error);

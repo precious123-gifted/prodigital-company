@@ -8,7 +8,6 @@ const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
   ? `http://localhost:${process.env.PORT}`
   : "https://prodigital-company.vercel.app";
-// const url = `${baseUrl}/api/productsProcessedData`;
   
   
 
@@ -17,7 +16,7 @@ export async function generateStaticParams() {
 
   try {
     await dbConnect()
-  const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
+  const url = `${baseUrl}/api/productsProcessedData`;
 
     const response = await fetch(url,{ next: { revalidate: 1 } });
 

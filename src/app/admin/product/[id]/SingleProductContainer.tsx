@@ -380,14 +380,6 @@ return typeof value === 'object' && 'public_id' in value;
   
   }, []);
 
-  // useEffect(() => {
-  // if(resource){  handleImageDelete(productData.imageID,0)  }
-  // if(resource1){ handleImageDelete(productData.image1ID,1)  }
-  // if(resource2){ handleImageDelete(productData.image2ID,2)  }
-  // if(resource3){ handleImageDelete(productData.image3ID,3)  }
-  
-  // }, [resource,resource1,resource2,resource3,productData.imageID,productData.image1ID,productData.image2ID,productData.image3ID,handleImageDelete]);
-
 
     
   return (
@@ -541,7 +533,7 @@ onSuccess={(result, { widget }) => {
 <input type="text" defaultValue={productData?.brandName}  name="brandname" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Brand Name'  />
 <input type="text" defaultValue={productData?.title} name="title" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Title' />
 <input defaultValue={shortDescription} name="shortdescription"  className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Short Description' />
-<textarea defaultValue={productData?.fullDescription} name="fulldescription" className='h-[8vw] resize-none fulldescription outline-none  portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a full Description' />
+<textarea defaultValue={productData?.fullDescription} name="fulldescription" className='h-[12vw] resize-none fulldescription outline-none  portrait:h-[14vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a full Description' />
 <input defaultValue={productData?.price} type="number" name="price" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a Price' />
 
 </div>

@@ -16,7 +16,6 @@ export async function GET(request: NextRequest,{params}:{params:Category}) {
     try {
       await dbConnect();
   
-      // const AllProducts = await allProducts.findBycategory(params.category);
       const AllProducts = await allProducts.find({ category: params.category })
      
 

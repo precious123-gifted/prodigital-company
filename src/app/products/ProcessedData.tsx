@@ -2,9 +2,6 @@
 
  import ProductsPageContent from "./ProductsPageContent";
  import dbConnect from "@/lib/dbConnect";
- import { revalidateTag } from "next/cache";
-import Link from "next/link";
-import CategoryDataPage from "./[category]/CategoryData";
 
 const isDevelopment = process.env.NODE_ENV === 'development' ;
 const baseUrl = isDevelopment
@@ -24,7 +21,7 @@ const baseUrl = isDevelopment
 
     try {
       await dbConnect()
-      const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
+      const url = `${baseUrl}/api/productsProcessedData`;
 
       const response = await fetch(url, { next: { revalidate: 1 } });
   
@@ -53,7 +50,6 @@ const baseUrl = isDevelopment
 
     const products = await getProducts()
     
-    console.log(`this are the products: ${products}`)
     
       return (
        

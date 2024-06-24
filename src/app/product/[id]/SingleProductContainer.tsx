@@ -1,14 +1,13 @@
 
 "use client"
 
-import { PrismicNextImage } from "@prismicio/next";
 import Bounded from "@/app/components/Bounded";
 import exitIcon from "../../../../public/exiticon.png"
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useStateContext } from "@/StateManager";
-import { StateContextType } from "@/StateManager";
 import { cn } from "@/lib/utils";
+
 
 
 export default function SingleProductContainer({singleProduct}:any) {
@@ -16,7 +15,7 @@ export default function SingleProductContainer({singleProduct}:any) {
 
   interface Product {
     _id: string;
-    quantity: number ;// Assuming price is a number
+    quantity: number ;
     totalPrice: number ;
     product: {
             mainimage:PrismicNextImage;
@@ -49,9 +48,8 @@ export default function SingleProductContainer({singleProduct}:any) {
   }
 
 
-  const [cartedProducts, setCartedProducts] = useState<Product[]>([]); // Manage cartedProducts state in local storage
-const {cartedProductsFromState,setCartedProductsFromState} = useStateContext() 
-const {cartLength,setCartLength} = useStateContext() 
+  const [cartedProducts, setCartedProducts] = useState<Product[]>([]);
+  const {cartLength,setCartLength} = useStateContext() 
 
 
 
@@ -68,16 +66,13 @@ const {cartLength,setCartLength} = useStateContext()
            );
     
            if (existingProductIndex !== -1) {
-             // Product already in cartedProducts, handle quantity adjustments (optional)
              alert('This Product is Already in Your cart');
-             // Update cartedProducts quantity using setCartedProducts
-             console.log(`this is the cart length ${cartLength}`)
     
            } else {
              const updatedProduct = {
-               ...productToAdd, // Spread existing product properties
-               quantity: 1, // Initial quantity (adjust as needed)
-               totalPrice: productToAdd.price, // Assuming "hairprize" holds the price
+               ...productToAdd, 
+               quantity: 1, 
+               totalPrice: productToAdd.price, 
              };
       
 
@@ -136,10 +131,10 @@ const complImage2 = useRef(null)
 const complImage3 = useRef(null)
 const complImage4 = useRef(null)
 
-const [selectedImage, setSelectedImage] = useState(singleProduct.productMainImage); // State for selected image
+const [selectedImage, setSelectedImage] = useState(singleProduct.productMainImage); 
 
 const handleClick = (imageUrl:string) => {
-  setSelectedImage(imageUrl); // Update state on click
+  setSelectedImage(imageUrl); 
 };
  
 

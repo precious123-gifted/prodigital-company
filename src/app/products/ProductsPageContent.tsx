@@ -51,8 +51,6 @@ const microActionOnProductClick = (productRef: ProductRef) =>{
  
 useEffect(()=>{
 setFetchedData(products)
-console.log('from server'+products)
-console.log('from statemanager'+fetchedData)
 
 })
 

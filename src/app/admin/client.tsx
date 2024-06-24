@@ -523,7 +523,7 @@ onSubmit={handleSubmit}
 <input type="text" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="brandname" placeholder='Add a Brand Name'  />
 <input type="text" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="title" placeholder='Add a Title' />
 <input type="text" className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="shortdescription" placeholder='Add a Short Description' />
-<textarea  className='fulldescription outline-none h-[8vw] resize-none portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
+<textarea  className='fulldescription outline-none h-[12vw] resize-none portrait:h-[14vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
 <input type="number" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="price" placeholder='Add a Price' />
 
 </div>

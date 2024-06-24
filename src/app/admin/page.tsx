@@ -4,8 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Bounded from '../components/Bounded';
 import dbConnect from "@/lib/dbConnect";
 import AdminClientPage from './client';
-import { allProducts } from '../../lib/models/Product';
-import { revalidateTag } from 'next/cache';
+
 
 
 export default async function AdminPage() {
@@ -21,25 +20,7 @@ export default async function AdminPage() {
 
 
 
-      // const getAllProductsData = async () =>{
-      //   await dbConnect()
-        
-        
-      //   const response = await fetch(allProductsUrl,{ next: { revalidate: 1 } });
-        
-        
-       
-      
-      //   if (!response.ok) {
-      //       console.error('Error fetching data:', response.statusText);
-          
-      //     } else {
-      //       console.log('Data successfully recieved in frontend!');
-      //     }
-      
-      //     return response.json()
-      
-      // }
+    
       async function getProducts() { 
         await dbConnect()
        
@@ -50,7 +31,6 @@ export default async function AdminPage() {
           const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
     
           const response = await fetch(url, { next: { revalidate: 1 } });
-          // revalidateTag(url);
       
           if (!response.ok) {
             throw new Error(`Error fetching products: ${response.statusText}`);

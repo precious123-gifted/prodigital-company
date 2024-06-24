@@ -7,6 +7,7 @@ import gsap from "gsap";
 import Bounded from "@/app/components/Bounded";
 import Layout from "../navlayout";
 import Image from "next/image";
+import { useStateContext } from "@/StateManager";
 
 
 
@@ -27,20 +28,17 @@ export default function CategoryDataPage({products}: any) {
 
 
 
+const {fetchedData,setFetchedData} = useStateContext()
+
+
+
+
   type ProductRef = MutableRefObject<HTMLDivElement | null>;
 
 const productrefs = useRef<ProductRef[]>([]);
 
 
-const microActionOnProductClick = (productRef: ProductRef) =>{
 
-  if(productRef.current)
-  gsap.to(productRef.current,{width: "10vw"})
-  
-  
-  
-  
-  }
 
 
 

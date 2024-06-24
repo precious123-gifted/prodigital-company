@@ -28,10 +28,10 @@ interface Item {
 interface Product {
   _id: string;
   product: {
-    hairimage: PrismicNextImage; // Assuming PrismicNextImage matches your image data structure
+    hairimage: PrismicNextImage; 
     hairtitle: string;
     hairdescription: string;
-    hairprize: number; // Assuming price is a number
+    hairprize: number; 
   };
 }
 
@@ -41,7 +41,7 @@ interface PrismicNextImage {
     height: number;
   };
   alt: string;
-  copyright: null | string; // nullable copyright property
+  copyright: null | string; 
   url: string;
   id: string;
   edit: {
@@ -67,7 +67,7 @@ export type StateContextType = {
   setCartedProductsFromState: (products: CartedProducts) => void;
   cartLength: number | null ;
   setCartLength: (newLength: number) => void;
-  fetchedData: Data ; // Assuming Data is an interface or type for your fetched data structure
+  fetchedData: Data ; 
   setFetchedData: (data: Data[]) => void;
 };
 
@@ -107,7 +107,7 @@ export const RefsProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 export const StateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const isDevelopment = process.env.NODE_ENV === 'development' ;
   const baseUrl = isDevelopment
-    ? `http://localhost:${process.env.PORT}`
+    ? `http://localhost:3000`
     : "https://prodigital-company.vercel.app";
 
 
@@ -120,18 +120,16 @@ export const StateProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 const[menu,setMenu] = useState(true)
 
 const fetchData = async () => {
-  const ProductsURL = `https://prodigital-company.vercel.app/api/productsProcessedData`;
+  const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
-  const response = await fetch(ProductsURL,{ next: { revalidate: 1 } }); // Replace with your endpoint
+  const response = await fetch(ProductsURL,{ next: { revalidate: 1 } }); 
   const data = await response.json();
   setFetchedData(data);
 };
 
-// Fetch data on component mount
 useEffect(() => {
   fetchData();
-  console.table('from precious'+fetchData)
-}, []);
+},[]);
 
   
   return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength,setFetchedData,fetchedData}}>{children}</StateContext.Provider>;

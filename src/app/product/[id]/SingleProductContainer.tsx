@@ -67,7 +67,7 @@ export default function SingleProductContainer({singleProduct}:any) {
            );
     
            if (existingProductIndex !== -1) {
-             toast('This Product is Already in Your cart');
+             toast.warn('This Product is Already in Your cart');
     
            } else {
              const updatedProduct = {
@@ -91,7 +91,7 @@ export default function SingleProductContainer({singleProduct}:any) {
     
     if (cartedProductsFromLS)setCartLength(JSON.parse(cartedProductsFromLS).length);
     
-    toast('This Product has been added to Your Cart')
+    toast.success('This Product has been added to Your Cart')
 
 
   };
@@ -154,7 +154,7 @@ const handleClick = (imageUrl:string) => {
     
 <div className="content landscape:w-[55%] space-y-[10vw]">
 
-   <div className="hairContainer w-full   flex flex-col  landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
+   <div className="hairContainer w-full   flex flex-col landscape:space-x-12  landscape:flex-row landscape:justify-between landscape:items-start items-center text-center portrait:space-y-[3vw] ">
    <div className="imagecontainer w-full">
 
 <div className="complimentaryimages flex landscape:w-[24vw] portrait:w-full   portrait:sm:w-full justify-between mb-[1vw] portrait:mb-[4vw] ">

@@ -147,10 +147,10 @@ export default function AdminClientPage({allProducts}:any) {
             const data = await response.json();
            
             console.log('Data sent successfully:', data);
-            toast('Product Uploaded Successfully')
+            toast.success('Product Uploaded Successfully')
           } else if (response.status === 409) {
             console.error('Server responded with conflict (409):', response.statusText);
-            alert('This product image already exist. Please use a different title and try again.');
+            toast.warn('This product already exist. Please use a different description and try again.');
           } else {
             console.error('Server responded with error:', response.status, response.statusText);
           }

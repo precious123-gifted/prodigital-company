@@ -75,8 +75,15 @@ await dbConnect()
     for (const item of processedData) {
       const title = item.title; 
 
-      const query = { title: title };
-
+      const query = {
+        title: item.title,
+        category: item.category,
+        brandName: item.brandName,
+        shortDescription: item.shortDescription,
+        fullDescription: item.fullDescription,
+        price: item.price
+      };
+      
       try {
         const existingItem = await allProducts.findOne(query);
 

@@ -44,7 +44,7 @@ async function getProduct(id) {
   await dbConnect()
   const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
 
-    const response = await fetch(url,{ cache: 'no-store' });
+    const response = await fetch(url,{ next: { revalidate: 1 } });
 
     if (!response.ok) {
       throw new Error(`Error fetching product ${id}: ${response.statusText}`);

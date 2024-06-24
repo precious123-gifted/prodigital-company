@@ -25,7 +25,7 @@ export default async function AdminPage() {
         await dbConnect()
         
         
-        const response = await fetch(allProductsUrl,{ cache: 'no-store' });
+        const response = await fetch(allProductsUrl,{ next: { revalidate: 1 } });
         
         
        

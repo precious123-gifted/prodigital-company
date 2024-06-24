@@ -16,13 +16,14 @@ const baseUrl = isDevelopment
   async function getProducts(category) { 
     await dbConnect()
     const categoryString = `${category}`;
-  const url = `${baseUrl}/api/${categoryString}ProcessedData`;
   console.log(`this is the category from function getproduct: ${categoryString}`)
-  console.log(`this is the url ${url}`)
+
   
 
     try {
       await dbConnect()
+  const url = `${baseUrl}/api/${categoryString}ProcessedData`;
+
       const response = await fetch(url,{ next: { revalidate: 1 } });
   
       if (!response.ok) {

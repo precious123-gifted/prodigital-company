@@ -24,7 +24,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const baseUrl = isDevelopment
     ? `http://localhost:${process.env.PORT}`
     : "https://prodigital-company.vercel.app";
-  const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
      
 
@@ -34,6 +33,8 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 
     try {
       await dbConnect()
+  const ProductsURL = `${baseUrl}/api/productsProcessedData`;
+
       const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
   
       if (!response.ok) {

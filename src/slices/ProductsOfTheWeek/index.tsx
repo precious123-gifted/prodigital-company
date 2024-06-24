@@ -48,7 +48,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
     const products = await response.json();
     console.log('Data successfully received in frontend!');
     if (products) {
-  revalidatePath('https://prodigital-company.vercel.app/api/productsProcessedData')
 
       return products;
     } else {
@@ -94,4 +93,5 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
 };
 
 export default ProductsOfTheWeek;
+export const revalidate = 0
 export const dynamic = 'force-dynamic';

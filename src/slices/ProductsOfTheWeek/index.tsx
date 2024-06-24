@@ -40,7 +40,12 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const cacheBuster = new Date().getTime();
   const urlWithCacheBuster = `${ProductsURL}?cacheBuster=${cacheBuster}`;
 
-      const response = await fetch(`${urlWithCacheBuster}`,{ next: { revalidate: 30 } });
+  const response = await fetch(urlWithCacheBuster, {
+    method: 'GET', // Use GET for revalidation
+    headers: {
+      'Cache-Control': 'no-cache' // Can be helpful for browser caching
+    }
+  });
   
       if (!response.ok) {
         console.error('Error fetching data:', response.statusText);

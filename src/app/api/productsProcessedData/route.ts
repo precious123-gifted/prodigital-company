@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import dbConnect  from "@/lib/dbConnect";
 import { allProducts } from "@/lib/models/Product";
 import { writeFile } from 'fs/promises'
+import { revalidatePath } from "next/cache";
 
 
 
@@ -35,6 +36,7 @@ export async function GET(request: NextRequest) {
 
   try {
     await dbConnect();
+    revalidatePath('https://prodigital-company.vercel.app/api/productsProcessedData')
 
     // Sort products by _id in descending order (newest to oldest)
     const AllProducts = await allProducts.find({}, null, { sort: { _id: -1 } });

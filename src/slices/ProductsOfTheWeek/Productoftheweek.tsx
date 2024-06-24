@@ -3,14 +3,13 @@
 import Bounded from "@/app/components/Bounded";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import React, { MutableRefObject, RefObject, useEffect, useRef, useState } from "react";
+import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
 import gsap from 'gsap'
 import Link from "next/link";
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useStateContext } from "@/StateManager";
 import Image from "next/image";
 import displayElementWhenPageLoads from "@/animation-provider/animation";
-import { revalidateTag } from "next/cache";
 
 
 
@@ -130,23 +129,6 @@ useEffect(()=>{
 
 
 
-const [products, setProducts] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
-const [error, setError] = useState('');
-useEffect(() => {
-  const fetchData = async () => {
-    setIsLoading(true);
-    const response = await fetch('/api/products',{ next: { revalidate: 1 } });
-    const productsData = await response.json();
-
-    setProducts(productsData);
-    setIsLoading(false);
-  };
-
-  fetchData();
-}, []);
-
-
 
 
   return (
@@ -171,7 +153,7 @@ useEffect(() => {
 
       <div className="space-y-16 flex flex-col items-center  ">
         <div   className="hairProductsContainer w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20"> 
-        {products.map((product:any,index:number) => (
+        {ProductsoftheweekData.slice(0, 8).map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}
@@ -210,5 +192,3 @@ useEffect(() => {
 };
 
 export default Productsoftheweek;
-export const dynamic = 'force-dynamic';
-

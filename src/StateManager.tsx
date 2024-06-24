@@ -130,7 +130,7 @@ const fetchData = async () => {
 // Fetch data on component mount
 useEffect(() => {
   fetchData();
-  console.table(fetchData)
+  console.table('from precious'+fetchData)
 }, []);
 
   

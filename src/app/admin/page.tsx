@@ -48,7 +48,6 @@ export default async function AdminPage() {
         try {
           await dbConnect()
           const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
-          revalidateTag(url)
     
           const response = await fetch(url, { next: { revalidate: 1 } });
           // revalidateTag(url);

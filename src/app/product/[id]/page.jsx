@@ -20,7 +20,6 @@ export async function generateStaticParams() {
   const url = `https://prodigital-company.vercel.app/api/productsProcessedData`;
 
     const response = await fetch(url,{ next: { revalidate: 1 } });
-    revalidateTag(url)
 
     if (!response.ok) {
       throw new Error(`Error fetching processed data: ${response.statusText}`);

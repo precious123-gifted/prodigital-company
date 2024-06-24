@@ -37,7 +37,6 @@ const ProductsOfTheWeek = async({ slice }: ProductsOfTheWeekProps) => {
   const ProductsURL = `${baseUrl}/api/productsProcessedData`;
 
       const response = await fetch(`${ProductsURL}`,{ next: { revalidate: 1 } });
-revalidateTag(ProductsURL)
   
       if (!response.ok) {
         console.error('Error fetching data:', response.statusText);

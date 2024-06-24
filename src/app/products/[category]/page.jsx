@@ -25,7 +25,6 @@ const baseUrl = isDevelopment
     try {
       await dbConnect()
   const url = `${baseUrl}/api/${categoryString}ProcessedData`;
-revalidateTag(url)
       const response = await fetch(url,{ next: { revalidate: 1 } });
   
       if (!response.ok) {

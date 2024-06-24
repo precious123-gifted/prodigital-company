@@ -209,3 +209,5 @@ useEffect(() => {
 };
 
 export default Productsoftheweek;
+export const dynamic = 'force-dynamic';
+

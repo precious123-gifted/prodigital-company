@@ -17,7 +17,7 @@ const baseUrl = isDevelopment
 
 
 
- async function getProducts() { 
+ export async function getProducts() { 
     await dbConnect()
    
   
@@ -58,7 +58,9 @@ const baseUrl = isDevelopment
       return (
        
      
-       <ProductsPageContent products={products}/>
+       <ProductsPageContent
+        // products={products}
+        />
         
       
       )

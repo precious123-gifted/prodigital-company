@@ -110,14 +110,9 @@ setIsAuthenticated(isAuth?true:false)
 
 
 
-const [posted,setPosted] = useState(false)
 
-useEffect(()=>{
 
-  if(posted)toast.success('Product Successfully Uploaded')
-    setPosted(false)
-
-},[])
+const refreshPage = ()=>{window.location.reload()}
 
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         // event.preventDefault();
@@ -170,11 +165,22 @@ useEffect(()=>{
             localStorage.removeItem("RESOURCE_ID_KEY1")
             localStorage.removeItem("RESOURCE_ID_KEY2")
             localStorage.removeItem("RESOURCE_ID_KEY3")
-            const data = await response.json();
-           
-            console.log('Data sent successfully:', data);
 
-         setPosted(true)
+           await response.json()
+            .then(data => {
+              console.log('Data sent successfully:', data);
+              return toast.success('Product Successfully Uploaded'); 
+            })
+            .then(() => {
+           
+              window.location.reload()
+
+            })
+            
+           
+
+           
+           
           } else if (response.status === 409) {
             console.error('Server responded with conflict (409):', response.statusText);
             toast.warn('This product already exist. Please use a different description and try again.');
@@ -538,20 +544,20 @@ onSubmit={handleSubmit}
 </div>
 
 <div className="details_div flex flex-col text-[1.6vw] portrait:text-[4vw] space-y-[0.6vw] portrait:space-y-[2vw] w-[30vw] portrait:w-full portrait:sm:w-full">
-<input type="text" id="product_image_alt" name="product_image_alt" placeholder="Enter Image Alt Text" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'/>
+<input required type="text" id="product_image_alt" name="product_image_alt" placeholder="Enter Image Alt Text" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'/>
 
-<select id="productCategory" name="productCategory" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'>
+<select  id="productCategory" name="productCategory" className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'>
   <option value="">Add a product category</option>
   <option value="Accessories">Accessories</option>
   <option value="NewLaptops">New Laptops</option>
   <option value="UsedLaptops">Used Laptops</option>
 </select>
 
-<input type="text" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="brandname" placeholder='Add a Brand Name'  />
-<input type="text" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="title" placeholder='Add a Title' />
-<input type="text" className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="shortdescription" placeholder='Add a Short Description' />
-<textarea  className='fulldescription outline-none h-[12vw] resize-none portrait:h-[24vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
-<input type="number" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="price" placeholder='Add a Price' />
+<input required type="text" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="brandname" placeholder='Add a Brand Name'  />
+<input required type="text" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="title" placeholder='Add a Title' />
+<input required type="text" className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="shortdescription" placeholder='Add a Short Description' />
+<textarea required  className='fulldescription outline-none h-[12vw] resize-none portrait:h-[24vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
+<input required type="number" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="price" placeholder='Add a Price' />
 
 </div>
 

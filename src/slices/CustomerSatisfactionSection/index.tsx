@@ -89,7 +89,7 @@ const CustomerSatisfactionSection = ({
     opacityAnimation(writeup,0.8)
   
   
-  })
+  },)
 
 
 

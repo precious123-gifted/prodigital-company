@@ -37,7 +37,7 @@ const HeroSection = ({ slice }: HeroSectionProps): JSX.Element => {
   
       displayElementWhenPageLoads(button,0.5,450)
       displayElementWhenPageLoads(header,0.5,750)
-    })
+    },[])
 
 
   return (

@@ -8,6 +8,10 @@ import Image from 'next/image';
 import { CldUploadWidget } from 'next-cloudinary';
 import { ToastContainer, toast } from "react-toastify";
 import imagePlaceholder from "../../../public/image-fill.png"
+import Bounded from '../components/Bounded';
+import backgroundImage from "../../../public/hero-background.png"
+import backgroundImage2 from "../../../public/hero-background2.png"
+
 
 
 
@@ -27,10 +31,34 @@ export default function AdminClientPage({allProducts}:any) {
      const imageUrl = `${baseUrl}/api/imageupload`;
 
 
-     const [isAuthenticated, setIsAuthenticated] = useState(true);
-     const [username, setUsername] = useState('');
-     const [password, setPassword] = useState('');
 
+
+
+     const [isAuthenticated, setIsAuthenticated] = useState(
+     true
+    );
+  
+    useEffect(() => {
+     
+      const handleWindowBlur = () => {
+        const timeoutId = setTimeout(() => {
+          console.log('Admin page has been inactive for 1 hour.');
+          localStorage.removeItem('isAuthenticated');
+          setIsAuthenticated(false); 
+        }, 1000 * 60 //one minute
+        // 1000 * 60 * 60 // One hour in milliseconds
+      );
+  
+        return () => clearTimeout(timeoutId); 
+      };
+  
+      window.addEventListener('blur', handleWindowBlur);
+  
+      return () => {
+        window.removeEventListener('blur', handleWindowBlur);
+      };
+    }, []);
+  
 
 
 
@@ -60,9 +88,10 @@ export default function AdminClientPage({allProducts}:any) {
 
         if (response.ok) {
           const data = await response.json();
-
-          console.log('Data sent successfully:', data);
-          setIsAuthenticated(true)
+          toast.success('Logged in Successfully')
+          console.log('Logged in successfully as Admin:');
+          localStorage.setItem('isAuthenticated', 'true');
+          setIsAuthenticated(true);
           console.log(isAuthenticated)
         } else if (response.status === 409) {
           console.error('Server responded with conflict (409):', response.statusText);
@@ -82,7 +111,6 @@ export default function AdminClientPage({allProducts}:any) {
       const [imageData2, setImageData2] = useState<string | null>(null);
       const [imageData3, setImageData3] = useState<string | null>(null);
       const [products, setProducts] = useState();
-      // const {productOfTheWeek, setProductOfTheWeek} = useStateContext();
 
 
 
@@ -522,7 +550,7 @@ onSubmit={handleSubmit}
 <input type="text" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="brandname" placeholder='Add a Brand Name'  />
 <input type="text" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="title" placeholder='Add a Title' />
 <input type="text" className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="shortdescription" placeholder='Add a Short Description' />
-<textarea  className='fulldescription outline-none h-[12vw] resize-none portrait:h-[14vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
+<textarea  className='fulldescription outline-none h-[12vw] resize-none portrait:h-[18vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
 <input type="number" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="price" placeholder='Add a Price' />
 
 </div>
@@ -583,13 +611,36 @@ onSubmit={handleSubmit}
 
 </>
 ) : (
-  <form onSubmit={handleLogin}>
+  <>
+<ToastContainer/>
 
-<input type="text" name='userName' placeholder='userName' />
-<input type="text" name='password'  placeholder='password' />
+  <Bounded
+   className="  text-[#333D3E] portrait:text-[#E7FEFF]  " >
 
-    <button type="submit">Login</button>
+   
+  <div className=" content w-full h-full flex   justify-center items-center rounded-xl relative">
+  <div className="backgroundImage ">
+ 
+  <Image src={backgroundImage} alt="Background" className="portrait:hidden"/> 
+  <Image src={backgroundImage2} alt="Background" className="landscape:hidden"/> 
+
+    </div>
+
+
+    <form onSubmit={handleLogin} className='absolute h-full  flex flex-col items-center space-y-4 pt-[2vw] portrait:pt-[14vw]'>
+
+<input type="text" name='userName' placeholder='userName' className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'/>
+<input type="text" name='password'  placeholder='password' className='outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'/>
+
+    <button type="submit" className='portrait:mt-[10vw] portrait:sm:mt-[8vw] px-[2vw] py-4 w-full bg-[#469c6a] hover:bg-[#172c20] transition duration-300 ease-in-out text-[#354e3f] hover:text-[#d0f7df] text-[1.6vw] portrait:text-[5.8vw]  rounded-md'>Login</button>
   </form>
+
+
+  </div>
+
+
+  </Bounded>
+  </>
 )}
 
 

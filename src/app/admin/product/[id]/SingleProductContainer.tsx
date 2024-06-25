@@ -530,7 +530,7 @@ onSuccess={(result, { widget }) => {
 <input type="text" defaultValue={productData?.brandName}  name="brandname" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Brand Name'  />
 <input type="text" defaultValue={productData?.title} name="title" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Title' />
 <input defaultValue={shortDescription} name="shortdescription"  className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  placeholder='Add a Short Description' />
-<textarea defaultValue={productData?.fullDescription} name="fulldescription" className='h-[12vw] resize-none fulldescription outline-none  portrait:h-[14vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a full Description' />
+<textarea defaultValue={productData?.fullDescription} name="fulldescription" className='h-[12vw] resize-none fulldescription outline-none  portrait:h-[18vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a full Description' />
 <input defaultValue={productData?.price} type="number" name="price" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'   placeholder='Add a Price' />
 
 </div>

@@ -113,7 +113,7 @@ setIsAuthenticated(isAuth?true:false)
 
 
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        // event.preventDefault();
+        event.preventDefault();
 
 
 
@@ -166,8 +166,10 @@ setIsAuthenticated(isAuth?true:false)
             const data = await response.json();
            
             console.log('Data sent successfully:', data);
-           setTimeout(() => {
             toast.success('Product Uploaded Successfully')
+
+           setTimeout(() => {
+          window.location.reload()
            }, 9000); 
           } else if (response.status === 409) {
             console.error('Server responded with conflict (409):', response.statusText);
@@ -543,7 +545,7 @@ onSubmit={handleSubmit}
 <input type="text" className='brandname outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="brandname" placeholder='Add a Brand Name'  />
 <input type="text" className='title outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="title" placeholder='Add a Title' />
 <input type="text" className='shortdescription outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="shortdescription" placeholder='Add a Short Description' />
-<textarea  className='fulldescription outline-none h-[12vw] resize-none portrait:h-[18vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
+<textarea  className='fulldescription outline-none h-[12vw] resize-none portrait:h-[24vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  name="fulldescription" placeholder='Add a full Description' />
 <input type="number" className='price [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  outline-none h-[3vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' name="price" placeholder='Add a Price' />
 
 </div>

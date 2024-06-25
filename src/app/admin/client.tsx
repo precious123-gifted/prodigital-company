@@ -166,7 +166,9 @@ setIsAuthenticated(isAuth?true:false)
             const data = await response.json();
            
             console.log('Data sent successfully:', data);
+           setTimeout(() => {
             toast.success('Product Uploaded Successfully')
+           }, 9000); 
           } else if (response.status === 409) {
             console.error('Server responded with conflict (409):', response.statusText);
             toast.warn('This product already exist. Please use a different description and try again.');

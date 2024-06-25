@@ -110,10 +110,17 @@ setIsAuthenticated(isAuth?true:false)
 
 
 
+const [posted,setPosted] = useState(false)
 
+useEffect(()=>{
+
+  if(posted)toast.success('Product Successfully Uploaded')
+    setPosted(false)
+
+},[setPosted,posted])
 
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+        // event.preventDefault();
 
 
 
@@ -166,11 +173,8 @@ setIsAuthenticated(isAuth?true:false)
             const data = await response.json();
            
             console.log('Data sent successfully:', data);
-            toast.success('Product Uploaded Successfully')
 
-           setTimeout(() => {
-          window.location.reload()
-           }, 9000); 
+         setPosted(true)
           } else if (response.status === 409) {
             console.error('Server responded with conflict (409):', response.statusText);
             toast.warn('This product already exist. Please use a different description and try again.');

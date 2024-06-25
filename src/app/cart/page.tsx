@@ -33,73 +33,59 @@ export default function CartContainer() {
 
 
 
-const totalAmountRef = useRef(0); // Create a Ref to store the total amount
+const totalAmountRef = useRef(0); 
 
-// const calculateTotalAmount = () => {
-//   totalAmountRef.current = cartData.reduce((sum, product) => sum + (product.totalPrice), 0);
-// };
+
 
 const calculateTotalAmount = () => {
-  // Retrieve cart data from local storage
   let cartedProductsFromLS = localStorage.getItem("cartedProducts");
 
-  // Check if data exists in local storage
   if (cartedProductsFromLS) {
     const parsedCartData = JSON.parse(cartedProductsFromLS);
 
-    // Calculate total amount using parsed data
     totalAmountRef.current = parsedCartData.reduce((sum:any, product:any) => sum + (product.price * product.quantity), 0);
   } else {
-    // Set total amount to 0 if no data in local storage
     totalAmountRef.current = 0;
   }
 };
 
 useEffect(() => {
-  calculateTotalAmount(); // Calculate total amount on initial render and cart data changes
+  calculateTotalAmount();  
 }, []);
 
 
 
 const updateLocalStorage = (updatedCartData: any) => {
-  // Store the updated cart data in local storage
   localStorage.setItem('cartedProducts', JSON.stringify(updatedCartData));
 };
-// Update local storage logic (replace with your actual storage implementation)
 
 
 const handleQuantityChange = (productId:any, change:any) => {
-  // Find the product in the cart
+  
   const productIndex = cartData.findIndex((item) => item._id === productId);
-  if (productIndex === -1) return; // Product not found
+  if (productIndex === -1) return;  
 
-  // Update quantity and total price
+ 
   const updatedProduct = { ...cartData[productIndex] };
-  updatedProduct.quantity += change; // Increase or decrease quantity
+  updatedProduct.quantity += change;  
 
-  // Handle quantity reaching 1
   if (updatedProduct.quantity === 0) {
-    // Remove product from cart
     const updatedCart = cartData.filter((item) => item._id !== productId);
     setCartData(updatedCart);
     updateLocalStorage(updatedCart);
     setCartLength(updatedCart.length)
-  calculateTotalAmount(); // Calculate total amount on initial render and cart data changes
+  calculateTotalAmount();  
 
 
-    // Update local storage here (see explanation below)
   } else {
-    // Update product quantity and total price
     updatedProduct.totalPrice = updatedProduct.price * updatedProduct.quantity;
 
-    // Update cart data in state
     const updatedCart = [...cartData];
     updatedCart[productIndex] = updatedProduct;
     setCartData(updatedCart);
     
-    // Update local storage here (see explanation below)
     updateLocalStorage(updatedCart);
-  calculateTotalAmount(); // Calculate total amount on initial render and cart data changes
+  calculateTotalAmount();  
 
 
   }
@@ -107,34 +93,22 @@ const handleQuantityChange = (productId:any, change:any) => {
 
 
 
-// useEffect(() => {
-//   // Update local storage whenever cartData changes
 
-//   updateLocalStorage(cartData);
-
-//   const existingCartedProductsData = localStorage.getItem("cartedProducts");
-
-//   if(existingCartedProductsData)setCartLength(JSON.parse(existingCartedProductsData).length);
-// }, [cartData,cartLength]); // Dependency on cartData
 
 
 
 
 useEffect(() => {
-  // Retrieve cart data from local storage
   let cartedProductsFromLS = localStorage.getItem("cartedProducts");
 
   if (cartedProductsFromLS) {
-    // Parse and set cart length (assuming it's calculated from cart items)
     setCartLength(JSON.parse(cartedProductsFromLS).length);
 
-    // Update state only if local storage data is different from current state
     if (JSON.stringify(cartedProductsFromLS) !== JSON.stringify(cartData)) {
       setCartData(JSON.parse(cartedProductsFromLS)); 
     }
   }
 
-  // Update local storage whenever cartData changes
  
 }, [cartLength]);
 

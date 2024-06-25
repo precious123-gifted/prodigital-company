@@ -107,7 +107,9 @@ useEffect(()=>{
     <div className="w-[95%] portrait:flex-col portrait:flex">
        <div className="content w-full  flex flex-row justify-between items-center relative  pt-2">
 <div ref={logo} className="logo opacity-0 cursor-pointer object-contain  w-[15vw] portrait:w-[32vw]  pb-1 ">
-  <Link href={"/"}> <PrismicNextImage  field={settings.data.logo} /></Link>
+  <Link
+  onClick={menuBackAnimation}
+  href={"/"}> <PrismicNextImage  field={settings.data.logo} /></Link>
       </div>
 
 

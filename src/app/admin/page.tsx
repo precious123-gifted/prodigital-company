@@ -57,7 +57,6 @@ export default async function AdminPage() {
       
       const allProducts = await getProducts()
       
-      console.table(allProducts)
 
       
      

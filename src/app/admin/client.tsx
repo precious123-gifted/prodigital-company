@@ -2,7 +2,6 @@
 
 
 import React, { useEffect, useRef, useState } from 'react'
-import dbConnect from "@/lib/dbConnect";
 import Link from 'next/link';
 import Image from 'next/image';
 import { CldUploadWidget } from 'next-cloudinary';

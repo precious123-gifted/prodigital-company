@@ -90,8 +90,8 @@ export default function AdminClientPage({allProducts}:any) {
           const data = await response.json();
           toast.success('Logged in Successfully')
           console.log('Logged in successfully as Admin:');
-          localStorage.setItem('isAuthenticated', 'true');
-          setIsAuthenticated(true);
+          // localStorage.setItem('isAuthenticated', 'true');
+          // setIsAuthenticated(true);
           console.log(isAuthenticated)
         } else if (response.status === 409) {
           console.error('Server responded with conflict (409):', response.statusText);

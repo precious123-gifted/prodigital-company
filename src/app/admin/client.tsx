@@ -115,7 +115,7 @@ setIsAuthenticated(isAuth?true:false)
 const refreshPage = ()=>{window.location.reload()}
 
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+        // event.preventDefault();
 
 
 

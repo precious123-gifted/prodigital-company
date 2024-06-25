@@ -5,11 +5,10 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import backgroundImage from "../../../public/customer-satisfaction-background.png"
 import Image from "next/image";
-import Link from "next/link";
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
@@ -39,7 +38,7 @@ const CustomerSatisfactionSection = ({
         onEnter: () => {
         gsap.to(ref.current,time, {
           opacity:'100%',
-          scrub:1,
+          scrub: true, pauseAt: ref,
           ease: "Power1.easeIn" ,
           
         });
@@ -48,7 +47,7 @@ const CustomerSatisfactionSection = ({
       onLeave: () => {
         gsap.to(ref.current,time, {
           opacity:'0%',
-          scrub:1,
+          scrub: true, pauseAt: ref,
           ease: "Power1.easeIn" 
           
         });
@@ -60,7 +59,7 @@ const CustomerSatisfactionSection = ({
       onLeaveBack: () => {
         gsap.to(ref.current,time, {
           opacity:'0%',
-          scrub:1,
+          scrub: true, pauseAt: ref,
           ease: "Power1.easeIn" 
           
         });
@@ -72,7 +71,7 @@ const CustomerSatisfactionSection = ({
       onEnterBack: () => {
         gsap.to(ref.current, time,{
           opacity:'100%',
-          scrub:1,
+          scrub: true, pauseAt: ref,
           ease: "Power1.easeIn" 
          
         });
@@ -83,13 +82,24 @@ const CustomerSatisfactionSection = ({
     })
   }
   
-  
-  useEffect(()=>{
-    opacityAnimation(header,0.4)
-    opacityAnimation(writeup,0.8)
-  
-  
-  },)
+  const [hasAnimated, setHasAnimated] = useState(false);
+  // useEffect(()=>{
+  //   opacityAnimation(header,0.4)
+  //   opacityAnimation(writeup,0.8)
+  // },[hasAnimated])
+
+  // useEffect(() => {
+  //   if (!hasAnimated) {
+  //     opacityAnimation(header, 0.4);
+  //     opacityAnimation(writeup, 0.8);
+  //     setHasAnimated(true);
+  //   }
+  // }, [hasAnimated, header, writeup]);
+
+  useGSAP(() => {
+    opacityAnimation(header, 0.4);
+    opacityAnimation(writeup, 0.8);
+  },[hasAnimated] );
 
 
 

@@ -38,26 +38,26 @@ export default function AdminClientPage({allProducts}:any) {
      true
     );
   
-    useEffect(() => {
+    // useEffect(() => {
      
-      const handleWindowBlur = () => {
-        const timeoutId = setTimeout(() => {
-          console.log('Admin page has been inactive for 1 hour.');
-          localStorage.removeItem('isAuthenticated');
-          setIsAuthenticated(false); 
-        }, 1000 * 60 //one minute
-        // 1000 * 60 * 60 // One hour in milliseconds
-      );
+    //   const handleWindowBlur = () => {
+    //     const timeoutId = setTimeout(() => {
+    //       console.log('Admin page has been inactive for 1 hour.');
+    //       localStorage.removeItem('isAuthenticated');
+    //       setIsAuthenticated(false); 
+    //     }, 1000 * 60 //one minute
+    //     // 1000 * 60 * 60 // One hour in milliseconds
+    //   );
   
-        return () => clearTimeout(timeoutId); 
-      };
+    //     return () => clearTimeout(timeoutId); 
+    //   };
   
-      window.addEventListener('blur', handleWindowBlur);
+    //   window.addEventListener('blur', handleWindowBlur);
   
-      return () => {
-        window.removeEventListener('blur', handleWindowBlur);
-      };
-    }, []);
+    //   return () => {
+    //     window.removeEventListener('blur', handleWindowBlur);
+    //   };
+    // }, []);
   
 
 

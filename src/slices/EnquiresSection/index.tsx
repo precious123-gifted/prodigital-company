@@ -89,7 +89,7 @@ const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
 useEffect(()=>{
   opacityAnimation(headerref,0.6)
   opacityAnimation(writeupref,0.8)
-},) 
+}) 
 
   return (
     <section

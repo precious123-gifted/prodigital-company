@@ -28,38 +28,29 @@ export default function AdminClientPage({allProducts}:any) {
       : "https://prodigital-company.vercel.app";
      const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
      const loginUrl = `${baseUrl}/api/login`;
-     const imageUrl = `${baseUrl}/api/imageupload`;
 
 
 
 
 
-     const [isAuthenticated, setIsAuthenticated] = useState(
-     true
+  
+    const [isAuthenticated, setIsAuthenticated] = useState(
+      localStorage.getItem('isAuthenticated') || false
     );
   
-    // useEffect(() => {
-     
-    //   const handleWindowBlur = () => {
-    //     const timeoutId = setTimeout(() => {
-    //       console.log('Admin page has been inactive for 1 hour.');
-    //       localStorage.removeItem('isAuthenticated');
-    //       setIsAuthenticated(false); 
-    //     }, 1000 * 60 //one minute
-    //     // 1000 * 60 * 60 // One hour in milliseconds
-    //   );
-  
-    //     return () => clearTimeout(timeoutId); 
-    //   };
-  
-    //   window.addEventListener('blur', handleWindowBlur);
-  
-    //   return () => {
-    //     window.removeEventListener('blur', handleWindowBlur);
-    //   };
-    // }, []);
   
 
+useEffect(()=>{
+
+  const timeoutId = setTimeout(() => {
+           console.log('Relogin to Admin Page Please.');
+           localStorage.removeItem('isAuthenticated');
+           setIsAuthenticated(false); 
+         }, 
+         1000 * 60 * 40 // One hour in milliseconds
+       );
+
+})
 
 
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -77,7 +68,6 @@ export default function AdminClientPage({allProducts}:any) {
 
       const loginData = { userName, password };
 
-      console.table(loginData);
 
       try {
         const response = await fetch(loginUrl, {
@@ -90,8 +80,8 @@ export default function AdminClientPage({allProducts}:any) {
           const data = await response.json();
           toast.success('Logged in Successfully')
           console.log('Logged in successfully as Admin:');
-          // localStorage.setItem('isAuthenticated', 'true');
-          // setIsAuthenticated(true);
+          localStorage.setItem('isAuthenticated', 'true');
+          setIsAuthenticated(true);
           console.log(isAuthenticated)
         } else if (response.status === 409) {
           console.error('Server responded with conflict (409):', response.statusText);
@@ -210,7 +200,7 @@ export default function AdminClientPage({allProducts}:any) {
       const [resource2, setResource2] = useState<CloudinaryImageInfo | null | string>(null);
       const [resource3, setResource3] = useState<CloudinaryImageInfo | null | string>(null);
 function isCloudinaryInfo(value: string | CloudinaryImageInfo): value is CloudinaryImageInfo {
-  return typeof value === 'object' && 'public_id' in value; // Check for object with public_id
+  return typeof value === 'object' && 'public_id' in value; 
 }
 
 

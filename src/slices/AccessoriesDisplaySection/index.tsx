@@ -52,101 +52,101 @@ const AccessoriesDisplaySection = ({
     {
       name: 'Chargers',
       icon: chargerIcon, // Assuming chargerIcon is an image source
-      className: 'chargerdiv flex flex-col items-center opacity-0',
+      className: 'chargerdiv flex flex-col items-center opacity-1',
     },
     {
       name: 'Gaming Mouse',
       icon: mouseIcon,
-      className: 'mousediv flex flex-col items-center opacity-0',
+      className: 'mousediv flex flex-col items-center opacity-1',
     },
     {
       name: 'L-Bags',
       icon: bagIcon,
-      className: 'bagdiv flex flex-col items-center opacity-0',
+      className: 'bagdiv flex flex-col items-center opacity-1',
     },
     {
       name: 'HDD/SSD',
       icon: harddriveIcon,
-      className: 'harddrivediv flex flex-col items-center opacity-0',
+      className: 'harddrivediv flex flex-col items-center opacity-1',
     },
   ];
   
 
 
 
-  const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
-    let opacityAnimation =   ScrollTrigger.create({
-      trigger: ref.current,
-      start: "top bottom",
-      end: "bottom top",
+  // const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
+  //   let opacityAnimation =   ScrollTrigger.create({
+  //     trigger: ref.current,
+  //     start: "top bottom",
+  //     end: "bottom top",
       
       
-        onEnter: () => {
-        gsap.to(ref.current,time, {
-          opacity:'100%',
-          scrub:1,
-          ease: "Power1.easeIn" ,
+  //       onEnter: () => {
+  //       gsap.to(ref.current,time, {
+  //         opacity:'100%',
+  //         scrub:1,
+  //         ease: "Power1.easeIn" ,
           
-        });
+  //       });
     
-      },
-      onLeave: () => {
-        gsap.to(ref.current,time, {
-          opacity:'0%',
-          scrub:1,
-          ease: "Power1.easeIn" 
+  //     },
+  //     onLeave: () => {
+  //       gsap.to(ref.current,time, {
+  //         opacity:'0%',
+  //         scrub:1,
+  //         ease: "Power1.easeIn" 
           
-        });
+  //       });
     
     
        
         
-      },
-      onLeaveBack: () => {
-        gsap.to(ref.current,time, {
-          opacity:'0%',
-          scrub:1,
-          ease: "Power1.easeIn" 
+  //     },
+  //     onLeaveBack: () => {
+  //       gsap.to(ref.current,time, {
+  //         opacity:'0%',
+  //         scrub:1,
+  //         ease: "Power1.easeIn" 
           
-        });
+  //       });
     
       
     
-      },
+  //     },
       
-      onEnterBack: () => {
-        gsap.to(ref.current, time,{
-          opacity:'100%',
-          scrub:1,
-          ease: "Power1.easeIn" 
+  //     onEnterBack: () => {
+  //       gsap.to(ref.current, time,{
+  //         opacity:'100%',
+  //         scrub:1,
+  //         ease: "Power1.easeIn" 
          
-        });
+  //       });
     
        
     
-      },
-    })
-  }
+  //     },
+  //   })
+  // }
   
-  useEffect(()=>{
-    opacityAnimation(headerref,0.6)
-    opacityAnimation(writeupref,0.8)
+  // useEffect(()=>{
+  //   opacityAnimation(headerref,0.6)
+  //   opacityAnimation(writeupref,0.8)
 
   
 
-    iconrefs.current.forEach((ref)=>{
+  //   iconrefs.current.forEach((ref)=>{
   
-      opacityAnimation(ref,0.8)
+  //     opacityAnimation(ref,0.8)
   
-    })
+  //   })
 
-    opacityAnimation(header2ref,0.6)
-    opacityAnimation(writeup2ref,0.8)
-    opacityAnimation(buttonref,0.8)
+  //   opacityAnimation(header2ref,0.6)
+  //   opacityAnimation(writeup2ref,0.8)
+  //   opacityAnimation(buttonref,0.8)
 
 
   
-  }) 
+  // }) 
 
 
 
@@ -159,13 +159,13 @@ const AccessoriesDisplaySection = ({
   <div className=" content w-full   flex  flex-col  portrait:flex-col  ">
  
 <div className="headersection rounded-top-xl  bg-[#333D3E] pb-[6vw] space-y-6 landscape:pt-14  portrait:pt-6  text-center h-full  flex flex-col items-center w-full">
-<div ref={headerref} className="opacity-0 header text-[4vw] portrait:text-[6vw]">{slice.primary.question}</div>
-<div ref={writeupref} className="opacity-0 writeup text-[2vw] portrait:text-[4vw]">{slice.primary.writeup}</div>
+<div ref={headerref} className="opacity-1 header text-[4vw] portrait:text-[6vw]">{slice.primary.question}</div>
+<div ref={writeupref} className="opacity-1 writeup text-[2vw] portrait:text-[4vw]">{slice.primary.writeup}</div>
 
 </div>
 
 <div className="displaysection  bg-[#4C6E72] flex flex-col items-center pb-[6vw]  portrait:pb-[10vw]">
-<div ref={header2ref} className="header opacity-0 text-[2vw]  portrait:text-[4.8vw] pt-[2vw] mb-[4vw] portrait:mb-[14vw] portrait:pt-[10vw]">We Sell</div>
+<div ref={header2ref} className="header opacity-1 text-[2vw]  portrait:text-[4.8vw] pt-[2vw] mb-[4vw] portrait:mb-[14vw] portrait:pt-[10vw]">We Sell</div>
 <div className="iconsdisplaysection pb-[4vw] portrait:pb-[10vw] w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20 ">
 {icons.map((item, index) => (
         <div key={index} 
@@ -181,8 +181,8 @@ const AccessoriesDisplaySection = ({
 </div>
 
 <div className="headersection rounded-top-xl  bg-[#333D3E] pb-[6vw] space-y-6 landscape:pt-14  portrait:pt-6  text-center h-full  flex flex-col items-center w-full">
-<div ref={writeup2ref} className="header opacity-0 text-[4vw] portrait:text-[6vw]">To See more of Our Accessories <br/>click on the Button</div>
-<div ref={buttonref} className="btn-div  opacity-0 pt-[4vw]  w-full flex justify-center items-center"> 
+<div ref={writeup2ref} className="header opacity-1 text-[4vw] portrait:text-[6vw]">To See more of Our Accessories <br/>click on the Button</div>
+<div ref={buttonref} className="btn-div  opacity-1 pt-[4vw]  w-full flex justify-center items-center"> 
  <Link href={"/products/accessories"}> <div  className="button opacity-1 bg-[#EBFEFF] text-[#333D3E] cursor-pointer px-8 py-3 rounded-[0.280rem] text-[2vw] portrait:text-[8vw] hover:bg-[#d1f1f3] duration-[0.2s]  ease-in-out ">Check Our Accessories</div> </Link> 
   
    </div>

@@ -28,78 +28,61 @@ const CustomerSatisfactionSection = ({
   const header = useRef(null)
   const writeup = useRef(null)
 
-  const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
-    let opacityAnimation =   ScrollTrigger.create({
-      trigger: ref.current,
-      start: "top bottom",
-      end: "bottom top",
+  // const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
+  //   let opacityAnimation =   ScrollTrigger.create({
+  //     trigger: ref.current,
+  //     start: "top bottom",
+  //     end: "bottom top",
       
       
-        onEnter: () => {
-        gsap.to(ref.current,time, {
-          opacity:'100%',
-          scrub: true, pauseAt: ref,
-          ease: "Power1.easeIn" ,
+  //       onEnter: () => {
+  //       gsap.to(ref.current,time, {
+  //         opacity:'100%',
+  //         scrub: true, pauseAt: ref,
+  //         ease: "Power1.easeIn" ,
           
-        });
+  //       });
     
-      },
-      onLeave: () => {
-        gsap.to(ref.current,time, {
-          opacity:'0%',
-          scrub: true, pauseAt: ref,
-          ease: "Power1.easeIn" 
+  //     },
+  //     onLeave: () => {
+  //       gsap.to(ref.current,time, {
+  //         opacity:'0%',
+  //         scrub: true, pauseAt: ref,
+  //         ease: "Power1.easeIn" 
           
-        });
+  //       });
     
     
        
         
-      },
-      onLeaveBack: () => {
-        gsap.to(ref.current,time, {
-          opacity:'0%',
-          scrub: true, pauseAt: ref,
-          ease: "Power1.easeIn" 
+  //     },
+  //     onLeaveBack: () => {
+  //       gsap.to(ref.current,time, {
+  //         opacity:'0%',
+  //         scrub: true, pauseAt: ref,
+  //         ease: "Power1.easeIn" 
           
-        });
+  //       });
     
       
     
-      },
+  //     },
       
-      onEnterBack: () => {
-        gsap.to(ref.current, time,{
-          opacity:'100%',
-          scrub: true, pauseAt: ref,
-          ease: "Power1.easeIn" 
+  //     onEnterBack: () => {
+  //       gsap.to(ref.current, time,{
+  //         opacity:'100%',
+  //         scrub: true, pauseAt: ref,
+  //         ease: "Power1.easeIn" 
          
-        });
+  //       });
     
        
     
-      },
-    })
-  }
+  //     },
+  //   })
+  // }
   
-  const [hasAnimated, setHasAnimated] = useState(false);
-  // useEffect(()=>{
-  //   opacityAnimation(header,0.4)
-  //   opacityAnimation(writeup,0.8)
-  // },[hasAnimated])
 
-  // useEffect(() => {
-  //   if (!hasAnimated) {
-  //     opacityAnimation(header, 0.4);
-  //     opacityAnimation(writeup, 0.8);
-  //     setHasAnimated(true);
-  //   }
-  // }, [hasAnimated, header, writeup]);
-
-  useGSAP(() => {
-    opacityAnimation(header, 0.4);
-    opacityAnimation(writeup, 0.8);
-  },[hasAnimated] );
 
 
 
@@ -119,8 +102,8 @@ const CustomerSatisfactionSection = ({
 
     </div>
 <div className="headersection space-y-6 landscape:pt-14  portrait:pt-6 absolute text-center h-full  flex flex-col items-center w-full">
-<div ref={header} className="header opacity-0 text-[4vw] portrait:text-[6vw]">{slice.primary.header}</div>
-<div ref={ writeup} className="writeup opacity-0 text-[2vw] portrait:text-[4.3vw]">{slice.primary.writeup}</div>
+<div ref={header} className="header opacity-1 text-[4vw] portrait:text-[6vw]">{slice.primary.header}</div>
+<div ref={ writeup} className="writeup opacity-1 text-[2vw] portrait:text-[4.3vw]">{slice.primary.writeup}</div>
 
  
 </div>

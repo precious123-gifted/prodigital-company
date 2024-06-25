@@ -162,8 +162,8 @@ useEffect(()=>{
             id={product._id}
             ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
             // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
-            className="hairProduct  landscape:hover:border-x-2 opacity-0
-            landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
+            className="hairProduct  landscape:hover:border-x-2 opacity-0 transition duration-200 ease-in
+            landscape:hover:border-[#bad8d863]  w-auto flex flex-col items-center text-start  space-y-1"
           >
             <div className="flex flex-col items-start">
             <Link  href={`/product/${product._id}`}> 

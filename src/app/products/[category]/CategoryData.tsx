@@ -2,13 +2,15 @@
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import Link from "next/link";
-import React, { MutableRefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Bounded from "@/app/components/Bounded";
 import Layout from "../navlayout";
 import Image from "next/image";
 import { useStateContext } from "@/StateManager";
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
 
 
@@ -40,14 +42,75 @@ const productrefs = useRef<ProductRef[]>([]);
 
 
 
+const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
+  let opacityAnimation =   ScrollTrigger.create({
+    trigger: ref.current,
+    start: "top bottom",
+    end: "bottom top",
+    
+    
+      onEnter: () => {
+      gsap.to(ref.current,time, {
+        opacity:'100%',
+        scrub:1,
+        ease: "Power1.easeIn" ,
+        
+      });
+  
+    },
+    onLeave: () => {
+      gsap.to(ref.current,time, {
+        opacity:'0%',
+        scrub:1,
+        ease: "Power1.easeIn" 
+        
+      });
+  
+  
+     
+      
+    },
+    onLeaveBack: () => {
+      gsap.to(ref.current,time, {
+        opacity:'0%',
+        scrub:1,
+        ease: "Power1.easeIn" 
+        
+      });
+  
+    
+  
+    },
+    
+    onEnterBack: () => {
+      gsap.to(ref.current, time,{
+        opacity:'100%',
+        scrub:1,
+        ease: "Power1.easeIn" 
+       
+      });
+  
+     
+  
+    },
+  })
+}
+   
+
+
+useEffect(()=>{
+  
+  productrefs.current.forEach((ref)=>{
+
+    opacityAnimation(ref,0.6)
+
+  })
+
+}) 
 
 
  
-useEffect(()=>{
 
-console.log(products)
-
-})
 
 
 
@@ -65,8 +128,9 @@ console.log(products)
             id={product._id}
             ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
             // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
-            className="laptopProduct  hover:border-x-2
-            landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
+            className="laptopProduct  hover:border-x-2opacity-0
+transition duration-200 ease-in
+            landscape:hover:border-[#bad8d863]   w-auto flex flex-col items-center text-start  space-y-1"
           >
             <Link  href={`/product/${product._id}`}> 
               <div className="laptopImage cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">

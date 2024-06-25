@@ -35,13 +35,15 @@ export default function AdminClientPage({allProducts}:any) {
 
   
     const [isAuthenticated, setIsAuthenticated] = useState(
-      localStorage.getItem('isAuthenticated') || false
+      false
     );
   
   
 
 useEffect(()=>{
 
+  let isAuth = localStorage.getItem('isAuthenticated')? true : false
+setIsAuthenticated(isAuth?true:false)
   const timeoutId = setTimeout(() => {
            console.log('Relogin to Admin Page Please.');
            localStorage.removeItem('isAuthenticated');

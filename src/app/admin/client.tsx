@@ -117,7 +117,7 @@ useEffect(()=>{
   if(posted)toast.success('Product Successfully Uploaded')
     setPosted(false)
 
-},[setPosted,posted])
+},[])
 
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         // event.preventDefault();
@@ -179,6 +179,7 @@ useEffect(()=>{
             console.error('Server responded with conflict (409):', response.statusText);
             toast.warn('This product already exist. Please use a different description and try again.');
           } else {
+            toast.warn('Please Kindly Fill all Details for the Product')
             console.error('Server responded with error:', response.status, response.statusText);
           }
         } catch (error) {

@@ -39,7 +39,7 @@ const isAccessoriesActive = pathname  === '/products/Accessories'
      isNewLaptopsActive && ' bg-[#bea192] landscape:hover:text-[#ddcbc2] text-[#f7efeb] shadow-lg'
   )}
   >
-    New Laptops
+    Opened Box/New Laptops
   </Link>
   <Link href={pathname.includes('/products/') ? '/products/UsedLaptops' : '/products/UsedLaptops'} 
   className={cn(

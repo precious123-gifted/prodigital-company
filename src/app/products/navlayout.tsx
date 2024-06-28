@@ -23,7 +23,7 @@ const isAccessoriesActive = pathname  === '/products/Accessories'
 
   return (
     <>
-    <div className="w-full flex justify-between pb-[4vw]  portrait:pb-[10vw]  portrait:pt-[3vw] text-[1.4vw]  portrait:text-[3.2vw] portrait:sm:text-[3.4vw]">
+    <div className="w-full flex mb-2 justify-between pb-[4vw]  portrait:pb-[10vw]  portrait:pt-[3vw] text-[1.4vw]  portrait:text-[3.2vw] portrait:sm:text-[3.4vw]">
 
       <Link href={"/products"} 
        className={cn(

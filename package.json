@@ -33,6 +33,7 @@
     "react-hook-form": "^7.52.0",
     "react-hot-toast": "^2.4.1",
     "react-image-file-resizer": "^0.4.8",
+    "react-paystack": "^5.0.0",
     "react-toastify": "^10.0.5",
     "sass": "^1.77.4",
     "swr": "^2.2.5",

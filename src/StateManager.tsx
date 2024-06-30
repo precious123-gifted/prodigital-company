@@ -66,6 +66,8 @@ export type StateContextType = {
   cartedProductsFromState: CartedProducts;
   setCartedProductsFromState: (products: CartedProducts) => void;
   cartLength: number | null ;
+  checkoutAmount: number | null ;
+  setCheckoutAmount: (newLength: number) => void;
   setCartLength: (newLength: number) => void;
   fetchedData: Data ; 
   setFetchedData: (data: Data[]) => void;
@@ -113,6 +115,7 @@ export const StateProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const [items, setItems] = useState<Item[]>([]);
   const [cartLength, setCartLength] = useState<number | null>(null);
+  const [checkoutAmount, setCheckoutAmount] = useState<number | null>(null);
   const [cartedProductsFromState, setCartedProductsFromState] = useState<Product[]>([]);
   const [cartedProducts, setCartedProducts] = useState<Product[]>([]);
   const [fetchedData, setFetchedData] = useState<any>([]);
@@ -132,7 +135,7 @@ useEffect(() => {
 },[]);
 
   
-  return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength,setFetchedData,fetchedData}}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={{ menu, setMenu ,items,setItems,cartedProducts, setCartedProducts,cartedProductsFromState, setCartedProductsFromState,cartLength, setCartLength,setFetchedData,fetchedData,checkoutAmount,setCheckoutAmount}}>{children}</StateContext.Provider>;
 };
 
 

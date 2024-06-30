@@ -5,6 +5,7 @@ import { useStateContext } from "@/StateManager";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Bounded from "../components/Bounded";
+import Link from "next/link";
 
 export default function CartContainer() {
 
@@ -30,12 +31,21 @@ export default function CartContainer() {
 
   const [cartData, setCartData] = useState<Product[]>([]);
   const {cartLength,setCartLength} = useStateContext() 
+  const {checkoutAmount,setCheckoutAmount} = useStateContext() 
 
 
 
 const totalAmountRef = useRef(0); 
 
+const handleCheckOutAmount = ()=>{
 
+  localStorage.setItem('checkoutamount', JSON.stringify(totalAmountRef.current));
+
+console.table(`this is the checkout amount`+checkoutAmount)
+
+
+
+}
 
 const calculateTotalAmount = () => {
   let cartedProductsFromLS = localStorage.getItem("cartedProducts");
@@ -44,8 +54,15 @@ const calculateTotalAmount = () => {
     const parsedCartData = JSON.parse(cartedProductsFromLS);
 
     totalAmountRef.current = parsedCartData.reduce((sum:any, product:any) => sum + (product.price * product.quantity), 0);
+localStorage.setItem('checkoutamount', JSON.stringify(totalAmountRef.current));
+
+
   } else {
     totalAmountRef.current = 0;
+localStorage.setItem('checkoutamount', JSON.stringify(totalAmountRef.current));
+
+
+
   }
 };
 
@@ -186,7 +203,9 @@ useEffect(() => {
 
   <div className="total w-full text-[1.3vw] portrait:text-[4.2vw] portrait:sm:text-[3.4vw] flex justify-between"><div className="text">Total</div><div className="amount">{totalAmountRef.current.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</div></div>
 
-  <div className="checkoutBTN w-full  text-[1.6vw] portrait:text-[5.8vw] portrait:sm:text-[4.6vw] py-2 px-4 cursor-pointer text-[#e7d1c6] bg-[#31503d] hover:text-[#d1c0b7] hover:bg-[#15271c] duration-[1s] ease-in-out text-center  rounded-md">Checkout</div>
+  <div
+  onClick={handleCheckOutAmount}
+  className="checkoutBTN w-full  text-[1.6vw] portrait:text-[5.8vw] portrait:sm:text-[4.6vw] py-2 px-4 cursor-pointer text-[#e7d1c6] bg-[#31503d] hover:text-[#d1c0b7] hover:bg-[#15271c] duration-[1s] ease-in-out text-center  rounded-md"><Link href={'/checkout'}>Checkout</Link></div>
 
 
 

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStateContext } from "@/StateManager";
 import Bounded from '../components/Bounded';
 import Image from 'next/image';
@@ -20,8 +20,7 @@ export default function CheckoutPage() {
     const [ email, setEmail ] = useState("");
     const [ name, setName ] = useState("");
     const [ phone, setPhone ] = useState("");
-   const checkoutAmount =  localStorage.getItem('checkoutamount');
-
+    const [checkoutAmount, setCheckoutAmount] = useState(0);
   
     const componentProps = {
       email,
@@ -37,6 +36,12 @@ export default function CheckoutPage() {
     }
 
 
+    useEffect(() => {
+      const storedAmount = localStorage.getItem('checkoutamount');
+      if (storedAmount) {
+        setCheckoutAmount(parseInt(storedAmount, 10)); // Parse and convert to number
+      }
+    }, []);
 
 
   return (
@@ -60,7 +65,7 @@ export default function CheckoutPage() {
    <input type="email" placeholder="Email" className='outline-none h-[3vw] w-[30vw] portrait:w-[80vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md' value={email} onChange={(e) => setEmail(e.target.value)} />
    <input type="text" placeholder="Name" className='outline-none h-[3vw] w-[30vw] portrait:w-[80vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  value={name} onChange={(e) => setName(e.target.value)} />
    <input type="number" placeholder="Phone number" className='outline-none h-[3vw] w-[30vw] portrait:w-[80vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  value={phone} onChange={(e) => setPhone(e.target.value)} />
-   <input type="number"  className='outline-none h-[3vw] w-[30vw] portrait:w-[80vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  value={checkoutAmount.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}  />
+   <input type="text"  className='outline-none h-[3vw] w-[30vw] portrait:w-[80vw] portrait:h-[10vw] px-3 text-[#20382a] bg-[#eafcf1] rounded-md'  value={checkoutAmount.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}  />
 
         <PaystackButton   className='portrait:mt-[10vw] portrait:sm:mt-[8vw] px-[2vw] py-4 w-full bg-[#469c6a] hover:bg-[#172c20] transition duration-300 ease-in-out text-[#354e3f] hover:text-[#d0f7df] text-[1.6vw] portrait:text-[5.8vw]  rounded-md' {...componentProps}/>
  

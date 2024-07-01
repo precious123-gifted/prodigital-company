@@ -2,7 +2,7 @@
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import Link from "next/link";
-import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, RefObject, startTransition, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Bounded from "@/app/components/Bounded";
 import Layout from "../navlayout";
@@ -95,7 +95,20 @@ const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
     },
   })
 }
-   
+  
+
+
+useEffect(()=>{
+  startTransition(() => {
+    setFetchedData(products)
+
+  })
+
+},[])
+
+
+
+
 
 
 useEffect(()=>{
@@ -122,7 +135,7 @@ useEffect(()=>{
 
 
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
-    {products.map((product:any,index:number) => (
+    {fetchedData.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}

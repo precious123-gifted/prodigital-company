@@ -58,7 +58,7 @@ useEffect(()=>{
 
   })
 
-})
+},[])
 
 
 const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
@@ -134,7 +134,7 @@ useEffect(()=>{
     <Bounded>
    <Layout>   
     
-  {  isPending?  'is loading'  :(<div className="w-full pb-[4vw]">      
+  {  isPending?  <p>Loading products...</p>  :(<div className="w-full pb-[4vw]">      
    
 
 

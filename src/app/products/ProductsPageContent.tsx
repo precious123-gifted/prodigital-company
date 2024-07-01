@@ -2,7 +2,7 @@
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
 import Link from "next/link";
-import React, { MutableRefObject, RefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, RefObject, useEffect, useRef, useTransition } from "react";
 import gsap from "gsap";
 import Bounded from "../components/Bounded";
 import Layout from "./navlayout";
@@ -22,6 +22,7 @@ export default function ProductsPageContent(
   
   
 const {fetchedData,setFetchedData} = useStateContext()
+const [isPending, startTransition] = useTransition();
 
 
   interface forString{
@@ -52,7 +53,10 @@ const microActionOnProductClick = (productRef: ProductRef) =>{
 
  
 useEffect(()=>{
-setFetchedData(products)
+  startTransition(() => {
+    setFetchedData(products)
+
+  })
 
 })
 
@@ -129,14 +133,15 @@ useEffect(()=>{
   return (
     <Bounded>
    <Layout>   
-    <div className="w-full pb-[4vw]">      
+    
+  {  isPending?  'is loading'  :(<div className="w-full pb-[4vw]">      
    
 
 
 
 
 <div className="w-full grid  portrait:grid-cols-2 landscape:grid-cols-4  gap-5   gap-y-20">
-    {products.map((product:any,index:number) => (
+    {fetchedData.map((product:any,index:number) => (
           <div
             key={product._id}
             id={product._id}
@@ -160,7 +165,7 @@ useEffect(()=>{
           </div>
         ))}
       </div>
-      </div>
+      </div>)}
       </Layout>
       </Bounded>
   )

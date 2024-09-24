@@ -12,6 +12,7 @@ import Image from "next/image";
 import displayElementWhenPageLoads from "@/animation-provider/animation";
 import LoadingScreen from "./loading";
 import Skeleton from 'react-loading-skeleton';
+import TransitionLink from "@/app/components/TransitionLink";
 
 
 
@@ -158,11 +159,11 @@ useEffect(()=>{
             landscape:hover:border-[#bad8d863]  w-auto flex flex-col items-center text-start  space-y-1"
           >
             <div className="flex flex-col items-start">
-            <Link  href={`/product/${product._id}`}> 
+            <TransitionLink  href={`/product/${product._id}`}> 
               <div className="Image cursor-pointer w-[12vw] portrait:w-[26vw] portrait:sm:w-[23vw] object-contain">
                 <Image src={product?.productMainImage} alt={product.altText}  className="rounded-lg "   width={960} height={1280} />
               </div>
-            </Link>
+            </TransitionLink>
             <Link href={`/product/${product._id}`}> 
               <div className="Title w-[12vw] portrait:w-[26vw]  cursor-pointer text-[1.5vw] portrait:text-[5vw] text-nowrap portrait:text-wrap"><div >{product.brandName}<span className="ml-1 text-[#4b6363] text-wrap">{product.title}</span></div></div>
             </Link>

@@ -1,0 +1,33 @@
+{
+  "id": "accessories_display_section",
+  "type": "SharedSlice",
+  "name": "AccessoriesDisplaySection",
+  "description": "AccessoriesDisplaySection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "question": {
+          "type": "Text",
+          "config": {
+            "label": "Question",
+            "placeholder": ""
+          }
+        },
+        "writeup": {
+          "type": "Text",
+          "config": {
+            "label": "Writeup",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

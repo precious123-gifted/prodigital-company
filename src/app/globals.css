@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '~react-toastify/dist/ReactToastify.css';
+
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  textarea::-webkit-scrollbar {
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  
+}
+
+

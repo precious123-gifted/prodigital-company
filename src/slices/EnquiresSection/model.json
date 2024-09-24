@@ -1,0 +1,26 @@
+{
+  "id": "enquires_section",
+  "type": "SharedSlice",
+  "name": "EnquiresSection",
+  "description": "EnquiresSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "phonenumber": {
+          "type": "Text",
+          "config": {
+            "label": "PhoneNumber",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

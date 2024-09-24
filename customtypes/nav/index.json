@@ -1,0 +1,210 @@
+{
+  "format": "page",
+  "id": "nav",
+  "label": "custom-settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "site_title": {
+        "type": "Text",
+        "config": {
+          "label": "Site Title",
+          "placeholder": ""
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "meta description",
+          "placeholder": ""
+        }
+      },
+      "og_image": {
+        "type": "Image",
+        "config": {
+          "label": "og image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "address": {
+        "type": "Text",
+        "config": {
+          "label": "Address",
+          "placeholder": ""
+        }
+      },
+      "refundpolicy": {
+        "type": "Link",
+        "config": {
+          "label": "RefundPolicy",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "deliverypolicy": {
+        "type": "Link",
+        "config": {
+          "label": "DeliveryPolicy",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "termsandconditions": {
+        "type": "Link",
+        "config": {
+          "label": "TermsAndConditions",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "select": null
+        }
+      },
+      "phonenumber": {
+        "type": "Text",
+        "config": {
+          "label": "PhoneNumber",
+          "placeholder": ""
+        }
+      },
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "Email",
+          "placeholder": ""
+        }
+      },
+      "navigations": {
+        "type": "Group",
+        "config": {
+          "label": "navigations",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "select": null
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "label",
+                "placeholder": ""
+              }
+            },
+            "key": {
+              "type": "Text",
+              "config": {
+                "label": "key",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "products": {
+        "type": "Group",
+        "config": {
+          "label": "products",
+          "repeat": true,
+          "fields": {
+            "mainimage": {
+              "type": "Image",
+              "config": {
+                "label": "mainimage",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage1": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage1",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage2": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage2",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "complimentaryimage3": {
+              "type": "Image",
+              "config": {
+                "label": "complimentaryimage3",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "brandname": {
+              "type": "Text",
+              "config": {
+                "label": "brandname",
+                "placeholder": ""
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
+            },
+            "shortdescription": {
+              "type": "Text",
+              "config": {
+                "label": "shortdescription",
+                "placeholder": ""
+              }
+            },
+            "fulldescription": {
+              "type": "Text",
+              "config": {
+                "label": "fulldescription",
+                "placeholder": ""
+              }
+            },
+            "price": {
+              "type": "Text",
+              "config": {
+                "label": "price",
+                "placeholder": ""
+              }
+            },
+            "categories": {
+              "type": "Select",
+              "config": {
+                "label": "categories",
+                "placeholder": "choose the product category",
+                "options": ["newLaptops", "usedLaptops", "accessories"]
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}

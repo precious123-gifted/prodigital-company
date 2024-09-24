@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"header": {
+				"__TYPE__": "FieldContent",
+				"value": "shelf",
+				"type": "Text"
+			},
+			"writeup": {
+				"__TYPE__": "FieldContent",
+				"value": "even",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

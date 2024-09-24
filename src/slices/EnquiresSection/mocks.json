@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"phonenumber": {
+				"__TYPE__": "FieldContent",
+				"value": "herself",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

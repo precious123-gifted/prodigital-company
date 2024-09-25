@@ -1,7 +1,6 @@
 "use client"
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next"
-import Link from "next/link";
 import React, { MutableRefObject, RefObject, Suspense, useEffect, useRef, useTransition } from "react";
 import gsap from "gsap";
 import Bounded from "@/app/components/Bounded";
@@ -100,10 +99,9 @@ const opacityAnimation = (ref: RefObject<HTMLDivElement>,time:number) =>{
 
 
 useEffect(()=>{
-  // startTransition(() => {
     setFetchedData(products)
 
-  // })
+  
 
 },[])
 
@@ -142,7 +140,6 @@ useEffect(()=>{
             key={product._id}
             id={product._id}
             ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
-            // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
             className="laptopProduct  hover:border-x-2opacity-0
 transition duration-200 ease-in
             landscape:hover:border-[#bad8d863]   w-auto flex flex-col items-center text-start  space-y-1"

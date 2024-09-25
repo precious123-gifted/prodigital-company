@@ -5,7 +5,6 @@ import { useStateContext } from "@/StateManager";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Bounded from "../components/Bounded";
-import Link from "next/link";
 import TransitionLink from '../components/TransitionLink';
 import gsap from "gsap";
 
@@ -127,7 +126,7 @@ useEffect(() => {
 
 
 
-const handleClickAnimation = (target:any) => {
+const handleIncreamentAndDecreamentButtonClickAnimation = (target:any) => {
   gsap.to(target,0.1, {
     scale: 1.2, 
     ease: "circ.out",
@@ -182,7 +181,7 @@ const handleClickAnimation = (target:any) => {
           </div>
           <div className=" portrait:text-[5vw] portrait:sm:text-[4vw] mt-[1vw] portrait:mt-[2.4vw] mb-[0.8vw] portrait:mb-[2vw] flex items-center justify-between w-full">
           <div
-    onClick={(event) => handleClickAnimation(event.currentTarget)}
+    onClick={(event) => handleIncreamentAndDecreamentButtonClickAnimation(event.currentTarget)}
       className="increase-container "
     >
       <div
@@ -195,7 +194,7 @@ const handleClickAnimation = (target:any) => {
             <div className="text-[1.6vw] portrait:text-[5.4vw]"> {product.quantity} </div>
 
     
-            <div     onClick={(event) => handleClickAnimation(event.currentTarget)}
+            <div     onClick={(event) => handleIncreamentAndDecreamentButtonClickAnimation(event.currentTarget)}
 
       className="decrease-container "><div className="decrease text-[1.6vw] portrait:text-[7vw] portrait:sm:text-[5vw] text-[#703b5a] bg-[#eccee0] p-1 rounded-full cursor-pointer" onClick={() => handleQuantityChange(product._id, -1)}>-</div></div>
           </div>

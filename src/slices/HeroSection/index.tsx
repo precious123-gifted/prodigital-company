@@ -8,7 +8,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import backgroundImage from "../../../public/hero-background.png"
 import backgroundImage2 from "../../../public/hero-background2.png"
-import Link from "next/link";
 import TransitionLink from "@/app/components/TransitionLink";
 
 

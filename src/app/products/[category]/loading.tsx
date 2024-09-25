@@ -1,5 +1,5 @@
 import { PrismicNextImage } from '@prismicio/next';
-import styles from '../../../lib/LoadingScreen.module.css'; // Import your CSS module
+import styles from '../../../lib/LoadingScreen.module.css';  
 import { createClient } from '@/prismicio';
 
 const LoadingScreen = async() => {

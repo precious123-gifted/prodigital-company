@@ -99,7 +99,7 @@ const baseUrl = isDevelopment
 
 
 
-  const handleImage = (event: React.ChangeEvent<HTMLInputElement>,number:number) => {
+  const handleImageSelection = (event: React.ChangeEvent<HTMLInputElement>,number:number) => {
     console.log("Handle image called");
     const selectedFile = event.target.files?.[0];
   
@@ -124,7 +124,7 @@ const baseUrl = isDevelopment
               setImageData3(imageData);
               break;
             default:
-              console.error('Invalid number passed to handleImage');
+              console.error('Invalid number passed to handleImageSelection');
           }
 
         } else {
@@ -162,7 +162,7 @@ const baseUrl = isDevelopment
 
         break;
       default:
-        console.error('Invalid number passed to handleImage');
+        console.error('Invalid number passed to handleImageSelection');
     }
 
   };
@@ -327,7 +327,7 @@ return typeof value === 'object' && 'public_id' in value;
   
         break;
       default:
-        console.error('Invalid number passed to handleImage');
+        console.error('Invalid number passed to handleImageSelection');
     }
   
 
@@ -392,7 +392,6 @@ return typeof value === 'object' && 'public_id' in value;
     
   return (
     <Bounded>
-<ToastContainer/>
       
       <div className="expandedcontainer  text-[#384d4d] w-auto   flex flex-col  items-center text-center space-y-5  portrait:px-[8vw] py-[2vw] portrait:py-[8vw]">
 <div className="exiticon    w-full flex justify-end ">

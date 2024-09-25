@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import Bounded from '../components/Bounded';
-import { toast, ToastContainer } from 'react-toastify';
 import Image from 'next/image';
 import backgroundImage from "../../../public/hero-background.png"
 import backgroundImage2 from "../../../public/hero-background2.png"
@@ -37,6 +36,8 @@ export default function LoginForm() {
 
  
 const router = useRouter()
+
+
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
@@ -101,7 +102,6 @@ setTimeout(() => {
 
   return (
     <>
-    <ToastContainer/>
     
       <Bounded
        className="  text-[#333D3E] portrait:text-[#E7FEFF]  " >

@@ -81,5 +81,4 @@ export default async function AdminPage() {
   )
 }
 
-// export const revalidate = 1
 

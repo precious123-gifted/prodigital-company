@@ -27,11 +27,7 @@ export default function AdminClientPage({allProducts}:any) {
    const allProductsUrl = `${baseUrl}/api/productsProcessedData`;
    
 
-      const [imageData, setImageData] = useState<string | null>(null);
-      const [imageData1, setImageData1] = useState<string | null>(null);
-      const [imageData2, setImageData2] = useState<string | null>(null);
-      const [imageData3, setImageData3] = useState<string | null>(null);
-      const [products, setProducts] = useState();
+ 
 
 
       const {displayPopUp,setDisplayPopUp} = useStateContext() 
@@ -45,9 +41,8 @@ export default function AdminClientPage({allProducts}:any) {
 
 
 
-const refreshPage = ()=>{window.location.reload()}
 
-      const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      const uploadProduct = async (event: React.FormEvent<HTMLFormElement>) => {
 
 
 
@@ -153,6 +148,8 @@ const refreshPage = ()=>{window.location.reload()}
       const [resource1, setResource1] = useState<CloudinaryImageInfo | null | string>(null);
       const [resource2, setResource2] = useState<CloudinaryImageInfo | null | string>(null);
       const [resource3, setResource3] = useState<CloudinaryImageInfo | null | string>(null);
+
+      
 function isCloudinaryInfo(value: string | CloudinaryImageInfo): value is CloudinaryImageInfo {
   return typeof value === 'object' && 'public_id' in value; 
 }
@@ -303,7 +300,7 @@ catch (error) {
   <>
   <ToastContainer/>
 <form
-onSubmit={handleSubmit}
+onSubmit={uploadProduct}
  className="add_product_div w-full flex-col mb-[10vw] portrait:mb-[14vw] ">
 
 <div className="image_div mb-10 portrait:mb-[60vw] portrait:sm:mb-[50vw] relative   w-full grid  portrait:grid-cols-2 landscape:grid-cols-4     gap-y-20  portrait:gap-y-8 rounded-xl h-[20vw]">
@@ -362,7 +359,7 @@ onSubmit={handleSubmit}
     setResource1(result?.info!);
     localStorage.setItem('RESOURCE_ID_KEY1', JSON.stringify(result?.info!));
 
-    console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
+    console.table(  'this are the ' + result?.info!)   
 
     widget.close();
   }}>
@@ -404,7 +401,7 @@ onSubmit={handleSubmit}
     setResource2(result?.info!);
     localStorage.setItem('RESOURCE_ID_KEY2', JSON.stringify(result?.info!));
 
-    console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
+    console.table(  'this are the ' + result?.info!)  
 
     widget.close();
   }}>
@@ -446,7 +443,7 @@ onSubmit={handleSubmit}
     setResource3(result?.info!);
     localStorage.setItem('RESOURCE_ID_KEY3', JSON.stringify(result?.info!));
 
-    console.table(  'this are the ' + result?.info!)  // { public_id, secure_url, etc }
+    console.table(  'this are the ' + result?.info!)   
 
     widget.close();
   }}>
@@ -530,9 +527,7 @@ onSubmit={handleSubmit}
              <div
                key={product._id}
                id={product._id}
-            //    ref={productrefs.current[index] = React.createRef<HTMLDivElement>()}
-               // onClick={()=>{microActionOnProductClick(productrefs.current[index])}}
-               className="laptopProduct  hover:border-x-2
+               className="laptopProduct  hover:border-x-2 
                landscape:hover:border-[#bad8d863] duration-[0.2s]  ease-in-out w-auto flex flex-col items-center text-start  space-y-1"
              >
                 <div className="flex flex-col items-start">
